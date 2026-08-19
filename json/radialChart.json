@@ -1,0 +1,91 @@
+{
+    "series": null,
+    "colors": null,
+    "labels": null,
+    "chart": {
+      "height": "140px",
+      "width": "100%",
+      "sparkline": {
+        "enabled": true
+      },
+      "type": "radialBar"
+    },
+    "plotOptions": {
+      "radialBar": {
+        "offsetY": 0,
+        "startAngle": 0,
+        "endAngle": 270,
+        "hollow": {
+          "margin": 5,
+          "size": "10%",
+          "background": "transparent"
+        },
+        "track": {
+          "background": "#9e9e9e"
+        },
+        "dataLabels": {
+          "name": {
+            "show": false
+          },
+          "value": {
+            "show": false
+          }
+        },
+        "barLabels": {
+          "enabled": true,
+          "useSeriesColors": true,
+          "margin": 8,
+          "fontSize": "12px",
+          "formatter": null
+        }
+      }
+    },
+    "responsive": [{
+      "breakpoint": 480,
+      "options": {
+        "legend": {
+            "show": false
+        }
+      }
+    }],
+    "grid": {
+      "show": false,
+      "strokeDashArray": 4,
+      "padding": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 15
+      }
+    },
+    "stroke": {
+      "width": 1,
+      "colors": ["#ebebeb"]
+    },
+    "title": {
+      "text": "",
+      "style": {
+        "color": "#9e9e9e"
+      }
+    },
+    "legend": {
+      "show": false,
+      "position": "bottom",
+      "fontFamily": "Inter, sans-serif"
+    },
+    "tooltip": {
+      "enabled": true,
+      "fillSeriesColor": true,
+      "theme": "dark",
+      "x": {
+        "show": false
+      }
+    },
+    "yaxis": {
+      "show": true,
+      "labels": {
+        "formatter": null
+      }
+    }
+}
+

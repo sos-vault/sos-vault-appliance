@@ -1,0 +1,37 @@
+[Unit]
+Description=sos-vault key service — load svault* keys into the kernel keyring
+# The app reads svault0..3 from the app uid's @u *user* keyring. That keyring is
+# per-uid and reference-counted: the kernel garbage-collects it the moment no
+# process of that uid is alive. This oneshot adds the keys and exits, so it must
+# run AFTER sos-vault.service is up — the container (same uid, no userns) is the
+# long-lived process that pins @u and keeps the keys from being GC'd. Ordering it
+# Before= the stack (as it once was) loses the keys at boot: they load into an
+# @u nothing holds open, get collected on exit, and the container then starts to
+# an empty keyring. PartOf= re-runs this loader whenever the stack restarts (a
+# `down` kills the last uid process and GCs @u), so `systemctl restart sos-vault`
+# repopulates the keyring too.
+After=network-online.target sos-vault.service
+Wants=network-online.target
+PartOf=sos-vault.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Must run as the app uid: the keys go into that uid's @u keyring, which the
+# app process (www-data is remapped to the same uid at container start) shares
+# because Docker uses no userns. 1000 is only the default — the installer
+# rewrites User=/Group= to the provisioned sosvault uid/gid (Step 11).
+User=1000
+Group=1000
+# Use the per-uid user keyring (not a private session) so the keys the script
+# adds to @u are visible to the container process.
+KeyringMode=shared
+# Default install path; the installer overrides SOS_VAULT_DIR / SVAULT_KEYDIR
+# via /etc/default/sos-vault. Leading '-' keeps the unit loadable when absent.
+Environment=SOS_VAULT_DIR=/opt/sos-vault
+EnvironmentFile=-/etc/default/sos-vault
+# bash -c so ${SOS_VAULT_DIR} is expanded from the environment.
+ExecStart=/bin/bash -c 'exec "${SOS_VAULT_DIR}/sysadmin/execStart.sh"'
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,97 @@
+# Open-core publish deny-list
+#
+# Source of truth for paths that MUST NOT appear in the public open-core
+# repository mirror. Read by:
+#   - .github/workflows/publish-opencore.yml  (CI mirror step)
+#   - tests/Feature/OpenCore/PublishManifestTest.php  (lint-level guard)
+#
+# One path or glob per line. Blank lines and "#" comments are ignored.
+# Trailing slash means "the directory and everything under it".
+#
+# Adding a new SaaS-only path? Add it here AND extend PublishManifestTest
+# with a class-presence assertion so the test fails loudly on the next
+# commit if the path drifts.
+
+# Filament SaaS-only resources (admin panel surfaces with no appliance value)
+app/Filament/Resources/Plans/
+app/Filament/Resources/Posts/
+app/Filament/Resources/Categories/
+app/Filament/Resources/Redirects/
+app/Filament/Resources/Pages/
+app/Filament/Resources/Permissions/
+app/Filament/Resources/Roles/
+
+# Filament customer portal — license minting, Paddle checkout, license download
+app/Filament/CustomerPortal/
+
+# SaaS-only Filament pages
+app/Filament/Pages/ManageEmails.php
+app/Filament/Pages/Media.php
+
+# Services that depend on the SaaS billing / signing private key
+app/Services/LicenseCheckoutService.php
+app/Services/LicenseGeneratorService.php
+
+# Paddle webhook handler (the appliance verifies signed licenses, it does not mint)
+app/Http/Controllers/PaddleWebhook.php
+
+# SaaS-only purchase glue: the guest Paddle checkout return handler and the
+# purchase-intent model it/the webhook use to mint a License. The appliance
+# 404s all checkout entry points (DenyOnAppliance) and never mints locally.
+app/Http/Controllers/Billing/GuestCheckoutController.php
+app/Models/LicensePurchaseIntent.php
+
+# Stripe billing — preserved as a future SaaS-side option, hidden from the public mirror.
+# The Paddle controller class stays in the mirror so /webhook/paddle resolves cleanly.
+wave/src/Http/Controllers/Billing/Stripe.php
+wave/src/Http/Controllers/Billing/Webhooks/StripeWebhook.php
+
+# Marketing / blog Folio pages — appliance ships a minimal stub landing instead
+resources/themes/anchor/pages/pricing.blade.php
+resources/themes/anchor/pages/subscription.blade.php
+resources/themes/anchor/pages/blog.blade.php
+resources/themes/anchor/components/marketing/
+
+# SaaS-only seeders
+database/seeders/PlansTableSeeder.php
+database/seeders/PostsTableSeeder.php
+database/seeders/StandaloneDocsSeeder.php
+
+# Portal lang files (lives with the customer portal, not the appliance)
+lang/en/portal.php
+lang/es/portal.php
+lang/ja/portal.php
+lang/de/portal.php
+module_builder/german-support/resources/lang/de/portal.php
+modules/german-support/resources/lang/de/portal.php
+
+# Repo-internal docs / state — private operational handoff, not for public eyes
+HANDOFF.md
+TestPlan.md
+sysadmin/weylandQuest.sh
+
+# Private monorepo /docs/ — contains architecture notes, Laravel Boost
+# guidelines, and planning artefacts that should not ship publicly.
+# The PUBLIC docs tree comes from public-docs/docs/ via the hoist step
+# (step 3 of the workflow's mirror-build) AFTER this strip runs.
+docs/
+
+# Private CI infrastructure — the publish workflow itself plus any other
+# CI workflows live only in the private monorepo. Public-mirror users
+# may add their own .github/workflows/ if they want; the issue/PR
+# templates hoist in from public-docs/.github/ at publish time.
+.github/workflows/
+
+# Runtime data artefacts that should not ship in source control. The
+# MaxMind GeoLite2 file is ~50MB and grows; bundled in the appliance
+# image at build time, not in the open-core repo.
+storage/app/geoip.mmdb
+
+# Local-only dev artifacts (gitignored but defense-in-depth)
+.env
+.env.example
+.gnupg/
+
+# Tests that exercise SaaS-only code paths (everything under tests/Feature/CustomerPortal/ etc.)
+tests/Feature/CustomerPortal/
+tests/Feature/Filament/Billing/

@@ -1,0 +1,63 @@
+#!/bin/bash
+# machine-token-helper — read board / product serial via dmidecode for the
+# appliance license verifier.
+#
+# Sprint follow-up to the licensing sprint. Invoked from
+# app/Services/MachineTokenService.php so PHP never shells out to dmidecode
+# directly. The matching sudoers fragment (sysadmin/sudoers.d/sos-vault-
+# machine-token) grants www-data NOPASSWD on the exact dmidecode invocations
+# used here — nothing else.
+#
+# Reads only — no writes, no destructive ops. Outputs a single line:
+#   - the discovered serial (board first, product fallback) on success, or
+#   - the literal token UNKNOWN when both sources are missing / placeholder.
+#
+# Always exits 0 unless dmidecode itself is absent or sudo fails — those
+# return non-zero so the caller can downgrade to "weak binding" semantics
+# rather than block a legitimate install.
+
+set -euo pipefail
+
+DMIDECODE=/usr/sbin/dmidecode
+SUDO=/bin/sudo
+
+if [[ ! -x "$DMIDECODE" ]]; then
+    echo 'dmidecode not installed' >&2
+    exit 1
+fi
+
+# Placeholder values dmidecode emits when the BIOS hasn't been programmed.
+# Matches the SaaS extractor's filter (app/Services/MachineTokenService.php).
+is_placeholder() {
+    local val
+    val="$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
+    case "$val" in
+        ''|'tobefilledbyo.e.m.'|'notspecified'|'none'|'systemserialnumber'|'defaultstring') return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+read_serial() {
+    local key="$1" value
+    if value="$("$SUDO" "$DMIDECODE" -s "$key" 2>/dev/null)"; then
+        # dmidecode may print multiple lines on multi-socket boards; first
+        # non-placeholder wins.
+        while IFS= read -r line; do
+            if ! is_placeholder "$line"; then
+                printf '%s\n' "$line"
+                return 0
+            fi
+        done <<< "$value"
+    fi
+    return 1
+}
+
+if read_serial baseboard-serial-number; then
+    exit 0
+fi
+
+if read_serial system-serial-number; then
+    exit 0
+fi
+
+echo UNKNOWN

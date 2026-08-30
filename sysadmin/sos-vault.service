@@ -1,0 +1,33 @@
+[Unit]
+Description=sos-vault Docker Compose stack
+Requires=docker.service
+After=docker.service
+# Pull in the keyring loader whenever the stack starts. svaultKey.service is
+# ordered After= this unit (and PartOf= it), so it populates the app uid's @u
+# keyring once the container is up to pin it — see svaultKey.service for why the
+# ordering must be After, not Before.
+Wants=svaultKey.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+# Default install path. Override per host by dropping a file at
+# /etc/default/sos-vault with e.g.:
+#   SOS_VAULT_DIR=/opt/sos-vault
+# Leading '-' on EnvironmentFile keeps the unit loadable when absent.
+Environment=SOS_VAULT_DIR=/opt/sos-vault
+EnvironmentFile=-/etc/default/sos-vault
+
+# No WorkingDirectory= — systemd parses it before env expansion, so it cannot
+# use ${SOS_VAULT_DIR}. docker compose receives -f with an absolute path, so
+# the process CWD is irrelevant.
+ExecStart=/usr/bin/docker compose -f ${SOS_VAULT_DIR}/docker-compose.yml up -d --remove-orphans
+ExecStartPost=-/bin/bash -c 'for i in {1..30}; do /usr/bin/docker compose -f ${SOS_VAULT_DIR}/docker-compose.yml exec -T app /bin/sudo -u www-data ./artisan vault:remount-public && exit 0; sleep 2; done; exit 0'
+ExecStop=-/usr/bin/docker compose -f ${SOS_VAULT_DIR}/docker-compose.yml exec app /bin/bash -c "/bin/sudo -u www-data ./artisan --yes vault:Admin CloseAll admin"
+ExecStop=/usr/bin/docker compose -f ${SOS_VAULT_DIR}/docker-compose.yml down
+TimeoutStartSec=180
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target

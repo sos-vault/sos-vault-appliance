@@ -1,0 +1,2927 @@
+{
+    "IpInReceives": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "",
+        "description": "Total number of IP packets received from all interfaces, including those with errors.",
+        "hint": "Should steadily increase with traffic.",
+        "threshold": "",
+        "order": "0"
+    },
+    "IpInHdrErrors": {
+        "type": "counter",
+        "reference": "IpInReceives",
+        "category": "IPv4",
+        "description": "Packets dropped due to invalid IP header (bad checksum, length, or version).",
+        "hint": "0 or very low (<0.1% of IpInReceives).",
+        "threshold": "0.1",
+        "order": "1"
+    },
+    "IpInAddrErrors": {
+        "type": "counter",
+        "reference": "IpInReceives",
+        "category": "IPv4",
+        "description": "Packets discarded because the destination IP address was invalid or unreachable on this host.",
+        "hint": "0 or very low.",
+        "threshold": "0.1",
+        "order": "2"
+    },
+    "IpForwDatagrams": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "",
+        "threshold": "",
+        "hint": ">0 only if forwarding enabled.",
+        "description": "IP packets successfully forwarded to another host (router behavior).",
+        "order": "3"
+    },
+    "IpInUnknownProtos": {
+        "type": "counter",
+        "description": "Packets received using an unsupported or unknown transport protocol.",
+        "hint": "0 or near 0.",
+        "threshold": "0",
+        "reference": "IpInReceives",
+        "category": "IPv4",
+        "order": "4"
+    },
+    "IpInDiscards": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "0 or very low.",
+        "description": "Valid packets discarded before delivery (e.g., resource shortages).",
+        "category": "IPv4",
+        "reference": "IpInReceives",
+        "order": "5"
+    },
+    "IpInDelivers": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "IpInReceives ",
+        "description": "Packets successfully delivered to the upper-layer protocols (TCP, UDP, ICMP, etc.).",
+        "hint": "Should track IpInReceives minus errors.",
+        "threshold": "90",
+        "order": "6"
+    },
+    "IpOutRequests": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Total IP packets requested by transport protocols for transmission.",
+        "hint": "Increases with traffic.",
+        "category": "IPv4",
+        "reference": "",
+        "order": "7"
+    },
+    "IpOutDiscards": {
+        "type": "counter",
+        "reference": "IpInReceives",
+        "category": "IPv4",
+        "threshold": "0.1",
+        "hint": "0 or very low.",
+        "description": "Outgoing packets discarded before transmission due to resource issues.",
+        "order": "8"
+    },
+    "IpOutNoRoutes": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "IpInReceives",
+        "threshold": "0.1",
+        "description": "Packets dropped because no route to the destination was found.",
+        "hint": "0 for normal systems.",
+        "order": "9"
+    },
+    "IpReasmReqds": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "IpInReceives",
+        "description": "Number of IP fragments received that required reassembly. Each fragmented packet contributes one here when the first fragment arrives.",
+        "hint": "Low unless large MTU\/fragmented traffic.",
+        "threshold": "1",
+        "order": "10"
+    },
+    "IpReasmOKs": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "IpReasmReqds",
+        "threshold": "90",
+        "description": "Number of IP packets successfully reassembled from fragments.",
+        "hint": "Matches or slightly below IpReasmReqds.",
+        "order": "11"
+    },
+    "IpReasmFails": {
+        "type": "counter",
+        "description": "Number of reassembly failures - due to timeout, missing fragments, or buffer\/memory exhaustion.",
+        "hint": "0 or near 0.",
+        "threshold": "0.1",
+        "reference": "IpInReceives",
+        "category": "IPv4",
+        "order": "12"
+    },
+    "IpFragOKs": {
+        "type": "counter",
+        "hint": "Matches outgoing large packets.",
+        "description": "Number of IP datagrams successfully fragmented before transmission.",
+        "threshold": "1",
+        "category": "IPv4",
+        "reference": "IpInReceives",
+        "order": "13"
+    },
+    "IpFragFails": {
+        "type": "counter",
+        "reference": "IpInReceives",
+        "category": "IPv4",
+        "description": "Number of IP datagrams that could not be fragmented (e.g., \"Don't Fragment\" flag set).",
+        "hint": "0 or near 0.",
+        "threshold": "0.1",
+        "order": "14"
+    },
+    "IpFragCreates": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "Increases with outgoing fragmented traffic.",
+        "description": "Total number of individual IP fragments generated during packet fragmentation from outgoing datagrams.",
+        "reference": "",
+        "category": "IPv4",
+        "order": "15"
+    },
+    "IpReasmTimeout": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "IpInReceives",
+        "threshold": "0.1",
+        "description": "Number of IP fragment reassembly operations that timed out before completion - fragments that expired before completing reassembly.",
+        "hint": "0 for stable networks.",
+        "order": "16"
+    },
+    "IpReasmDuplicates": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "IpInReceives",
+        "description": "Duplicate IP fragments received during reassembly. Usually indicates network duplication or retransmission.",
+        "hint": "0 ideally.",
+        "threshold": "0.1",
+        "order": "17"
+    },
+    "IpReasmOverlaps": {
+        "type": "counter",
+        "hint": "0 ideally.",
+        "description": "Overlapping IP fragments received - may be due to network issues or malicious activity.",
+        "threshold": "0.1",
+        "reference": "IpInReceives",
+        "category": "IPv4",
+        "order": "18"
+    },
+    "IpFragDiscards": {
+        "type": "counter",
+        "reference": "IpInReceives",
+        "category": "IPv4",
+        "description": "Fragments dropped before being transmitted (usually due to route changes or memory pressure).",
+        "hint": "0 ideally.",
+        "threshold": "0.1",
+        "order": "19"
+    },
+    "IpReasmMemFailures": {
+        "type": "counter",
+        "category": "IPv4",
+        "reference": "IpInReceives",
+        "threshold": "0.1",
+        "description": "IP reassembly failed due to memory allocation failure (kernel couldn't allocate reassembly buffer).",
+        "hint": "0 ideally. Check net.core.rmem_max, net.core.wmem_max and net.ipv4.tcp_mem kernel values",
+        "order": "20"
+    },
+    "IpExtInNoRoutes": {
+        "type": "counter",
+        "threshold": "0.1",
+        "description": "Packets received but dropped due to no route to the destination.",
+        "hint": "0 ideally.",
+        "reference": "IpInReceives",
+        "category": "IPExt",
+        "order": "21"
+    },
+    "IpExtInTruncatedPkts": {
+        "type": "counter",
+        "description": "Packets received that were shorter than expected and discarded.",
+        "hint": "0 ideally.",
+        "threshold": "0.1",
+        "category": "IPExt",
+        "reference": "IpInReceives",
+        "order": "22"
+    },
+    "IpExtInMcastPkts": {
+        "type": "counter",
+        "category": "IPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "Should track expected multicast traffic.",
+        "description": "Total IPv4 multicast packets received.",
+        "order": "23"
+    },
+    "IpExtOutMcastPkts": {
+        "type": "counter",
+        "hint": "Should track expected multicast traffic.",
+        "description": "IPv4 multicast packets sent.",
+        "threshold": "",
+        "reference": "",
+        "category": "IPExt",
+        "order": "24"
+    },
+    "IpExtInBcastPkts": {
+        "type": "counter",
+        "hint": "",
+        "description": "IPv4 broadcast packets received.",
+        "threshold": "",
+        "reference": "",
+        "category": "IPExt",
+        "order": "25"
+    },
+    "IpExtOutBcastPkts": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "IPv4 broadcast packets sent.",
+        "reference": "",
+        "category": "IPExt",
+        "order": "26"
+    },
+    "IpExtInOctets": {
+        "type": "byte",
+        "description": "Total bytes received (including headers) on IPv4 packets.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "IPExt",
+        "order": "27"
+    },
+    "IpExtOutOctets": {
+        "type": "byte",
+        "category": "IPExt",
+        "reference": "",
+        "threshold": "",
+        "description": "Total bytes sent in IPv4 packets (including headers).",
+        "hint": "",
+        "order": "28"
+    },
+    "IpExtInMcastOctets": {
+        "type": "byte",
+        "description": "Bytes received in multicast IPv4 packets.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "IPExt",
+        "order": "29"
+    },
+    "IpExtOutMcastOctets": {
+        "type": "byte",
+        "category": "IPExt",
+        "reference": "",
+        "description": "Bytes sent in multicast IPv4 packets.",
+        "hint": "",
+        "threshold": "",
+        "order": "30"
+    },
+    "IpExtInBcastOctets": {
+        "type": "byte",
+        "threshold": "",
+        "description": "Bytes received in broadcast IPv4 packets.",
+        "hint": "",
+        "reference": "",
+        "category": "IPExt",
+        "order": "31"
+    },
+    "IpExtOutBcastOctets": {
+        "type": "byte",
+        "threshold": "",
+        "hint": "",
+        "description": "Bytes sent in broadcast IPv4 packets.",
+        "reference": "",
+        "category": "IPExt",
+        "order": "32"
+    },
+    "IpExtInCsumErrors": {
+        "type": "counter",
+        "description": "Packets dropped due to invalid IPv4 checksum.",
+        "hint": "0 ideally.",
+        "threshold": "0.1",
+        "category": "IPExt",
+        "reference": "IpInReceives",
+        "order": "33"
+    },
+    "IpExtInNoECTPkts": {
+        "type": "counter",
+        "hint": "If ECN is enabled (net.ipv4.tcp_ecn and net.ipv4.tcp_ecn_fallback) this value shall be 0",
+        "description": "Packets received without Explicit Congestion Notification capability (ECN=00).",
+        "threshold": "0.1",
+        "category": "IPExt",
+        "reference": "IpInReceives",
+        "order": "34"
+    },
+    "IpExtInECT1Pkts": {
+        "type": "counter",
+        "reference": "",
+        "category": "IPExt",
+        "hint": "",
+        "description": "Packets received with ECN=10 marking.",
+        "threshold": "",
+        "order": "35"
+    },
+    "IpExtInECT0Pkts": {
+        "type": "counter",
+        "hint": "",
+        "description": "Packets received with ECN=01 marking.",
+        "threshold": "",
+        "category": "IPExt",
+        "reference": "",
+        "order": "36"
+    },
+    "IpExtInCEPkts": {
+        "type": "counter",
+        "reference": "IpInReceives",
+        "category": "IPExt",
+        "threshold": "",
+        "description": "Packets received with ECN Congestion Experienced (CE) marking.",
+        "hint": "",
+        "order": "37"
+    },
+    "IpExtReasmOverlaps": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "Shall be 0",
+        "description": "IP fragment reassemblies detected overlapping fragments.",
+        "category": "IPExt",
+        "reference": "IpInReceives",
+        "order": "38"
+    },
+    "IcmpInMsgs": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "description": "Total number of ICMP messages received, including errors.",
+        "hint": "0 or steady increase.",
+        "threshold": "0.1",
+        "order": "39"
+    },
+    "IcmpInErrors": {
+        "type": "counter",
+        "reference": "IcmpInMsgs",
+        "category": "ICMP",
+        "description": "ICMP messages dropped due to internal errors (e.g., malformed data).",
+        "hint": "0 or very low.",
+        "threshold": "0.1",
+        "order": "40"
+    },
+    "IcmpInCsumErrors": {
+        "type": "counter",
+        "reference": "IcmpInMsgs",
+        "category": "ICMP",
+        "description": "ICMP messages dropped due to invalid checksum.",
+        "hint": "0 or very low.",
+        "threshold": "0.1",
+        "order": "41"
+    },
+    "IcmpInDestUnreachs": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "IcmpInMsgs",
+        "threshold": "1",
+        "hint": "Low; high means misrouting.",
+        "description": "\"Destination Unreachable\" messages received.",
+        "order": "42"
+    },
+    "IcmpInTimeExcds": {
+        "type": "counter",
+        "description": "\"Time Exceeded\" messages received (TTL expired or fragment reassembly timeout).",
+        "hint": "Depending of the network conditions but shall be close to 0",
+        "threshold": "1",
+        "reference": "IcmpInMsgs",
+        "category": "ICMP",
+        "order": "43"
+    },
+    "IcmpInParmProbs": {
+        "type": "counter",
+        "threshold": "0.1",
+        "description": "\"Parameter Problem\" messages received (invalid IP header field).",
+        "hint": "0 or very low.",
+        "reference": "IcmpInMsgs",
+        "category": "ICMP",
+        "order": "44"
+    },
+    "IcmpInSrcQuenchs": {
+        "type": "counter",
+        "threshold": "0",
+        "description": "\"Source Quench\" congestion-control messages received (obsolete).",
+        "hint": "",
+        "reference": "IcmpInMsgs",
+        "category": "ICMP",
+        "order": "45"
+    },
+    "IcmpInRedirects": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMP",
+        "threshold": "",
+        "hint": "",
+        "description": "\"Redirect\" messages received to update routing tables.",
+        "order": "46"
+    },
+    "IcmpInEchos": {
+        "type": "counter",
+        "hint": "",
+        "description": "Echo Request messages received (used by ping).",
+        "threshold": "",
+        "category": "ICMP",
+        "reference": "",
+        "order": "47"
+    },
+    "IcmpInEchoReps": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMP",
+        "hint": "",
+        "description": "Echo Reply messages received (responses to ping).",
+        "threshold": "",
+        "order": "48"
+    },
+    "IcmpInTimestamps": {
+        "type": "counter",
+        "hint": "",
+        "description": "Timestamp Request messages received.",
+        "threshold": "",
+        "reference": "",
+        "category": "ICMP",
+        "order": "49"
+    },
+    "IcmpInTimestampReps": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMP",
+        "threshold": "",
+        "hint": "",
+        "description": "Timestamp Reply messages received.",
+        "order": "50"
+    },
+    "IcmpInAddrMasks": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMP",
+        "threshold": "",
+        "hint": "",
+        "description": "Address Mask Request messages received (obsolete).",
+        "order": "51"
+    },
+    "IcmpInAddrMaskReps": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMP",
+        "threshold": "",
+        "description": "Address Mask Reply messages received (obsolete).",
+        "hint": "",
+        "order": "52"
+    },
+    "IcmpOutMsgs": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Total ICMP messages sent, including error and informational types.",
+        "hint": "Steady with network traffic.",
+        "category": "ICMP",
+        "reference": "",
+        "order": "53"
+    },
+    "IcmpOutErrors": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "IcmpOutMsgs",
+        "threshold": "0.1",
+        "hint": "0 or near 0.",
+        "description": "ICMP messages not sent due to internal transmission errors.",
+        "order": "54"
+    },
+    "IcmpOutDestUnreachs": {
+        "type": "counter",
+        "threshold": "0.1",
+        "description": "\"Destination Unreachable\" messages sent.",
+        "hint": "Low; indicates hosts unreachable.",
+        "category": "ICMP",
+        "reference": "IcmpOutMsgs",
+        "order": "55"
+    },
+    "IcmpOutTimeExcds": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "IcmpOutMsgs",
+        "threshold": "0.1",
+        "description": "\"Time Exceeded\" messages sent (e.g., TTL expired).",
+        "hint": "",
+        "order": "56"
+    },
+    "IcmpOutParmProbs": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "",
+        "description": "\"Parameter Problem\" messages sent.",
+        "category": "ICMP",
+        "reference": "IcmpOutMsgs",
+        "order": "57"
+    },
+    "IcmpOutSrcQuenchs": {
+        "type": "counter",
+        "description": "\"Source Quench\" messages sent (deprecated).",
+        "hint": "",
+        "threshold": "",
+        "category": "ICMP",
+        "reference": "",
+        "order": "58"
+    },
+    "IcmpOutRedirects": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "description": "\"Redirect\" routing messages sent.",
+        "hint": "",
+        "threshold": "",
+        "order": "59"
+    },
+    "IcmpOutEchos": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "description": "Echo Request messages sent (ping).",
+        "hint": "",
+        "threshold": "",
+        "order": "60"
+    },
+    "IcmpOutEchoReps": {
+        "type": "counter",
+        "hint": "",
+        "description": "Echo Reply messages sent (ping responses).",
+        "threshold": "",
+        "category": "ICMP",
+        "reference": "",
+        "order": "61"
+    },
+    "IcmpOutTimestamps": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Timestamp Request messages sent.",
+        "order": "62"
+    },
+    "IcmpOutTimestampReps": {
+        "type": "counter",
+        "description": "Timestamp Reply messages sent.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "ICMP",
+        "order": "63"
+    },
+    "IcmpOutAddrMasks": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "description": "Address Mask Request messages sent (obsolete).",
+        "hint": "",
+        "threshold": "",
+        "order": "64"
+    },
+    "IcmpOutAddrMaskReps": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Address Mask Reply messages sent (obsolete).",
+        "order": "65"
+    },
+    "IcmpMsgInType3": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "threshold": "",
+        "description": "Count of received ICMP type 3 (\"Destination Unreachable\") messages.",
+        "hint": "",
+        "order": "66"
+    },
+    "IcmpMsgInType11": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "hint": "",
+        "description": "Count of received ICMP type 11 (\"Time Exceeded\") messages.",
+        "threshold": "",
+        "order": "67"
+    },
+    "IcmpMsgOutType3": {
+        "type": "counter",
+        "category": "ICMP",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Count of sent ICMP type 3 (\"Destination Unreachable\") messages.",
+        "order": "68"
+    },
+    "IcmpMsgOutType5": {
+        "type": "counter",
+        "hint": "",
+        "description": "Count of sent ICMP type 5 (\"Redirect\") messages.",
+        "threshold": "",
+        "category": "ICMP",
+        "reference": "",
+        "order": "69"
+    },
+    "TcpActiveOpens": {
+        "type": "counter",
+        "hint": "Steady grows with active connections.",
+        "description": "Number of times TCP connections were initiated by this host (via `connect()`).",
+        "threshold": "",
+        "reference": "",
+        "category": "TCP",
+        "order": "70"
+    },
+    "TcpPassiveOpens": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Number of times TCP connections were accepted in a listening state (via `accept()`).",
+        "hint": "Steady grows with server traffic.",
+        "reference": "",
+        "category": "TCP",
+        "order": "71"
+    },
+    "TcpAttemptFails": {
+        "type": "counter",
+        "threshold": "1",
+        "description": "Failed TCP connection attempts (no SYN-ACK received or connection refused).",
+        "hint": "0-1% of attempts is acceptable.",
+        "reference": "TcpActiveOpens",
+        "category": "TCP",
+        "order": "72"
+    },
+    "TcpEstabResets": {
+        "type": "counter",
+        "description": "Established connections reset by the peer or by local host.",
+        "hint": "Low; frequent resets indicate network problems.",
+        "threshold": "5",
+        "category": "TCP",
+        "reference": "TcpActiveOpens|TcpPassiveOpens",
+        "order": "73"
+    },
+    "TcpInSegs": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCP",
+        "hint": "Tracks traffic; healthy if checksum errors low.",
+        "description": "Total number of TCP segments received, including those with errors.",
+        "threshold": "",
+        "order": "74"
+    },
+    "TcpOutSegs": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "Tracks traffic.",
+        "description": "Total number of TCP segments sent, including retransmissions.",
+        "reference": "",
+        "category": "TCP",
+        "order": "75"
+    },
+    "TcpRetransSegs": {
+        "type": "counter",
+        "description": "Number of TCP segments retransmitted due to missing ACKs.",
+        "hint": "Low (<1% of TcpOutSegs ideally).",
+        "threshold": "1",
+        "category": "TCP",
+        "reference": "TcpOutSegs",
+        "order": "76"
+    },
+    "TcpInErrs": {
+        "type": "counter",
+        "threshold": "0.1",
+        "description": "Incoming TCP segments discarded due to checksum errors, invalid flags, or other problems.",
+        "hint": "0 or very low.",
+        "reference": "TcpInSegs",
+        "category": "TCP",
+        "order": "77"
+    },
+    "TcpOutRsts": {
+        "type": "counter",
+        "description": "Segments sent with the RST flag to abort connections.",
+        "hint": "Low under normal operations.",
+        "threshold": "1",
+        "category": "TCP",
+        "reference": "TcpOutSegs",
+        "order": "78"
+    },
+    "TcpInCsumErrors": {
+        "type": "counter",
+        "hint": "Low under normal operations.",
+        "description": "TCP segments received with invalid checksums (detected corruption).",
+        "threshold": "0.1",
+        "category": "TCP",
+        "reference": "TcpInSegs",
+        "order": "79"
+    },
+    "TcpExtSyncookiesSent": {
+        "type": "counter",
+        "reference": "TcpExtSyncookiesSent",
+        "category": "TCPExt",
+        "hint": "Sent low unless under SYN flood.",
+        "description": "Number of SYN cookies sent. This occurs when the system is under a SYN flood attack and TCP syncookies are enabled to protect against it.",
+        "threshold": "0",
+        "order": "80"
+    },
+    "TcpExtSyncookiesRecv": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "TcpExtSyncookiesRecv",
+        "threshold": "0",
+        "description": "SYN cookies received and validated successfully. Indicates how many connection attempts were accepted via syncookie protection.",
+        "hint": "Recieved low unless under SYN flood.",
+        "order": "81"
+    },
+    "TcpExtSyncookiesFailed": {
+        "type": "counter",
+        "threshold": "0",
+        "hint": "Failures should be 0.",
+        "description": "SYN cookies that failed validation (likely spoofed or invalid responses).",
+        "category": "TCPExt",
+        "reference": "TcpExtSyncookiesRecv",
+        "order": "82"
+    },
+    "TcpExtEmbryonicRsts": {
+        "type": "counter",
+        "description": "TCP connection attempts aborted before completion (RST sent while handshake in progress).",
+        "hint": "",
+        "threshold": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "83"
+    },
+    "TcpExtPruneCalled": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "description": "Number of times TCP memory pressure triggered pruning of established sockets (e.g., during heavy memory usage).",
+        "hint": "",
+        "order": "84"
+    },
+    "TcpExtRcvPruned": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "TcpInSegs",
+        "description": "Packets dropped from receive queue due to memory pressure or buffer exhaustion.",
+        "hint": "",
+        "threshold": "0.1",
+        "order": "85"
+    },
+    "TcpExtOfoPruned": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "TcpInSegs",
+        "hint": "",
+        "description": "Out-of-order packets dropped due to memory pressure.",
+        "threshold": "0.1",
+        "order": "86"
+    },
+    "TcpExtOutOfWindowIcmps": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "ICMP messages received that were not within a valid TCP window (potentially spurious).",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "87"
+    },
+    "TcpExtLockDroppedIcmps": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "ICMPs ignored because of TCP socket lock contention (rare).",
+        "order": "88"
+    },
+    "TcpExtArpFilter": {
+        "type": "counter",
+        "threshold": "",
+        "description": "ARP filtering applied to incoming packets (only in specific kernel configs).",
+        "hint": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "89"
+    },
+    "TcpExtTW": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "hint": "",
+        "description": "Counters related to TCP TIME_WAIT state, such as recycled or reused sockets.",
+        "threshold": "",
+        "order": "90"
+    },
+    "TcpExtTWRecycled": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "description": "Deprecated in recent kernels. Used to count recycled TIME_WAIT sockets.",
+        "hint": "",
+        "threshold": "",
+        "order": "91"
+    },
+    "TcpExtTWKilled": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "threshold": "",
+        "description": "Number of sockets forcibly removed from TIME_WAIT state to free resources.",
+        "hint": "",
+        "order": "92"
+    },
+    "TcpExtPAWSActive": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "threshold": "",
+        "description": "Connections currently using Protection Against Wrapped Sequence numbers (PAWS).",
+        "hint": "",
+        "order": "93"
+    },
+    "TcpExtPAWSEstab": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "threshold": "",
+        "hint": "",
+        "description": "Established connections using PAWS validation.",
+        "order": "94"
+    },
+    "TcpExtDelayedACKs": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "Should track traffic.",
+        "description": "Number of delayed ACKs sent to reduce traffic.",
+        "order": "95"
+    },
+    "TcpExtDelayedACKLocked": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "description": "Delayed ACKs that could not be sent because the socket was locked.",
+        "hint": "",
+        "threshold": "",
+        "order": "96"
+    },
+    "TcpExtDelayedACKLost": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Delayed ACKs that were lost or not sent before timeout.",
+        "order": "97"
+    },
+    "TcpExtListenOverflows": {
+        "type": "counter",
+        "hint": "0 ideally; some spikes OK under heavy load.",
+        "description": "Incoming connection requests dropped because the listen queue was full.",
+        "threshold": "1",
+        "category": "TCPExt",
+        "reference": "TcpPassiveOpens",
+        "order": "98"
+    },
+    "TcpExtListenDrops": {
+        "type": "counter",
+        "hint": "0 ideally; some spikes OK under heavy load.",
+        "description": "Total connection requests dropped at the listen stage (queue full or rate-limited).",
+        "threshold": "1",
+        "reference": "TcpPassiveOpens",
+        "category": "TCPExt",
+        "order": "99"
+    },
+    "TcpExtTCPPrequeueDropped": {
+        "type": "counter",
+        "reference": "TcpInSegs",
+        "category": "TCPExt",
+        "description": "Packets dropped before they reached the TCP prequeue due to memory constraints.",
+        "hint": "",
+        "threshold": "1",
+        "order": "100"
+    },
+    "TcpExtTCPDirectCopyFromBacklog": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "threshold": "",
+        "hint": "",
+        "description": "Packets directly copied from backlog to user space without queueing - improves efficiency.",
+        "order": "101"
+    },
+    "TcpExtTCPDirectCopyFromPrequeue": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Packets directly copied from the prequeue to user space.",
+        "order": "102"
+    },
+    "TcpExtTCPPrequeue": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "description": "Number of packets queued in TCP prequeue before user-space processing.",
+        "hint": "",
+        "threshold": "",
+        "order": "103"
+    },
+    "TcpExtTCPHPHits": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "hint": "",
+        "description": "Packets processed via the fast path (header prediction hit).",
+        "threshold": "",
+        "order": "104"
+    },
+    "TcpExtTCPHPHitsToUser": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "hint": "",
+        "description": "Header-predicted packets delivered directly to user space.",
+        "threshold": "",
+        "order": "105"
+    },
+    "TcpExtTCPPureAcks": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Pure ACK packets received (no payload).",
+        "hint": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "106"
+    },
+    "TcpExtTCPHPAcks": {
+        "type": "counter",
+        "threshold": "",
+        "description": "ACKs that matched a header prediction path.",
+        "hint": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "107"
+    },
+    "TcpExtTCPReneging": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "TcpOutSegs",
+        "threshold": "0.1",
+        "description": "Segments discarded because the receiver reneged (retracted) a previously advertised window.",
+        "hint": "",
+        "order": "108"
+    },
+    "TcpExtTCPSackRecovery": {
+        "type": "counter",
+        "hint": "Depends on network quality; 1-2% of segments ideal.",
+        "description": "Number of TCP loss recoveries using SACK (Selective ACK).",
+        "threshold": "2",
+        "reference": "TcpOutSegs",
+        "category": "TCPExt",
+        "order": "109"
+    },
+    "TcpExtTCPSACKReneging": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "TcpOutSegs",
+        "hint": "",
+        "description": "SACK reneging detected - remote host claimed to have received data but then NACKed it.",
+        "threshold": "2",
+        "order": "110"
+    },
+    "TcpExtTCPFACKReorder": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "description": "Reordering events detected while using FACK (Forward Acknowledgment).",
+        "hint": "",
+        "threshold": "",
+        "order": "111"
+    },
+    "TcpExtTCPSACKReorder": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "TcpOutSegs",
+        "threshold": "2",
+        "hint": "",
+        "description": "Packet reordering detected during SACK processing.",
+        "order": "112"
+    },
+    "TcpExtTCPRenoReorder": {
+        "type": "counter",
+        "hint": "",
+        "description": "Packet reordering detected using Reno-style congestion control.",
+        "threshold": "",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "113"
+    },
+    "TcpExtTCPTSReorder": {
+        "type": "counter",
+        "description": "Reordering detected via TCP timestamp comparison.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "114"
+    },
+    "TcpExtTCPPartialUndo": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "hint": "",
+        "description": "Partial congestion window undo triggered by duplicate ACKs (no full retransmit).",
+        "threshold": "",
+        "order": "115"
+    },
+    "TcpExtTCPFullUndo": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Full congestion window undo triggered when all losses recovered successfully.",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "116"
+    },
+    "TcpExtTCPRenoRecovery": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "1",
+        "description": "Reno-style fast recovery events.",
+        "hint": "Depends on network quality; <1\u00e2\u0080\u00932% of segments ideal.",
+        "order": "117"
+    },
+    "TcpExtTCPSackRecoveryFail": {
+        "type": "counter",
+        "hint": "",
+        "description": "Failed SACK-based recoveries (timeouts after recovery attempt).",
+        "threshold": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "118"
+    },
+    "TcpExtTCPDSACKUndo": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "threshold": "",
+        "description": "Undo events due to duplicate SACKs (DSACKs).",
+        "hint": "",
+        "order": "119"
+    },
+    "TcpExtTCPDSACKOldSent": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "description": "DSACKs sent indicating duplicate packet delivery.",
+        "hint": "",
+        "threshold": "",
+        "order": "120"
+    },
+    "TcpExtTCPDSACKOldRecv": {
+        "type": "counter",
+        "description": "DSACKs received indicating duplicate packet delivery.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "121"
+    },
+    "TcpExtTCPSpuriousRTOs": {
+        "type": "counter",
+        "threshold": "1",
+        "description": "Spurious retransmission timeouts detected (no real loss).",
+        "hint": "0-1% of segments.",
+        "category": "TCPExt",
+        "reference": "TcpOutSegs",
+        "order": "122"
+    },
+    "TcpExtTCPSpuriousRtxHostQueues": {
+        "type": "counter",
+        "hint": "",
+        "description": "Spurious retransmissions caused by host queueing delays.",
+        "threshold": "1",
+        "reference": "TcpInSegs",
+        "category": "TCPExt",
+        "order": "123"
+    },
+    "TcpExtTCPSackShifted": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Counters related to optimization and fallback of SACK shifting mechanisms.",
+        "order": "124"
+    },
+    "TcpExtTCPSackShiftFallback": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Counters related to optimization and fallback of SACK shifting mechanisms.",
+        "order": "125"
+    },
+    "TcpExtTCPSackShiftFallbackFailed": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Counters related to optimization and fallback of SACK shifting mechanisms.",
+        "order": "126"
+    },
+    "TcpExtTCPBacklogDrop": {
+        "type": "counter",
+        "threshold": "1",
+        "hint": "",
+        "description": "Packets dropped from backlog due to excessive queue depth.",
+        "reference": "TcpOutSegs",
+        "category": "TCPExt",
+        "order": "127"
+    },
+    "TcpExtTCPTimeouts": {
+        "type": "counter",
+        "threshold": "1",
+        "hint": "",
+        "description": "Number of TCP retransmission timeouts.",
+        "reference": "TcpOutSegs",
+        "category": "TCPExt",
+        "order": "128"
+    },
+    "TcpExtTCPLossProbes": {
+        "type": "counter",
+        "hint": "",
+        "description": "Tail loss probes (TLP) sent to detect losses faster.",
+        "threshold": "",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "129"
+    },
+    "TcpExtTCPLossProbeRecovery": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Recoveries triggered by tail loss probes.",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "130"
+    },
+    "TcpExtTCPChallengeACK": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Challenge ACKs sent to validate suspicious connections or spoof attempts.",
+        "order": "131"
+    },
+    "TcpExtTCPFastOpenActive": {
+        "type": "counter",
+        "hint": "Depends on application use.",
+        "description": "Connections using TCP Fast Open (client side).",
+        "threshold": "",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "132"
+    },
+    "TcpExtTCPFastOpenPassive": {
+        "type": "counter",
+        "hint": "Depends on application use.",
+        "description": "Connections using TCP Fast Open (server side).",
+        "threshold": "",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "133"
+    },
+    "TcpExtTCPFastOpenActiveFail": {
+        "type": "counter",
+        "reference": "TcpExtTCPFastOpenActive",
+        "category": "TCPExt",
+        "description": "Failed TCP Fast Open attempts (client side).",
+        "hint": "",
+        "threshold": "0.1",
+        "order": "134"
+    },
+    "TcpExtTCPFastOpenPassiveFail": {
+        "type": "counter",
+        "reference": "TcpExtTCPFastOpenPassive",
+        "category": "TCPExt",
+        "threshold": "0.1",
+        "hint": "",
+        "description": "Failed TCP Fast Open attempts (server side).",
+        "order": "135"
+    },
+    "TcpExtTCPFastOpenBlackhole": {
+        "type": "counter",
+        "description": "Connections that disabled TFO due to middlebox interference.",
+        "hint": "",
+        "threshold": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "136"
+    },
+    "TcpExtTCPToZeroWindowAdv": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "description": "Counters for transitions in zero-window flow control.",
+        "hint": "",
+        "order": "154"
+    },
+    "TcpExtTCPWantZeroWindowAdv": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Received zero window advertisements.",
+        "order": "138"
+    },
+    "TcpExtTCPSynRetrans": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "SYN retransmissions due to missing SYN-ACK replies.",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "139"
+    },
+    "TcpExtTCPOrigDataSent": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Total segments of original (non-retransmitted) data sent.",
+        "hint": "",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "140"
+    },
+    "TcpExtTCPHystartTrainDetect": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "hint": "",
+        "description": "Counters for HyStart congestion control - early slow-start exit detection.",
+        "threshold": "",
+        "order": "141"
+    },
+    "TcpExtTCPHystartDelayDetect": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Counters for HyStart congestion control - early slow-start exit detection.",
+        "order": "142"
+    },
+    "TcpExtTCPHystartExit": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Counters for HyStart congestion control - early slow-start exit detection.",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "143"
+    },
+    "TcpExtTCPDelivered": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Tracks total delivered packets and those marked with ECN Congestion Experienced bits.",
+        "hint": "",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "144"
+    },
+    "TcpExtTCPDeliveredCE": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "description": "Tracks total delivered packets and those marked with ECN Congestion Experienced bits.",
+        "hint": "",
+        "threshold": "",
+        "order": "145"
+    },
+    "TcpExtTCPACKSkippedSeq": {
+        "type": "counter",
+        "reference": "",
+        "category": "TCPExt",
+        "threshold": "",
+        "description": "Various optimizations skipping redundant ACKs in those states.",
+        "hint": "",
+        "order": "146"
+    },
+    "TcpExtTCPACKSkippedSynRecv": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Various optimizations skipping redundant ACKs in those states.",
+        "reference": "",
+        "category": "TCPExt",
+        "order": "147"
+    },
+    "TcpExtTCPACKSkippedPktout": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Various optimizations skipping redundant ACKs in those states.",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "148"
+    },
+    "TcpExtTCPACKSkippedTimewait": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Various optimizations skipping redundant ACKs in those states.",
+        "hint": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "149"
+    },
+    "TcpExtTCPRcvCoalesce": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Number of packets coalesced on receive side for efficiency.",
+        "order": "150"
+    },
+    "TcpExtTCPRcvCollapsed": {
+        "type": "counter",
+        "category": "TCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Number of packets coalesced on receive side for efficiency.",
+        "order": "151"
+    },
+    "TcpExtTCPAutoCorking": {
+        "type": "counter",
+        "hint": "",
+        "description": "Auto-corking events to batch small sends together.",
+        "threshold": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "152"
+    },
+    "TcpExtTCPFromZeroWindowAdv": {
+        "type": "counter",
+        "description": "Counters for transitions in zero-window flow control.",
+        "hint": "",
+        "threshold": "",
+        "category": "TCPExt",
+        "reference": "",
+        "order": "153"
+    },
+    "UdpInDatagrams": {
+        "type": "counter",
+        "description": "Number of UDP datagrams delivered to the application layer.",
+        "hint": "Should match expected traffic.",
+        "threshold": "",
+        "category": "UDP",
+        "reference": "",
+        "order": "155"
+    },
+    "UdpNoPorts": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "0 for controlled environment.",
+        "description": "UDP datagrams received for which no listening socket existed (ICMP \"Port Unreachable\" sent).",
+        "reference": "",
+        "category": "UDP",
+        "order": "156"
+    },
+    "UdpInErrors": {
+        "type": "counter",
+        "category": "UDP",
+        "reference": "UdpInDatagrams",
+        "hint": "0 or near 0.",
+        "description": "Received UDP datagrams discarded due to errors (e.g., checksum or length mismatch).",
+        "threshold": "0.1",
+        "order": "157"
+    },
+    "UdpOutDatagrams": {
+        "type": "counter",
+        "category": "UDP",
+        "reference": "",
+        "hint": "Steady increase.",
+        "description": "Total number of UDP datagrams sent from all applications.",
+        "threshold": "",
+        "order": "158"
+    },
+    "UdpRcvbufErrors": {
+        "type": "counter",
+        "hint": "0 or very low.",
+        "description": "Incoming datagrams dropped because the socket receive buffer was full.",
+        "threshold": "0.1",
+        "reference": "UdpInDatagrams",
+        "category": "UDP",
+        "order": "159"
+    },
+    "UdpSndbufErrors": {
+        "type": "counter",
+        "reference": "UdpOutDatagrams",
+        "category": "UDP",
+        "threshold": "0.1",
+        "hint": "0 or very low.",
+        "description": "Outgoing datagrams dropped because the socket send buffer was full.",
+        "order": "160"
+    },
+    "UdpInCsumErrors": {
+        "type": "counter",
+        "description": "UDP datagrams discarded due to checksum validation failure.",
+        "hint": "0 ideally.",
+        "threshold": "0.1",
+        "reference": "UdpInDatagrams",
+        "category": "UDP",
+        "order": "161"
+    },
+    "UdpIgnoredMulti": {
+        "type": "counter",
+        "hint": "",
+        "description": "Multicast UDP packets ignored because the socket was not subscribed to that group.",
+        "threshold": "",
+        "category": "UDP",
+        "reference": "",
+        "order": "162"
+    },
+    "UdpMemErrors": {
+        "type": "counter",
+        "reference": "",
+        "category": "UDP",
+        "description": "UDP datagrams dropped due to system memory allocation failures.",
+        "hint": "",
+        "threshold": "",
+        "order": "163"
+    },
+    "UdpLiteInDatagrams": {
+        "type": "counter",
+        "reference": "",
+        "category": "UDPLite",
+        "threshold": "",
+        "hint": "Should match expected traffic.",
+        "description": "UDP-Lite datagrams successfully received and passed to applications.",
+        "order": "164"
+    },
+    "UdpLiteNoPorts": {
+        "type": "counter",
+        "category": "UDPLite",
+        "reference": "UdpLiteInDatagrams",
+        "description": "UDP-Lite datagrams received with no matching listening socket.",
+        "hint": "0 for controlled environment.",
+        "threshold": "0.1",
+        "order": "165"
+    },
+    "UdpLiteInErrors": {
+        "type": "counter",
+        "category": "UDPLite",
+        "reference": "UdpLiteInDatagrams",
+        "threshold": "0.1",
+        "hint": "0 or near 0.",
+        "description": "Received UDP-Lite datagrams discarded due to header or payload errors.",
+        "order": "166"
+    },
+    "UdpLiteOutDatagrams": {
+        "type": "counter",
+        "reference": "",
+        "category": "UDPLite",
+        "description": "Total UDP-Lite datagrams sent.",
+        "hint": "Steady increase.",
+        "threshold": "",
+        "order": "167"
+    },
+    "UdpLiteRcvbufErrors": {
+        "type": "counter",
+        "category": "UDPLite",
+        "reference": "UdpLiteInDatagrams",
+        "description": "Incoming UDP-Lite datagrams dropped due to full receive buffer.",
+        "hint": "0 or very low.",
+        "threshold": "0.1",
+        "order": "168"
+    },
+    "UdpLiteSndbufErrors": {
+        "type": "counter",
+        "category": "UDPLite",
+        "reference": "UdpLiteOutDatagrams",
+        "hint": "0 or very low.",
+        "description": "Outgoing UDP-Lite datagrams dropped due to full send buffer.",
+        "threshold": "0.1",
+        "order": "169"
+    },
+    "UdpLiteInCsumErrors": {
+        "type": "counter",
+        "category": "UDPLite",
+        "reference": "UdpLiteInDatagrams",
+        "threshold": "0.1",
+        "hint": "0 ideally.",
+        "description": "UDP-Lite datagrams discarded due to checksum mismatch within the covered portion.",
+        "order": "170"
+    },
+    "UdpLiteIgnoredMulti": {
+        "type": "counter",
+        "category": "UDPLite",
+        "reference": "",
+        "threshold": "",
+        "description": "UDP-Lite multicast datagrams ignored due to missing socket subscriptions.",
+        "hint": "",
+        "order": "171"
+    },
+    "UdpLiteMemErrors": {
+        "type": "counter",
+        "hint": "0 ideally.",
+        "description": "UDP-Lite datagrams dropped because of memory allocation failures.",
+        "threshold": "0.1",
+        "category": "UDPLite",
+        "reference": "UdpLiteInDatagrams",
+        "order": "172"
+    },
+    "MPTcpExtMPCapableSYNRX": {
+        "type": "counter",
+        "hint": "0 unless MPTCP used.",
+        "description": "SYN packets received requesting MPTCP capable connection.",
+        "threshold": "0.1",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "173"
+    },
+    "MPTcpExtMPCapableSYNTX": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "0 unless MPTCP used.",
+        "description": "SYN packets sent requesting MPTCP capable connection.",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "174"
+    },
+    "MPTcpExtMPCapableSYNACKRX": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "threshold": "",
+        "description": "SYN+ACK received for MPTCP capable connection.",
+        "hint": "",
+        "order": "175"
+    },
+    "MPTcpExtMPCapableACKRX": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Final ACK received completing MPTCP handshake.",
+        "hint": "",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "176"
+    },
+    "MPTcpExtMPCapableFallbackACK": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "ACK received for fallback to regular TCP.",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "177"
+    },
+    "MPTcpExtMPCapableFallbackSYNACK": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "description": "SYN+ACK received for fallback TCP connection.",
+        "hint": "",
+        "threshold": "",
+        "order": "178"
+    },
+    "MPTcpExtMPCapableEndpAttempt": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "description": "Number of attempts to add an endpoint for MPTCP.",
+        "hint": "",
+        "threshold": "",
+        "order": "179"
+    },
+    "MPTcpExtMPFallbackTokenInit": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "hint": "",
+        "description": "Fallback tokens initialized for MPTCP connections.",
+        "threshold": "",
+        "order": "180"
+    },
+    "MPTcpExtMPTCPRetrans": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Retransmissions of MPTCP subflows.",
+        "reference": "",
+        "category": "MPTCPExt",
+        "order": "181"
+    },
+    "MPTcpExtMPJoinNoTokenFound": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "threshold": "",
+        "hint": "",
+        "description": "Subflow join failed due to missing token.",
+        "order": "182"
+    },
+    "MPTcpExtMPJoinSynRx": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Subflow join handshake counters for received packets (normal path).",
+        "hint": "",
+        "reference": "",
+        "category": "MPTCPExt",
+        "order": "183"
+    },
+    "MPTcpExtMPJoinSynAckRx": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Subflow join handshake counters for received packets (normal path).",
+        "hint": "",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "184"
+    },
+    "MPTcpExtMPJoinSynAckBackupRx": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "threshold": "",
+        "hint": "",
+        "description": "Subflow join handshake counters for received packets (backup path).",
+        "order": "185"
+    },
+    "MPTcpExtMPJoinAckRx": {
+        "type": "counter",
+        "hint": "",
+        "description": "Subflow join handshake counters for received packets (normal path).",
+        "threshold": "",
+        "reference": "",
+        "category": "MPTCPExt",
+        "order": "186"
+    },
+    "MPTcpExtMPJoinSynBackupRx": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "description": "Backup SYN received for joining MPTCP subflow.",
+        "hint": "",
+        "threshold": "",
+        "order": "187"
+    },
+    "MPTcpExtMPJoinSynAckHMacFailure": {
+        "type": "counter",
+        "hint": "",
+        "description": "Subflow handshake HMAC verification failures.",
+        "threshold": "",
+        "reference": "",
+        "category": "MPTCPExt",
+        "order": "188"
+    },
+    "MPTcpExtMPJoinAckHMacFailure": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "hint": "",
+        "description": "Subflow handshake HMAC verification failures.",
+        "threshold": "",
+        "order": "189"
+    },
+    "MPTcpExtDSSNotMatching": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Data Sequence Signal (DSS) segments received that don't match MPTCP mapping.",
+        "hint": "",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "190"
+    },
+    "MPTcpExtDSSCorruptionFallback": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "DSS corruption triggered fallback.",
+        "order": "191"
+    },
+    "MPTcpExtDSSCorruptionReset": {
+        "type": "counter",
+        "description": "DSS corruption triggered connection reset.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "MPTCPExt",
+        "order": "192"
+    },
+    "MPTcpExtInfiniteMapRx": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "hint": "",
+        "description": "Received MPTCP segments with infinite mapping (malformed or malicious).",
+        "threshold": "",
+        "order": "193"
+    },
+    "MPTcpExtDSSNoMatchTCP": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "description": "DSS segment did not match any subflow sequence.",
+        "hint": "",
+        "threshold": "",
+        "order": "194"
+    },
+    "MPTcpExtDataCsumErr": {
+        "type": "counter",
+        "hint": "",
+        "description": "MPTCP data checksum errors detected.",
+        "threshold": "",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "195"
+    },
+    "MPTcpExtOFOQueueTail": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "threshold": "",
+        "description": "Out-of-order segment queue stats: tail dropped.",
+        "hint": "",
+        "order": "196"
+    },
+    "MPTcpExtOFOQueue": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "hint": "",
+        "description": "Out-of-order segment queue stats: queue usage.",
+        "threshold": "",
+        "order": "197"
+    },
+    "MPTcpExtOFOMerge": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "hint": "",
+        "description": "Out-of-order segment queue stats: merges.",
+        "threshold": "",
+        "order": "198"
+    },
+    "MPTcpExtNoDSSInWindow": {
+        "type": "counter",
+        "threshold": "",
+        "description": "DSS segment arrived outside current window.",
+        "hint": "",
+        "reference": "",
+        "category": "MPTCPExt",
+        "order": "199"
+    },
+    "MPTcpExtDuplicateData": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "threshold": "0.1",
+        "description": "Duplicate MPTCP data received.",
+        "hint": "0 ideally.",
+        "order": "200"
+    },
+    "MPTcpExtAddAddr": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "threshold": "",
+        "hint": "",
+        "description": "Counters for adding new addresses in MPTCP endpoint.",
+        "order": "201"
+    },
+    "MPTcpExtEchoAdd": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "description": "Counters for adding new addresses in MPTCP endpoint.",
+        "hint": "",
+        "threshold": "",
+        "order": "202"
+    },
+    "MPTcpExtPortAdd": {
+        "type": "counter",
+        "hint": "",
+        "description": "Counters for adding new ports in MPTCP endpoint.",
+        "threshold": "",
+        "reference": "",
+        "category": "MPTCPExt",
+        "order": "203"
+    },
+    "MPTcpExtAddAddrDrop": {
+        "type": "counter",
+        "hint": "",
+        "description": "Drops when adding addresses failed.",
+        "threshold": "",
+        "reference": "",
+        "category": "MPTCPExt",
+        "order": "204"
+    },
+    "MPTcpExtRmAddrDrop": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "threshold": "",
+        "description": "Drops when removing addresses failed.",
+        "hint": "",
+        "order": "205"
+    },
+    "MPTcpExtMPPrioTx": {
+        "type": "counter",
+        "hint": "",
+        "description": "MPTCP subflow priority messages transmitted.",
+        "threshold": "",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "206"
+    },
+    "MPTcpExtMPPrioRx": {
+        "type": "counter",
+        "hint": "",
+        "description": "MPTCP subflow priority messages received.",
+        "threshold": "",
+        "category": "MPTCPExt",
+        "reference": "",
+        "order": "207"
+    },
+    "MPTcpExtMPFailTx": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "description": "Failed MPTCP subflow attempts transmitted.",
+        "hint": "",
+        "threshold": "",
+        "order": "208"
+    },
+    "MPTcpExtMMPFailRx": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "threshold": "",
+        "hint": "",
+        "description": "Failed MPTCP subflow attempts received.",
+        "order": "209"
+    },
+    "MPTcpExtRcvPruned": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Out-of-order MPTCP packets pruned due to memory pressure.",
+        "order": "210"
+    },
+    "MPTcpExtSubflowStale": {
+        "type": "counter",
+        "category": "MPTCPExt",
+        "reference": "",
+        "threshold": "0.1",
+        "hint": "Low unless path unstable.",
+        "description": "Stale subflows detected events logged.",
+        "order": "211"
+    },
+    "MPTcpExtSubflowRecover": {
+        "type": "counter",
+        "reference": "",
+        "category": "MPTCPExt",
+        "threshold": "0.1",
+        "description": "Stale subflows recovery events logged.",
+        "hint": "Low unless path unstable.",
+        "order": "212"
+    },
+    "Ip6InReceives": {
+        "type": "counter",
+        "hint": "Should increase steadily.",
+        "description": "Total IPv6 packets received from all interfaces, including those with errors.",
+        "threshold": "",
+        "category": "IPv6",
+        "reference": "",
+        "order": "213"
+    },
+    "Ip6InHdrErrors": {
+        "type": "counter",
+        "reference": "Ip6InReceives",
+        "category": "IPv6",
+        "threshold": "0.1",
+        "description": "IPv6 packets dropped due to invalid headers (bad version, length, or malformed extension headers).",
+        "hint": "0 or very low.",
+        "order": "214"
+    },
+    "Ip6InTooBigErrors": {
+        "type": "counter",
+        "reference": "Ip6InReceives",
+        "category": "IPv6",
+        "description": "Packets dropped because they exceeded the MTU and could not be fragmented.",
+        "hint": "0 under correct MTU settings.",
+        "threshold": "0.1",
+        "order": "215"
+    },
+    "Ip6InNoRoutes": {
+        "type": "counter",
+        "description": "Packets discarded because no route to the destination was found.",
+        "hint": "0 ideally.",
+        "threshold": "0.1",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "order": "216"
+    },
+    "Ip6InAddrErrors": {
+        "type": "counter",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "description": "Packets discarded due to invalid destination or source IPv6 addresses.",
+        "hint": "",
+        "threshold": "0.1",
+        "order": "217"
+    },
+    "Ip6InUnknownProtos": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "",
+        "description": "Packets using an unsupported or unknown next-header (protocol) field.",
+        "reference": "Ip6InReceives",
+        "category": "IPv6",
+        "order": "218"
+    },
+    "Ip6InTruncatedPkts": {
+        "type": "counter",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "description": "Packets dropped because they were shorter than indicated by the header.",
+        "hint": "",
+        "threshold": "0.1",
+        "order": "219"
+    },
+    "Ip6InDiscards": {
+        "type": "counter",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "threshold": "0.1",
+        "hint": "Low.",
+        "description": "Valid IPv6 packets discarded before delivery due to buffer or resource issues.",
+        "order": "220"
+    },
+    "Ip6InDelivers": {
+        "type": "counter",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "description": "Packets successfully delivered to upper-layer protocols.",
+        "hint": "Should match traffic.",
+        "threshold": "90",
+        "order": "221"
+    },
+    "Ip6OutForwDatagrams": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Packets successfully forwarded by the node acting as a router.",
+        "hint": "",
+        "reference": "",
+        "category": "IPv6",
+        "order": "222"
+    },
+    "Ip6OutRequests": {
+        "type": "counter",
+        "description": "IPv6 packets requested by transport protocols for transmission.",
+        "hint": "Steady with outgoing traffic.",
+        "threshold": "",
+        "category": "IPv6",
+        "reference": "",
+        "order": "223"
+    },
+    "Ip6OutDiscards": {
+        "type": "counter",
+        "reference": "Ip6OutRequests",
+        "category": "IPv6",
+        "threshold": "0.1",
+        "description": "Outgoing packets dropped before being transmitted due to resource limitations.",
+        "hint": "",
+        "order": "224"
+    },
+    "Ip6OutNoRoutes": {
+        "type": "counter",
+        "category": "IPv6",
+        "reference": "Ip6OutRequests",
+        "hint": "0 ideally.",
+        "description": "Outgoing packets dropped because no route to the destination was found.",
+        "threshold": "0.1",
+        "order": "225"
+    },
+    "Ip6InMcastPkts": {
+        "type": "counter",
+        "description": "Total number of incoming IPv6 multicast packets.",
+        "hint": "",
+        "threshold": "",
+        "category": "IPv6",
+        "reference": "",
+        "order": "226"
+    },
+    "Ip6OutMcastPkts": {
+        "type": "counter",
+        "category": "IPv6",
+        "reference": "",
+        "description": "Total number of outgoing IPv6 multicast packets.",
+        "hint": "",
+        "threshold": "",
+        "order": "227"
+    },
+    "Ip6InOctets": {
+        "type": "byte",
+        "category": "IPv6",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Total number of octets (bytes) received in IPv6 packets, including headers.",
+        "order": "228"
+    },
+    "Ip6OutOctets": {
+        "type": "byte",
+        "hint": "",
+        "description": "Total number of octets (bytes) sent in IPv6 packets, including headers.",
+        "threshold": "",
+        "reference": "",
+        "category": "IPv6",
+        "order": "229"
+    },
+    "Ip6InMcastOctets": {
+        "type": "byte",
+        "threshold": "",
+        "hint": "",
+        "description": "Bytes received in multicast IPv6 packets.",
+        "category": "IPv6",
+        "reference": "",
+        "order": "230"
+    },
+    "Ip6OutMcastOctets": {
+        "type": "byte",
+        "threshold": "",
+        "description": "Bytes sent in multicast IPv6 packets.",
+        "hint": "",
+        "reference": "",
+        "category": "IPv6",
+        "order": "231"
+    },
+    "Ip6InBcastOctets": {
+        "type": "byte",
+        "description": "Bytes received in broadcast packets (rare for IPv6, usually zero).",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "IPv6",
+        "order": "232"
+    },
+    "Ip6OutBcastOctets": {
+        "type": "byte",
+        "reference": "",
+        "category": "IPv6",
+        "threshold": "",
+        "description": "Bytes sent in broadcast packets (typically zero in IPv6).",
+        "hint": "",
+        "order": "233"
+    },
+    "Ip6InNoECTPkts": {
+        "type": "counter",
+        "threshold": "0.1",
+        "description": "Packets received without Explicit Congestion Notification (ECN) marking.",
+        "hint": "If ECN is enabled (net.ipv6.tcp_ecn and net.ipv6.tcp_ecn_fallback) this value shall be 0",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "order": "234"
+    },
+    "Ip6InECT1Pkts": {
+        "type": "counter",
+        "hint": "",
+        "description": "Packets received with ECN codepoint 1 marking (indicating ECN capability).",
+        "threshold": "",
+        "category": "IPv6",
+        "reference": "",
+        "order": "235"
+    },
+    "Ip6InECT0Pkts": {
+        "type": "counter",
+        "reference": "",
+        "category": "IPv6",
+        "threshold": "",
+        "description": "Packets received with ECN codepoint 0 marking.",
+        "hint": "",
+        "order": "236"
+    },
+    "Ip6InCEPkts": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Packets received with ECN Congestion Experienced (CE) marking.",
+        "hint": "",
+        "category": "IPv6",
+        "reference": "",
+        "order": "237"
+    },
+    "Ip6FragCreates": {
+        "type": "counter",
+        "category": "IPv6",
+        "reference": "",
+        "hint": "",
+        "description": "IPv6 packets that were fragmented before being sent (by the source host).",
+        "threshold": "",
+        "order": "238"
+    },
+    "Ip6FragOKs": {
+        "type": "counter",
+        "threshold": "1",
+        "description": "Number of fragments transmitted successfully.",
+        "hint": "Matches outgoing large packets.",
+        "reference": "Ip6InReceives",
+        "category": "IPv6",
+        "order": "239"
+    },
+    "Ip6FragFails": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "0 or near 0.",
+        "description": "IPv6 packets that could not be fragmented (e.g., \"Don't Fragment\" equivalent, PMTU exceeded).",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "order": "240"
+    },
+    "Ip6FragTimeouts": {
+        "type": "counter",
+        "reference": "Ip6InReceives",
+        "category": "IPv6",
+        "threshold": "0.1",
+        "description": "Number of IPv6 fragment reassembly timeouts.",
+        "hint": "0 for stable networks.",
+        "order": "241"
+    },
+    "Ip6ReasmReqds": {
+        "type": "counter",
+        "hint": "Low unless large MTU\/fragmented traffic.",
+        "description": "Number of fragmented IPv6 packets received requiring reassembly.",
+        "threshold": "1",
+        "reference": "Ip6InReceives",
+        "category": "IPv6",
+        "order": "242"
+    },
+    "Ip6ReasmOKs": {
+        "type": "counter",
+        "reference": "",
+        "category": "IPv6",
+        "description": "Fragmented IPv6 packets successfully reassembled into complete datagrams.",
+        "hint": "",
+        "threshold": "",
+        "order": "243"
+    },
+    "Ip6ReasmFails": {
+        "type": "counter",
+        "threshold": "90",
+        "hint": "Matches or slightly below IpReasmReqds.",
+        "description": "IPv6 reassemblies that failed due to missing fragments or memory pressure.",
+        "reference": "Ip6ReasmReqds",
+        "category": "IPv6",
+        "order": "244"
+    },
+    "Ip6ReasmOverlaps": {
+        "type": "counter",
+        "hint": "0 ideally.",
+        "description": "Overlapping IPv6 fragments received - rare but possible.",
+        "threshold": "0.1",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "order": "245"
+    },
+    "Ip6ReasmDuplicates": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "0 ideally.",
+        "description": "Duplicate IPv6 fragments encountered during reassembly.",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "order": "246"
+    },
+    "Ip6ReasmTimeout": {
+        "type": "counter",
+        "hint": "0 for stable networks.",
+        "description": "Fragment reassembly attempts that timed out before completion.",
+        "threshold": "0.1",
+        "category": "IPv6",
+        "reference": "Ip6InReceives",
+        "order": "247"
+    },
+    "Icmp6InCsumErrors": {
+        "type": "counter",
+        "category": "ICMPv6",
+        "reference": "Icmp6InMsgs",
+        "description": "ICMPv6 packets discarded because of checksum errors.",
+        "hint": "0 or very low.",
+        "threshold": "0.1",
+        "order": "248"
+    },
+    "Icmp6InType1": {
+        "type": "counter",
+        "category": "ICMPv6",
+        "reference": "",
+        "hint": "",
+        "description": "Received ICMPv6 Type 1 (Destination Unreachable) messages.",
+        "threshold": "",
+        "order": "249"
+    },
+    "Icmp6InType134": {
+        "type": "counter",
+        "description": "Received ICMPv6 Type 134 (Router Advertisement) messages.",
+        "hint": "",
+        "threshold": "",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "250"
+    },
+    "Icmp6InType135": {
+        "type": "counter",
+        "category": "ICMPv6",
+        "reference": "",
+        "threshold": "",
+        "description": "Received ICMPv6 Type 135 (Neighbor Solicitation) messages.",
+        "hint": "",
+        "order": "251"
+    },
+    "Icmp6InType136": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "threshold": "",
+        "hint": "",
+        "description": "Received ICMPv6 Type 136 (Neighbor Advertisement) messages.",
+        "order": "252"
+    },
+    "Icmp6InType143": {
+        "type": "counter",
+        "description": "Received ICMPv6 Type 143 (MLDv2 Report) messages.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "253"
+    },
+    "Icmp6OutType1": {
+        "type": "counter",
+        "description": "Sent ICMPv6 Type 1 (Destination Unreachable) messages.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "254"
+    },
+    "Icmp6OutType133": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Sent ICMPv6 Type 133 (Router Solicitation) messages.",
+        "hint": "",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "255"
+    },
+    "Icmp6OutType135": {
+        "type": "counter",
+        "description": "Sent ICMPv6 Type 135 (Neighbor Solicitation) messages.",
+        "hint": "",
+        "threshold": "",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "256"
+    },
+    "Icmp6OutType136": {
+        "type": "counter",
+        "hint": "",
+        "description": "Sent ICMPv6 Type 136 (Neighbor Advertisement) messages.",
+        "threshold": "",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "257"
+    },
+    "Icmp6OutType143": {
+        "type": "counter",
+        "hint": "",
+        "description": "Sent ICMPv6 Type 143 (MLDv2 Report) messages.",
+        "threshold": "",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "258"
+    },
+    "Icmp6InMsgs": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "threshold": "",
+        "description": "Total number of ICMPv6 messages received. Includes all error and informational messages.",
+        "hint": "Steady with traffic.",
+        "order": "259"
+    },
+    "Icmp6InErrors": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "0 or very low.",
+        "description": "ICMPv6 messages drepped due to been received with errors (checksum failure, invalid type\/code, etc.).",
+        "reference": "Icmp6InMsgs",
+        "category": "ICMPv6",
+        "order": "260"
+    },
+    "Icmp6OutMsgs": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "threshold": "",
+        "hint": "",
+        "description": "Total number of ICMPv6 messages sent.",
+        "order": "261"
+    },
+    "Icmp6OutErrors": {
+        "type": "counter",
+        "reference": "Icmp6OutMsgs",
+        "category": "ICMPv6",
+        "description": "ICMPv6 messages that could not be sent due to local errors (e.g., no route, memory failure).",
+        "hint": "0 or near 0.",
+        "threshold": "0.1",
+        "order": "262"
+    },
+    "Icmp6InDestUnreachs": {
+        "type": "counter",
+        "reference": "Icmp6InMsgs",
+        "category": "ICMPv6",
+        "description": "\"Destination Unreachable\" messages received",
+        "threshold": "1",
+        "hint": "Low; high means misrouting.",
+        "order": "263"
+    },
+    "Icmp6OutDestUnreachs": {
+        "type": "counter",
+        "reference": "Icmp6OutMsgs",
+        "category": "ICMPv6",
+        "threshold": "0.1",
+        "description": "Sent ICMPv6 \"Destination Unreachable\" messages.",
+        "hint": "Low; indicates hosts unreachable.",
+        "order": "264"
+    },
+    "Icmp6InPktTooBigs": {
+        "type": "counter",
+        "category": "ICMPv6",
+        "reference": "Icmp6InMsgs",
+        "description": "Received ICMPv6 \"Packet Too Big\" messages indicating MTU issues.",
+        "hint": "",
+        "threshold": "0.1",
+        "order": "265"
+    },
+    "Icmp6OutPktTooBigs": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "",
+        "description": "Sent ICMPv6 \"Packet Too Big\" messages.",
+        "reference": "Icmp6OutMsgs",
+        "category": "ICMPv6",
+        "order": "266"
+    },
+    "Icmp6InTimeExcds": {
+        "type": "counter",
+        "reference": "Icmp6InMsgs",
+        "category": "ICMPv6",
+        "threshold": "0.1",
+        "description": "Received ICMPv6 \"Time Exceeded\" messages (hop limit exceeded or reassembly timeout).",
+        "hint": "",
+        "order": "267"
+    },
+    "Icmp6OutTimeExcds": {
+        "type": "counter",
+        "reference": "Icmp6OutMsgs",
+        "category": "ICMPv6",
+        "description": "Sent ICMPv6 \"Time Exceeded\" messages.",
+        "hint": "",
+        "threshold": "0.1",
+        "order": "268"
+    },
+    "Icmp6InParmProblems": {
+        "type": "counter",
+        "reference": "Icmp6InMsgs",
+        "category": "ICMPv6",
+        "hint": "",
+        "description": "\"Parameter Problem\" messages received (malformed headers, invalid options).",
+        "threshold": "0.1",
+        "order": "269"
+    },
+    "Icmp6OutParmProblems": {
+        "type": "counter",
+        "category": "ICMPv6",
+        "reference": "Icmp6OutMsgs",
+        "hint": "",
+        "description": "Sent ICMPv6 \"Parameter Problem\" messages.",
+        "threshold": "0.1",
+        "order": "270"
+    },
+    "Icmp6InEchos": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "hint": "Depends on active monitoring.",
+        "description": "Received ICMPv6 Echo Request messages (IPv6 ping).",
+        "threshold": "",
+        "order": "271"
+    },
+    "Icmp6OutEchos": {
+        "type": "counter",
+        "description": "ICMPv6 Echo Requests sent.",
+        "hint": "Depends on active monitoring.",
+        "threshold": "",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "272"
+    },
+    "Icmp6InEchoReplies": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "threshold": "",
+        "description": "Received ICMPv6 Echo Reply messages.",
+        "hint": "",
+        "order": "273"
+    },
+    "Icmp6OutEchoReplies": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "threshold": "",
+        "hint": "",
+        "description": "Sent ICMPv6 Echo Reply messages.",
+        "order": "274"
+    },
+    "Icmp6InGroupMembQueries": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "threshold": "",
+        "description": "Multicast Listener Queries received (used by MLD - Multicast Listener Discovery).",
+        "hint": "",
+        "order": "275"
+    },
+    "Icmp6OutGroupMembQueries": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Sent Multicast Listener Query messages.",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "276"
+    },
+    "Icmp6InGroupMembResponses": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Received Multicast Listener Report messages.",
+        "hint": "",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "277"
+    },
+    "Icmp6OutGroupMembResponses": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Sent Multicast Listener Report messages.",
+        "hint": "",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "278"
+    },
+    "Icmp6InGroupMembReductions": {
+        "type": "counter",
+        "category": "ICMPv6",
+        "reference": "",
+        "hint": "",
+        "description": "Received Multicast Listener Done\/Reduction messages.",
+        "threshold": "",
+        "order": "279"
+    },
+    "Icmp6OutGroupMembReductions": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "threshold": "",
+        "description": "Sent Multicast Listener Done\/Reduction messages.",
+        "hint": "",
+        "order": "280"
+    },
+    "Icmp6InRouterSolicits": {
+        "type": "counter",
+        "category": "ICMPv6",
+        "reference": "",
+        "hint": "Regular traffic if SLAAC used.",
+        "description": "Router Solicitation messages received (host asks for router info).",
+        "threshold": "",
+        "order": "281"
+    },
+    "Icmp6OutRouterSolicits": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "hint": "",
+        "description": "Router Solicitations sent.",
+        "threshold": "",
+        "order": "282"
+    },
+    "Icmp6InRouterAdvertisements": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "Regular traffic if SLAAC used.",
+        "description": "Received Router Advertisement messages (router announcing itself).",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "283"
+    },
+    "Icmp6OutRouterAdvertisements": {
+        "type": "counter",
+        "hint": "",
+        "description": "Router Advertisements sent (if system acts as router).",
+        "threshold": "",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "284"
+    },
+    "Icmp6InNeighborSolicits": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Neighbor Solicitation messages received (used for address resolution).",
+        "hint": "Should match LAN activity.",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "285"
+    },
+    "Icmp6OutNeighborSolicits": {
+        "type": "counter",
+        "reference": "",
+        "category": "ICMPv6",
+        "threshold": "",
+        "hint": "",
+        "description": "Neighbor Solicitations sent.",
+        "order": "286"
+    },
+    "Icmp6InNeighborAdvertisements": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Neighbor Advertisements received (used to confirm link-layer address).",
+        "hint": "Should match LAN activity.",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "287"
+    },
+    "Icmp6OutNeighborAdvertisements": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Neighbor Advertisements sent.",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "288"
+    },
+    "Icmp6InRedirects": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "ICMPv6 Redirects received (router advising a better next hop).",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "289"
+    },
+    "Icmp6OutRedirects": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Redirects sent.",
+        "hint": "",
+        "category": "ICMPv6",
+        "reference": "",
+        "order": "290"
+    },
+    "Icmp6InMLDv2Reports": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Multicast Listener Discovery v2 Reports received (more granular group tracking).",
+        "hint": "",
+        "reference": "",
+        "category": "ICMPv6",
+        "order": "291"
+    },
+    "Icmp6OutMLDv2Reports": {
+        "type": "counter",
+        "category": "ICMPv6",
+        "reference": "",
+        "description": "Sent MLDv2 multicast listener reports.",
+        "hint": "",
+        "threshold": "",
+        "order": "292"
+    },
+    "Udp6InDatagrams": {
+        "type": "counter",
+        "reference": "",
+        "category": "UDPv6",
+        "description": "Number of IPv6 UDP datagrams successfully delivered to applications.",
+        "hint": "Steady with application traffic.",
+        "threshold": "",
+        "order": "293"
+    },
+    "Udp6NoPorts": {
+        "type": "counter",
+        "threshold": "0.1",
+        "description": "UDP6 datagrams received with no listening socket (ICMPv6 Port Unreachable sent).",
+        "hint": "0 or minimal.",
+        "reference": "Udp6InDatagrams",
+        "category": "UDPv6",
+        "order": "294"
+    },
+    "Udp6InErrors": {
+        "type": "counter",
+        "description": "UDP6 datagrams discarded due to errors (checksum or malformed).",
+        "hint": "0 ideally.",
+        "threshold": "0.1",
+        "category": "UDPv6",
+        "reference": "Udp6InDatagrams",
+        "order": "295"
+    },
+    "Udp6OutDatagrams": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Total number of UDP6 datagrams sent.",
+        "hint": "Steady with traffic.",
+        "category": "UDPv6",
+        "reference": "",
+        "order": "296"
+    },
+    "Udp6RcvbufErrors": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "Low (<0.1%).",
+        "description": "Incoming UDP6 datagrams dropped because the receive socket buffer was full.",
+        "category": "UDPv6",
+        "reference": "Udp6OutDatagrams",
+        "order": "297"
+    },
+    "Udp6SndbufErrors": {
+        "type": "counter",
+        "reference": "Udp6OutDatagrams",
+        "category": "UDPv6",
+        "threshold": "0.1",
+        "description": "Outgoing UDP6 datagrams dropped because the send socket buffer was full.",
+        "hint": "Low (<0.1%).",
+        "order": "298"
+    },
+    "Udp6InCsumErrors": {
+        "type": "counter",
+        "category": "UDPv6",
+        "reference": "Udp6InDatagrams",
+        "threshold": "0.1",
+        "description": "UDP6 datagrams discarded due to checksum failure.",
+        "hint": "0 ideally.",
+        "order": "299"
+    },
+    "Udp6IgnoredMulti": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Multicast UDP6 packets ignored because the socket was not subscribed to that group.",
+        "reference": "",
+        "category": "UDPv6",
+        "order": "300"
+    },
+    "Udp6MemErrors": {
+        "type": "counter",
+        "hint": "0 ideally.",
+        "description": "UDP6 datagrams dropped due to memory allocation failure.",
+        "threshold": "0.1",
+        "category": "UDPv6",
+        "reference": "Udp6InDatagrams",
+        "order": "301"
+    },
+    "UdpLite6InDatagrams": {
+        "type": "counter",
+        "category": "UDPLitev6",
+        "reference": "",
+        "hint": "Steady with application traffic.",
+        "description": "Number of IPv6 UDP datagrams successfully delivered to applications.",
+        "threshold": "",
+        "order": "302"
+    },
+    "UdpLite6NoPorts": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "0 or minimal.",
+        "description": "UDP6 datagrams received with no listening socket (ICMPv6 Port Unreachable sent).",
+        "category": "UDPLitev6",
+        "reference": "UdpLite6InDatagrams",
+        "order": "303"
+    },
+    "UdpLite6InErrors": {
+        "type": "counter",
+        "hint": "0 ideally.",
+        "description": "UDP6 datagrams discarded due to errors (checksum or malformed).",
+        "threshold": "0.1",
+        "category": "UDPLitev6",
+        "reference": "UdpLite6InDatagrams",
+        "order": "304"
+    },
+    "UdpLite6OutDatagrams": {
+        "type": "counter",
+        "reference": "",
+        "category": "UDPLitev6",
+        "description": "Total number of UDP6 datagrams sent.",
+        "hint": "Steady with traffic.",
+        "threshold": "",
+        "order": "305"
+    },
+    "UdpLite6RcvbufErrors": {
+        "type": "counter",
+        "reference": "UdpLite6InDatagrams",
+        "category": "UDPLitev6",
+        "threshold": "0.1",
+        "description": "Incoming UDP6 datagrams dropped because the receive socket buffer was full.",
+        "hint": "Low (<0.1%).",
+        "order": "306"
+    },
+    "UdpLite6SndbufErrors": {
+        "type": "counter",
+        "description": "Outgoing UDP6 datagrams dropped because the send socket buffer was full.",
+        "hint": "Low (<0.1%).",
+        "threshold": "0.1",
+        "reference": "UdpLite6OutDatagrams",
+        "category": "UDPLitev6",
+        "order": "307"
+    },
+    "UdpLite6InCsumErrors": {
+        "type": "counter",
+        "reference": "UdpLite6InDatagrams",
+        "category": "UDPLitev6",
+        "hint": "0 ideally.",
+        "description": "UDP6 datagrams discarded due to checksum failure.",
+        "threshold": "0.1",
+        "order": "308"
+    },
+    "UdpLite6IgnoredMulti": {
+        "type": "counter",
+        "threshold": "",
+        "description": "Multicast UDP6 packets ignored because the socket was not subscribed to that group.",
+        "hint": "",
+        "reference": "",
+        "category": "UDPLitev6",
+        "order": "309"
+    },
+    "UdpLite6MemErrors": {
+        "type": "counter",
+        "threshold": "0.1",
+        "hint": "0 ideally.",
+        "description": "UDP6 datagrams dropped due to memory allocation failure.",
+        "reference": "UdpLite6InDatagrams",
+        "category": "UDPLitev6",
+        "order": "310"
+    },
+    "Nd6InNeighborSolicits": {
+        "type": "counter",
+        "hint": "",
+        "description": "Neighbor Solicitations received - requests to resolve a link-layer address.",
+        "threshold": "",
+        "reference": "",
+        "category": "NDv6",
+        "order": "311"
+    },
+    "Nd6OutNeighborSolicits": {
+        "type": "counter",
+        "category": "NDv6",
+        "reference": "",
+        "threshold": "",
+        "description": "Neighbor Solicitations sent.",
+        "hint": "",
+        "order": "312"
+    },
+    "Nd6InNeighborAdvertisements": {
+        "type": "counter",
+        "description": "Neighbor Advertisements received - responses to solicitations or unsolicited updates.",
+        "hint": "",
+        "threshold": "",
+        "reference": "",
+        "category": "NDv6",
+        "order": "313"
+    },
+    "Nd6OutNeighborAdvertisements": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Neighbor Advertisements sent.",
+        "reference": "",
+        "category": "NDv6",
+        "order": "314"
+    },
+    "Nd6InRouterSolicits": {
+        "type": "counter",
+        "category": "NDv6",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Router Solicitations received.",
+        "order": "315"
+    },
+    "Nd6OutRouterSolicits": {
+        "type": "counter",
+        "reference": "",
+        "category": "NDv6",
+        "hint": "",
+        "description": "Router Solicitations sent.",
+        "threshold": "",
+        "order": "316"
+    },
+    "Nd6InRouterAdvertisements": {
+        "type": "counter",
+        "reference": "",
+        "category": "NDv6",
+        "threshold": "",
+        "hint": "",
+        "description": "Router Advertisements received.",
+        "order": "317"
+    },
+    "Nd6OutRouterAdvertisements": {
+        "type": "counter",
+        "reference": "",
+        "category": "NDv6",
+        "threshold": "",
+        "description": "Router Advertisements sent.",
+        "hint": "",
+        "order": "318"
+    },
+    "Nd6InRedirects": {
+        "type": "counter",
+        "reference": "",
+        "category": "NDv6",
+        "hint": "",
+        "description": "Redirect messages received (router advising alternate routes).",
+        "threshold": "",
+        "order": "319"
+    },
+    "Nd6OutRedirects": {
+        "type": "counter",
+        "hint": "",
+        "description": "Redirect messages sent.",
+        "threshold": "",
+        "category": "NDv6",
+        "reference": "",
+        "order": "320"
+    },
+    "Nd6ReTransmits": {
+        "type": "counter",
+        "category": "NDv6",
+        "reference": "",
+        "description": "Number of Neighbor Solicits retransmitted due to no response.",
+        "hint": "",
+        "threshold": "",
+        "order": "321"
+    },
+    "Nd6ReachableTimeExpired": {
+        "type": "counter",
+        "category": "NDv6",
+        "reference": "",
+        "threshold": "",
+        "hint": "",
+        "description": "Neighbors marked as unreachable due to timeout.",
+        "order": "322"
+    },
+    "Nd6Probes": {
+        "type": "counter",
+        "threshold": "",
+        "hint": "",
+        "description": "Reachability probes sent to verify if a neighbor is still reachable.",
+        "category": "NDv6",
+        "reference": "",
+        "order": "323"
+    },
+    "Nd6CacheHits": {
+        "type": "counter",
+        "reference": "",
+        "category": "NDv6",
+        "hint": "",
+        "description": "Hits in the Neighbor Cache (analogous to ARP cache).",
+        "threshold": "",
+        "order": "324"
+    },
+    "Nd6CacheMisses": {
+        "type": "counter",
+        "hint": "",
+        "description": "Misses in the Neighbor Cache (analogous to ARP cache).",
+        "threshold": "",
+        "reference": "",
+        "category": "NDv6",
+        "order": "325"
+    }
+}

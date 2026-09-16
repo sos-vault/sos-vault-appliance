@@ -1,0 +1,19 @@
+Package: sos-vault
+Version: VERSION_PLACEHOLDER
+Section: admin
+Priority: optional
+Architecture: amd64
+Depends: docker.io | docker-ce, docker-compose-plugin | docker-compose-v2, ufw, openssl, sosreport, rsync, keyutils, cryptsetup, dmidecode
+Maintainer: SOS-Vault Support <support@sos-vault.com>
+Homepage: https://sos-vault.com
+Description: SOS-Vault appliance — self-hosted sosreport ingestion and search
+ SOS-Vault is a self-hosted server for sosreport ingestion, indexing,
+ and search. The application code runs from container images pulled from
+ the registry at install time; this package ships only the host-side
+ pieces: the docker-compose stack, an interactive installer that
+ provisions the vault directory / GPG keyring / TLS cert / systemd unit,
+ and the privileged helper scripts required by the in-product
+ CertificateManager admin page.
+ .
+ After dpkg -i, run /opt/sos-vault/sysadmin/installer.sh as root to
+ finish setup.

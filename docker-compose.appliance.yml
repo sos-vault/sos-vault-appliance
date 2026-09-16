@@ -1,0 +1,196 @@
+# docker-compose.appliance.yml — the compose stack SHIPPED INSIDE THE DEB.
+#
+# build.sh stages this file as /opt/sos-vault/docker-compose.yml (the dev
+# docker-compose.yml is gitignored and host-specific, so it is NOT shipped).
+# The installer runs `docker compose pull` + `up -d --no-build`, so NOTHING is
+# built on the customer host.
+#
+# Images are PULLED from GHCR, not built. build/publish-images.sh pushes both
+# ours at release time and build.sh rewrites the IMAGE_TAG_PLACEHOLDER tags:
+#   - ghcr.io/sos-vault/app:<version>    PHP-FPM runtime WITH the application
+#                                        code baked in (multi-stage, --no-dev).
+#   - ghcr.io/sos-vault/nginx:<version>  nginx WITH the compiled public/ assets
+#                                        baked in (COPY --from the app image).
+#
+# The application code is BAKED INTO THE IMAGE (it is no longer shipped in the
+# deb / bind-mounted), so the customer host holds NO PHP source. Only mutable,
+# install-specific state is bind-mounted from /opt/sos-vault:
+#   - .env      app secrets / APP_KEY  (installer Step 7b writes it)
+#   - storage   file sessions, logs, uploads AND the sqlite app DB
+#               (DB_DATABASE = storage/app/db/database.sqlite, see installer)
+#   - docker-compose/nginx/ssl          per-install TLS cert
+#   - docker-compose/ca-certificates    operator-installed corporate root CAs
+#   - docker-compose/php/local.ini      PHP ini overrides
+# The .gnupg license/module VERIFICATION keyring is public keys baked into the
+# image; it is NOT host state. The /vault dir and the AI model dir persist as
+# before.
+services:
+    app:
+        image: ghcr.io/sos-vault/app:IMAGE_TAG_PLACEHOLDER
+        pull_policy: missing
+        # Hardened from `privileged: true`. The vault feature runs cryptsetup
+        # (LUKS2 luksFormat/luksOpen) + mount on a file-backed .img inside this
+        # container (see VaultTools). That needs SYS_ADMIN (mount, device-mapper,
+        # loop), an unconfined seccomp/apparmor (cryptsetup's luksOpen uses the
+        # kernel keyring syscalls the default seccomp profile blocks, and the
+        # default apparmor profile blocks mount()), and reachable loop (major 7)
+        # + device-mapper (252-254) majors. This still drops ~35 other
+        # capabilities (NET_ADMIN, SYS_MODULE, SYS_RAWIO, SYS_PTRACE, …) and the
+        # blanket host-device access that `privileged` grants.
+        # Verified: full luksFormat→luksOpen→mkfs→mount→luksClose cycle succeeds
+        # with exactly this set. board_serial (dmidecode) degrades gracefully to
+        # weak license binding if /dev/mem is unreachable — sysfs DMI still works.
+        cap_add:
+          - SYS_ADMIN
+          - SYS_RESOURCE
+          - MKNOD
+        security_opt:
+          - apparmor:unconfined
+          - seccomp:unconfined
+        device_cgroup_rules:
+          - 'c 10:236 rmw'   # /dev/mapper/control
+          - 'c 10:237 rmw'   # /dev/loop-control
+          - 'b 7:* rmw'      # loop block devices
+          - 'b 252:* rmw'    # device-mapper (major is dynamic; 252-254 covers
+          - 'b 253:* rmw'    # essentially all distros)
+          - 'b 254:* rmw'
+        ulimits:
+          memlock: -1         # LUKS2 argon2 KDF mlocks key material
+        container_name: sos-vault
+        restart: unless-stopped
+        working_dir: /var/www/site/
+        volumes:
+          - /dev:/dev
+          # The HOST's machine-id, read-only. The primary licensing path reads
+          # the encrypted fingerprint the installer captured (settings), but
+          # MachineTokenService's LIVE fallback (no stored fingerprint) reads
+          # /etc/machine-id directly — and the container's own is absent/empty on
+          # some base images (e.g. Ubuntu 26.04). Mounting the host file keeps
+          # the fallback bound to the host identity.
+          - /etc/machine-id:/etc/machine-id:ro
+          # Install-specific, host-persisted state (survives image pulls). The
+          # application CODE is NOT mounted — it lives in the image.
+          - /opt/sos-vault/.env:/var/www/site/.env:z
+          - /opt/sos-vault/storage:/var/www/site/storage:z
+          # Read-only default public assets shipped in the deb (login logo,
+          # default avatar, Documentation + page/post images). container_start.sh
+          # copies them into storage/app/public on boot WHERE MISSING — it never
+          # clobbers operator uploads. Survives image pulls (lives on the host).
+          - /opt/sos-vault/storage-seed:/var/www/site/storage-seed:ro,z
+          - /opt/sos-vault/docker-compose/php/local.ini:/usr/local/etc/php/conf.d/local.ini:z
+          - /vault:/vault:z
+          # The AI model dir (~1.1 GB GGUF). model_dir = base_path('models') =
+          # /var/www/site/models, so the admin "Software Updates" download job
+          # (DownloadAiModelJob) writes the weights here. The llama service reads
+          # the SAME host dir (/opt/sos-vault/models) read-only. Without this mount
+          # the job's mkdir lands in the container's ephemeral, unwritable layer
+          # ("Could not create model directory") and llama never sees the file.
+          # The installer (Step 10) pre-creates + chowns the host dir to the app uid.
+          - /opt/sos-vault/models:/var/www/site/models:z
+          # The CertificateManager runs sysadmin/cert-helper INSIDE this container
+          # (PHP Process), and the helper inspects /etc/nginx/ssl/sos-vault.com.
+          # Mount the same host ssl dir the nginx service uses so `inspect` sees
+          # the installer's self-signed cert (and matches config/appliance.php +
+          # the cert sudoers fragment, which both pin /etc/nginx/ssl/sos-vault.com).
+          - /opt/sos-vault/docker-compose/nginx/ssl:/etc/nginx/ssl:z
+          # Host-persisted store for operator-installed corporate root CAs. The
+          # CertificateManager page drops uploaded CAs here; container_start.sh
+          # runs update-ca-certificates on boot so outbound HTTPS to internal-CA
+          # endpoints is trusted after a restart. Survives image pulls/restarts.
+          - /opt/sos-vault/docker-compose/ca-certificates:/usr/local/share/ca-certificates:z
+        environment:
+            - CONTAINER_ROLE=app
+            # Remap the container's www-data to the host app uid/gid so the app
+            # shares the host @u keyring. Interpolated from /opt/sos-vault/.env
+            # (the installer writes WWWUSER/WWWGROUP there); defaults to 1000.
+            - WWWUSER=${WWWUSER:-1000}
+            - WWWGROUP=${WWWGROUP:-1000}
+        networks:
+            sail:
+                ipv4_address: 172.21.21.21
+        depends_on:
+            - nginx
+            - llama
+            - redis
+    nginx:
+        # Custom image: stock nginx with the compiled public/ assets baked in
+        # (COPY --from the app image at release time, so assets always match the
+        # running app version). build/publish-images.sh builds + pushes it.
+        image: ghcr.io/sos-vault/nginx:IMAGE_TAG_PLACEHOLDER
+        pull_policy: missing
+        container_name: sos-vault_nginx
+        restart: unless-stopped
+        # Host HTTPS port mapped to the container's :443. ApplianceNetworkSettings
+        # rewrites the host side of the `\d+:443` mapping when the operator changes
+        # the port on the admin "Host & Port" settings page (default 2002).
+        ports:
+          - 2002:443
+          - 80:80
+        volumes:
+          # nginx serves /var/www/site/public from the baked image. It only needs
+          # the host nginx config (operator-editable port/redirects), the TLS cert,
+          # and READ access to uploaded files (storage/app/public, reached via the
+          # baked public/storage symlink).
+          - /opt/sos-vault/docker-compose/nginx:/etc/nginx/conf.d:z
+          - /opt/sos-vault/docker-compose/nginx/ssl:/etc/nginx/ssl:z
+          - /opt/sos-vault/storage:/var/www/site/storage:ro,z
+        networks:
+            sail:
+                ipv4_address: 172.21.21.31
+    redis:
+        image: 'redis:alpine'
+        container_name: sos-vault_redis
+        restart: unless-stopped
+        # Redis must NOT be reachable outside the docker network. The app
+        # connects in-network via REDIS_HOST=redis, so 6379 is only `expose`d
+        # to other services on the `sail` network — never published to the
+        # host (which would bind 0.0.0.0:6379 and expose it to the LAN).
+        expose:
+            - '6379'
+        volumes:
+            - sailredis:/data
+        networks:
+            sail:
+                ipv4_address: 172.21.21.51
+        healthcheck:
+          test: ["CMD", "redis-cli", "ping"]
+    llama:
+        image: ghcr.io/ggml-org/llama.cpp:server
+        container_name: sos-vault_llama
+        restart: unless-stopped
+        # The model is NOT shipped in the deb (~1.1 GB). It is downloaded on
+        # first boot (installer Step 10) or later from the admin UI, into
+        # /opt/sos-vault/models. Until then this container stays unhealthy; the
+        # rest of the stack runs and only the local AI assistant is affected.
+        command: >
+            --model /models/qwen2.5-1.5b-instruct-q4_k_m.gguf
+            --host 0.0.0.0
+            --port 8080
+            --ctx-size 4096
+            --threads 4
+            --batch-size 1024
+            --ubatch-size 512
+            --n-predict 512
+            --log-disable
+            --no-mmap
+        volumes:
+            - /opt/sos-vault/models:/models:ro,z
+        networks:
+            sail:
+                ipv4_address: 172.21.21.61
+        healthcheck:
+            test: ["CMD-SHELL", "cat < /dev/null > /dev/tcp/localhost/8080"]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+            start_period: 90s
+networks:
+    sail:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.21.21.0/24
+                  gateway: 172.21.21.11
+volumes:
+    sailredis:
+        driver: local

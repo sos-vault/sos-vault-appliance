@@ -1,0 +1,110 @@
+#!/bin/bash
+# cert-helper — TLS certificate operations for the appliance CertificateManager.
+#
+# Sprint 5 Step D. Invoked from app/Services/CertificateManagerService.php INSIDE
+# the app container. SSL_DIR and CORP_CA_DIR are bind-mounted from the host and
+# owned by the app user, so the helper writes them directly — no sudo, no docker.
+# nginx does not reload live; the operator restarts the appliance (systemctl
+# restart sos-vault), and sysadmin/container_start.sh re-runs update-ca-certificates
+# on boot so an installed corporate CA takes effect.
+#
+# Defaults match the appliance image; override via the SOS_VAULT_SSL_DIR and
+# SOS_VAULT_CORP_CA_DIR env vars when invoking from a non-default install (the
+# Filament page / tests pass them via the Process env when needed).
+
+set -euo pipefail
+
+SSL_DIR="${SOS_VAULT_SSL_DIR:-/etc/nginx/ssl/sos-vault.com}"
+CORP_CA_DIR="${SOS_VAULT_CORP_CA_DIR:-/usr/local/share/ca-certificates}"
+
+CP=/bin/cp
+MKDIR=/bin/mkdir
+CHMOD=/bin/chmod
+OPENSSL=/usr/bin/openssl
+
+cmd="${1:-}"
+shift || true
+
+usage() {
+    cat >&2 <<EOF
+usage: cert-helper {inspect|install <fullchain> <privkey>|self-signed|install-corp-ca <ca-file>}
+EOF
+    exit 1
+}
+
+# Reject anything that's not an absolute path of safe characters and points at
+# an existing regular file. Privkeys / certs come from PHP-staged tmp files
+# whose names are tempnam()-generated, so this regex is intentionally narrow.
+validate_path() {
+    local p="$1"
+    if [[ ! "$p" =~ ^/[A-Za-z0-9./_-]+$ ]]; then
+        echo "invalid path: $p" >&2
+        exit 2
+    fi
+    if [[ ! -f "$p" ]]; then
+        echo "no such file: $p" >&2
+        exit 2
+    fi
+}
+
+case "$cmd" in
+    inspect)
+        cert="$SSL_DIR/fullchain.pem"
+        if [[ ! -f "$cert" ]]; then
+            echo "missing: $cert" >&2
+            exit 1
+        fi
+        "$OPENSSL" x509 -in "$cert" -noout -subject -issuer -enddate
+        ;;
+
+    self-signed)
+        # Regenerate a self-signed pair (CN=sos-vault.local) in place — the
+        # "revert to self-signed" action. Same direct-write as `install`; the
+        # operator restarts the appliance to apply.
+        "$MKDIR" -p "$SSL_DIR"
+        "$OPENSSL" req -x509 -newkey rsa:2048 -nodes -days 365 \
+            -keyout "$SSL_DIR/privkey.pem" \
+            -out "$SSL_DIR/fullchain.pem" \
+            -subj '/CN=sos-vault.local'
+        "$CHMOD" 644 "$SSL_DIR/fullchain.pem"
+        "$CHMOD" 600 "$SSL_DIR/privkey.pem"
+        ;;
+
+    install)
+        fullchain="${1:-}"
+        privkey="${2:-}"
+        validate_path "$fullchain"
+        validate_path "$privkey"
+        # Verify the uploads parse before clobbering the live cert files.
+        "$OPENSSL" x509 -in "$fullchain" -noout >/dev/null
+        "$OPENSSL" pkey -in "$privkey" -noout >/dev/null
+        # SSL_DIR is the nginx ssl dir bind-mounted into this (app) container and
+        # owned by the app user (the installer chowns it), so write directly — no
+        # sudo. nginx does not reload live; the operator restarts the appliance.
+        "$MKDIR" -p "$SSL_DIR"
+        "$CP" "$fullchain" "$SSL_DIR/fullchain.pem"
+        "$CP" "$privkey" "$SSL_DIR/privkey.pem"
+        "$CHMOD" 644 "$SSL_DIR/fullchain.pem"
+        "$CHMOD" 600 "$SSL_DIR/privkey.pem"
+        ;;
+
+    install-corp-ca)
+        ca="${1:-}"
+        validate_path "$ca"
+        "$OPENSSL" x509 -in "$ca" -noout >/dev/null
+        base="$(basename "$ca")"
+        # CORP_CA_DIR is bind-mounted from the host and owned by the app user, so
+        # write directly — no sudo. update-ca-certificates is NOT run here: the
+        # container's trust bundle is regenerated from this dir on every boot by
+        # sysadmin/container_start.sh, so the operator restarts the appliance to
+        # apply. update-ca-certificates only picks up *.crt files in PEM form.
+        target="$CORP_CA_DIR/${base%.*}.crt"
+        "$MKDIR" -p "$CORP_CA_DIR"
+        "$CP" "$ca" "$target"
+        "$CHMOD" 644 "$target"
+        ;;
+
+    *)
+        usage
+        ;;
+esac

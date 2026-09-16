@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.12",
+    "alpinejs": "^3.4.2",
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.7.4",
+    "laravel-vite-plugin": "^1.0",
+    "postcss": "^8.4.38",
+    "postcss-nesting": "^12.1.1",
+    "tailwindcss": "^4.1.12",
+    "vite": "^6.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
+    "@tailwindcss/vite": "^4.1.12",
+    "apexcharts": "^4.7.0",
+    "diff": "^8.0.3",
+    "diff2html": "^3.4.56"
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "type": "module",
+    "id": "german-support",
+    "name": "German Language Support",
+    "version": "1.0.0",
+    "author": "SOS-Vault",
+    "provider": "Modules\\GermanSupport\\GermanSupportServiceProvider",
+    "description": "Adds German (Deutsch) language support to SOS-Vault",
+    "required_features": []
+}

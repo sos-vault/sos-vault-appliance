@@ -1,0 +1,154 @@
+@import 'tailwindcss';
+@import './component-styles.css' layer(base);
+@import '../../../../../vendor/filament/filament/resources/css/theme.css';
+@import '../../../../../node_modules/@fortawesome/fontawesome-free/css/all.css';
+@import './sosview.css';
+@import './webfont.css';
+@import '../fonts/phosphor/regular/style.css';
+@import '../fonts/phosphor/duotone/style.css';
+@import '../fonts/phosphor/bold/style.css';
+/*
+@import '../fonts/phosphor/fill/style.css';
+@import '../fonts/phosphor/light/style.css';
+@import '../fonts/phosphor/thin/style.css';
+*/
+
+@source '../../../../../app/Filament';
+@source '../../../../../resources/views/filament';
+@source '../../../../../resources/views/filament/pages';
+@source '../../../../../wave/resources/views';
+@source '../../../../../app/Http/Middleware/WaveEditTab.php';
+@source '../../../../../app/Filament/**/*.php';
+@source '../../../../../app/Livewire/**/*.php';
+@source '../../../../../resources/views/filament/**/*.blade.php';
+@source '../../../../../vendor/filament/**/*.blade.php';
+@source '../../../../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../../../../storage/framework/views/*.php';
+@source '../../../../../resources/views/**/*.blade.php';
+@source '../../../../../resources/views/components/**/*.blade.php';
+@source '../../../../../resources/views/components/blade.php';
+@source '../../../../../wave/resources/views/**/*.blade.php';
+@source '../../../../../resources/themes/anchor/**/*.blade.php';
+@source '../../../../../resources/plugins/**/*.php';
+@source '../../../../../config/*.php';
+@source '../../../../../vendor/bezhansalleh/filament-google-analytics/resources/views/**/*';
+@source '../../../../../vendor/bezhansalleh/filament-google-analytics/src/{Widgets,Support}/*';
+@source '../js/sosview.js';
+@config '../../../../../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+  [x-cloak]{
+    display:none;
+  }
+
+  /*
+  svg {
+    width:100%;
+  }
+  */
+
+  .wave {
+    animation: wave 3s linear;
+    animation-iteration-count:infinite;
+    fill: #4e80ee;
+  }
+
+  #wave2 {
+    animation-duration:5s;
+    animation-direction: reverse;
+    opacity: .6
+  }
+  #wave3 {
+    animation-duration: 7s;
+    opacity:.3;
+  }
+  @keyframes drop {
+    0% {
+      transform: translateY(80%);
+      opacity:.6;
+    }
+    80% {
+      transform: translateY(80%);
+      opacity:.6;
+    }
+    90% {
+      transform: translateY(10%) ;
+      opacity:.6;
+    }
+    100% {
+      transform: translateY(0%) scale(1.5);
+      stroke-width:0.2;
+      opacity:0;
+    }
+  }
+  @keyframes wave {
+    to {transform: translateX(-100%);}
+  }
+
+  .form-control{
+    @apply w-full form-input;
+  }
+
+/****** Form Input CLASSES **********/
+
+.form-input, .form-textarea, .form-select {
+    @apply px-3 py-2 text-base leading-normal transition duration-150 ease-in-out bg-white border rounded-md appearance-none border-zinc-400 focus:outline-hidden focus:ring-3 focus:ring-black/30 focus:ring-primary-500 focus:border-primary-400;
+}
+
+.form-select{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239fa6b2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: right .5rem center;
+    background-size: 1.5em 1.5em;
+    padding:.5rem 2.5rem .5rem .75rem;
+    background-repeat: no-repeat;
+}
+
+.prose {
+  blockquote{
+    @apply py-3 border-l-4 bg-zinc-100 border-zinc-300;
+  }
+}
+
+html, body{
+  p{
+    @apply text-gray-500 dark:text-gray-400;
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Always show the record count in the file-viewer table paginator */
+.fi-pagination .fi-pagination-overview {
+  display: inline;
+}
+
+/* File-viewer table: fill available horizontal space */
+#fileTable .fi-ta,
+#fileTable .fi-ta-ctn {
+  width: 100%;
+}

@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # PHP dependencies — security + version updates, grouped to reduce PR noise.
+  - package-ecosystem: composer
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      php-dependencies:
+        patterns:
+          - "*"
+
+  # Keep GitHub Actions pinned versions current (supply-chain hygiene).
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

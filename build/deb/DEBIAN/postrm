@@ -1,0 +1,32 @@
+#!/bin/bash
+# postrm — runs after the deb's payload is removed.
+#
+# On `purge` we tear down the operator-touched system files the installer
+# dropped (sudoers fragments, systemd unit, /etc/default file). On plain
+# `remove` we leave them intact so a re-install is one apt-get away.
+#
+# We deliberately do NOT touch:
+#   - /vault — carries user data.
+#   - storage/app/private/server-report.tar.xz.gpg — operator's diagnostic.
+#   - GPG keyring under ~/.config/svaultKey — re-creating it is destructive.
+
+set -e
+
+case "$1" in
+    purge)
+        rm -f /etc/sudoers.d/sos-vault-cert
+        rm -f /etc/systemd/system/sos-vault.service
+        rm -f /etc/default/sos-vault
+        if command -v systemctl >/dev/null 2>&1; then
+            systemctl daemon-reload 2>/dev/null || true
+        fi
+        ;;
+    remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+        ;;
+    *)
+        echo "postrm called with unknown argument: $1" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

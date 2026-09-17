@@ -1,0 +1,22 @@
+#!/bin/bash
+# preinst — pre-install checks for sos-vault.deb.
+#
+# Runs before the deb's payload is unpacked. Bail out fast on
+# obviously-wrong hosts so the operator gets a clear message instead
+# of a half-installed system.
+
+set -e
+
+if [[ "$(id -u)" -ne 0 ]]; then
+    echo 'preinst: sos-vault must be installed as root.' >&2
+    exit 1
+fi
+
+# Refuse on hosts where /opt is read-only or missing — the installer
+# stages everything under /opt/sos-vault.
+if [[ ! -d /opt && ! -w / ]]; then
+    echo 'preinst: cannot create /opt — aborting.' >&2
+    exit 1
+fi
+
+exit 0

@@ -1,0 +1,1915 @@
+{
+    "sos_plugins": [
+        {
+            "no.": 1,
+            "name": "aap_containerized",
+            "state": "inactive",
+            "description": "AAP Containerized Setup",
+            "details": "Collects details about AAP Containerized setup under a user's home directory"
+        },
+        {
+            "no.": 2,
+            "name": "acpid",
+            "state": "enabled",
+            "description": "ACPI daemon information",
+            "details": "acpid (ACPI Daemon) is a lightweight and flexible daemon in Linux systems that listens for ACPI (Advanced Configuration and Power Interface) events and triggers predefined actions based on them. It's commonly used for managing power-related events such as lid close, power button press, battery status changes, and thermal conditions."
+        },
+        {
+            "no.": 3,
+            "name": "activemq",
+            "state": "inactive",
+            "description": "ActiveMQ message broker",
+            "details": "ActiveMQ is an open-source, multi-protocol message broker written in Java. It facilitates communication between distributed applications by enabling them to exchange messages asynchronously. ActiveMQ supports the Java Message Service (JMS) API and other messaging protocols, making it a widely used tool for implementing message-oriented middleware in enterprise applications."
+        },
+        {
+            "no.": 4,
+            "name": "aide",
+            "state": "inactive",
+            "description": "Advanced Intrusion Detection Environment",
+            "details": "AIDE (Advanced Intrusion Detection Environment) is an open-source file integrity monitoring tool that creates a database of file attributes and detects unauthorized changes to files and directories, helping to identify potential security breaches or system compromises."
+        },
+        {
+            "no.": 5,
+            "name": "alternatives",
+            "state": "enabled",
+            "description": "System alternatives",
+            "details": "Information about the symbolic links comprising the Debian alternatives system."
+        },
+        {
+            "no.": 6,
+            "name": "anacron",
+            "state": "enabled",
+            "description": "Anacron job scheduling service",
+            "details": "Anacron is a Linux utility that runs scheduled tasks at periodic intervals, similar to cron, but it is designed for systems that are not running continuously, ensuring missed tasks are executed when the system becomes available."
+        },
+        {
+            "no.": 7,
+            "name": "ansible",
+            "state": "inactive",
+            "description": "Ansible configuration management",
+            "details": "Ansible is an open-source automation tool used for configuration management, application deployment, and task orchestration, enabling IT infrastructure to be provisioned and managed using simple, human-readable YAML playbooks."
+        },
+        {
+            "no.": 8,
+            "name": "apache",
+            "state": "enabled",
+            "description": "Apache http daemon",
+            "details": "Apache HTTP Daemon (httpd) is an open-source web server software developed by the Apache Software Foundation that serves web content over HTTP and HTTPS protocols, supporting a wide range of features through modules and providing robust, high-performance web hosting."
+        },
+        {
+            "no.": 9,
+            "name": "apparmor",
+            "state": "enabled",
+            "description": "Apparmor mandatory access control",
+            "details": "AppArmor is a Linux security module that enforces mandatory access control (MAC) policies to restrict the capabilities of individual applications, confining them to specific resources and minimizing potential damage from security vulnerabilities."
+        },
+        {
+            "no.": 10,
+            "name": "apport",
+            "state": "enabled",
+            "description": "Apport crash reporting tool",
+            "details": "Apport is a system crash reporting tool in Ubuntu and other Linux distributions that automatically generates and collects diagnostic data, helping users and developers identify and troubleshoot software issues."
+        },
+        {
+            "no.": 11,
+            "name": "apt",
+            "state": "enabled",
+            "description": "APT - advanced packaging tool",
+            "details": "APT (Advanced Package Tool) is a package management system used in Debian-based Linux distributions to simplify the installation, upgrading, and removal of software packages."
+        },
+        {
+            "no.": 12,
+            "name": "arcconf",
+            "state": "inactive",
+            "description": "arcconf Integrated RAID adapter information",
+            "details": "Arcconf is a command-line utility used to manage and monitor storage controllers and RAID configurations on systems using Microsemi/Adaptec RAID controllers."
+        },
+        {
+            "no.": 13,
+            "name": "ata",
+            "state": "enabled",
+            "description": "ATA and IDE information",
+            "details": "ATA (Advanced Technology Attachment) is a standard interface for connecting storage devices, such as hard drives and solid-state drives, to a computer's motherboard, enabling data transfer between the devices and the system."
+        },
+        {
+            "no.": 14,
+            "name": "auditd",
+            "state": "inactive",
+            "description": "Audit daemon information",
+            "details": "auditd (Audit Daemon) is a Linux service responsible for collecting and logging security-related events, such as system calls, file accesses, and user activities, to provide a detailed audit trail for security monitoring and compliance."
+        },
+        {
+            "no.": 15,
+            "name": "autofs",
+            "state": "inactive",
+            "description": "Autofs on-demand automounter",
+            "details": "Autofs is a Linux automounting service that automatically mounts filesystems when they are accessed and unmounts them after a specified idle period, simplifying the management of networked file systems and reducing manual mount/unmount tasks."
+        },
+        {
+            "no.": 16,
+            "name": "azure",
+            "state": "inactive",
+            "description": "Microsoft Azure client",
+            "details": ""
+        },
+        {
+            "no.": 17,
+            "name": "bcache",
+            "state": "inactive",
+            "description": "Bcache statistics",
+            "details": "Bcache is a Linux kernel-based block cache solution that enables the use of a fast storage device (e.g., SSD) to cache data for a slower storage device (e.g., HDD), improving read and write performance for the system."
+        },
+        {
+            "no.": 18,
+            "name": "block",
+            "state": "enabled",
+            "description": "Block device information",
+            "details": ""
+        },
+        {
+            "no.": 19,
+            "name": "boot",
+            "state": "enabled",
+            "description": "Bootloader information",
+            "details": ""
+        },
+        {
+            "no.": 20,
+            "name": "btrfs",
+            "state": "inactive",
+            "description": "Btrfs filesystem",
+            "details": "Btrfs (B-tree file system) is a modern, open-source copy-on-write (COW) file system for Linux that provides advanced features such as snapshots, data integrity checks, compression, and efficient volume management, aiming to offer scalability, flexibility, and robustness for managing large storage systems."
+        },
+        {
+            "no.": 21,
+            "name": "canonical_livepatch",
+            "state": "enabled",
+            "description": "Canonical Livepatch Service",
+            "details": "Canonical Livepatch is a service provided by Canonical, the makers of Ubuntu, that enables users to apply critical kernel patches to their running systems without requiring a reboot, ensuring continuous system uptime and security without interrupting operations."
+        },
+        {
+            "no.": 22,
+            "name": "canonical_livepatch_onprem",
+            "state": "inactive",
+            "description": "Canonical Livepatch Onprem Service",
+            "details": "Canonical Livepatch is a service provided by Canonical, the makers of Ubuntu, that enables users to apply critical kernel patches to their running systems without requiring a reboot, ensuring continuous system uptime and security without interrupting operations."
+        },
+        {
+            "no.": 23,
+            "name": "ceph_ansible",
+            "state": "inactive",
+            "description": "CEPH distributed storage - Ansible installer",
+            "details": "Ceph is an open-source, distributed storage system designed to provide highly scalable and fault-tolerant storage solutions for object, block, and file data. It uses a decentralized architecture and self-healing mechanisms to ensure data reliability and availability across large-scale clusters."
+        },
+        {
+            "no.": 24,
+            "name": "ceph_common",
+            "state": "inactive",
+            "description": "CEPH common",
+            "details": "Ceph is an open-source, distributed storage system designed to provide highly scalable and fault-tolerant storage solutions for object, block, and file data. It uses a decentralized architecture and self-healing mechanisms to ensure data reliability and availability across large-scale clusters."
+        },
+        {
+            "no.": 25,
+            "name": "ceph_iscsi",
+            "state": "inactive",
+            "description": "CEPH iSCSI",
+            "details": "Ceph is an open-source, distributed storage system designed to provide highly scalable and fault-tolerant storage solutions for object, block, and file data. It uses a decentralized architecture and self-healing mechanisms to ensure data reliability and availability across large-scale clusters."
+        },
+        {
+            "no.": 26,
+            "name": "ceph_mds",
+            "state": "inactive",
+            "description": "CEPH mds",
+            "details": "Ceph is an open-source, distributed storage system designed to provide highly scalable and fault-tolerant storage solutions for object, block, and file data. It uses a decentralized architecture and self-healing mechanisms to ensure data reliability and availability across large-scale clusters."
+        },
+        {
+            "no.": 27,
+            "name": "ceph_mgr",
+            "state": "inactive",
+            "description": "CEPH mgr",
+            "details": "Ceph is an open-source, distributed storage system designed to provide highly scalable and fault-tolerant storage solutions for object, block, and file data. It uses a decentralized architecture and self-healing mechanisms to ensure data reliability and availability across large-scale clusters."
+        },
+        {
+            "no.": 28,
+            "name": "ceph_mon",
+            "state": "inactive",
+            "description": "CEPH mon",
+            "details": "Ceph is an open-source, distributed storage system designed to provide highly scalable and fault-tolerant storage solutions for object, block, and file data. It uses a decentralized architecture and self-healing mechanisms to ensure data reliability and availability across large-scale clusters."
+        },
+        {
+            "no.": 29,
+            "name": "ceph_osd",
+            "state": "inactive",
+            "description": "CEPH osd",
+            "details": "Ceph is an open-source, distributed storage system designed to provide highly scalable and fault-tolerant storage solutions for object, block, and file data. It uses a decentralized architecture and self-healing mechanisms to ensure data reliability and availability across large-scale clusters."
+        },
+        {
+            "no.": 30,
+            "name": "ceph_rgw",
+            "state": "inactive",
+            "description": "CEPH rgw",
+            "details": "Ceph is an open-source, distributed storage system designed to provide highly scalable and fault-tolerant storage solutions for object, block, and file data. It uses a decentralized architecture and self-healing mechanisms to ensure data reliability and availability across large-scale clusters."
+        },
+        {
+            "no.": 31,
+            "name": "cgroups",
+            "state": "enabled",
+            "description": "Control groups subsystem",
+            "details": "cgroups (Control Groups) is a Linux kernel feature that allows the management and allocation of resources (such as CPU, memory, disk I/O, and network bandwidth) to groups of processes, enabling resource isolation, prioritization, and monitoring for better system performance and stability."
+        },
+        {
+            "no.": 32,
+            "name": "charmed_postgresql",
+            "state": "inactive",
+            "description": "Charmed PostgreSQL",
+            "details": "Charmed PostgreSQL is a fully managed, scalable, and highly available PostgreSQL database solution provided by Canonical through the Juju charm ecosystem. It simplifies the deployment, configuration, and maintenance of PostgreSQL clusters on cloud and on-premises environments, leveraging Juju's automation for operational management."
+        },
+        {
+            "no.": 33,
+            "name": "chrony",
+            "state": "inactive",
+            "description": "Chrony clock (for Network time protocol)",
+            "details": "Chrony is a Linux-based network time synchronization tool used to maintain accurate system time. It is designed to work well in environments with intermittent network connectivity or systems that are frequently powered off, offering better performance and faster synchronization compared to the traditional NTP (Network Time Protocol) daemon."
+        },
+        {
+            "no.": 34,
+            "name": "cifs",
+            "state": "enabled",
+            "description": "SMB file system information",
+            "details": "CIFS (Common Internet File System) is a network file sharing protocol that allows applications and users to access files and resources on remote computers over a network. It is an implementation of the Server Message Block (SMB) protocol and is commonly used in Windows-based networks for sharing files, printers, and other resources."
+        },
+        {
+            "no.": 35,
+            "name": "clear_containers",
+            "state": "inactive",
+            "description": "Intel(R) Clear Containers configuration",
+            "details": "ntel Clear Containers is a lightweight virtualization technology designed to run container workloads in isolated virtual machines (VMs) rather than on shared host systems, providing improved security and performance. It combines the speed and efficiency of containers with the isolation of VMs, leveraging Intel's hardware-assisted virtualization features. This approach helps to mitigate security concerns associated with multi-tenant environments by ensuring stronger isolation between containers while maintaining container-like performance."
+        },
+        {
+            "no.": 36,
+            "name": "cloud_init",
+            "state": "inactive",
+            "description": "cloud-init instance configurations",
+            "details": "Cloud-init is an open-source tool used for automating the initial configuration of cloud instances during boot. It is widely used in cloud environments like AWS, Azure, Google Cloud, and OpenStack to configure virtual machines (VMs) at first boot. Cloud-init allows administrators to customize settings, install packages, configure users, set up SSH keys, and perform other tasks based on metadata or configuration files provided by the cloud platform."
+        },
+        {
+            "no.": 37,
+            "name": "cobbler",
+            "state": "inactive",
+            "description": "Cobbler installation server",
+            "details": "Cobbler is an open-source Linux provisioning and management tool designed for rapid deployment and installation of operating systems across large-scale server environments. It automates the setup and management of PXE (Preboot Execution Environment) booting, DHCP, DNS, and other services needed for network-based installation and configuration of Linux distributions."
+        },
+        {
+            "no.": 38,
+            "name": "cockpit",
+            "state": "inactive",
+            "description": "Cockpit Web Service",
+            "details": "Cockpit is an open-source web-based graphical interface for managing and monitoring Linux systems. It provides an intuitive dashboard for performing administrative tasks such as system configuration, service management, storage management, and viewing system logs, making it easier to manage servers without needing to use the command line."
+        },
+        {
+            "no.": 39,
+            "name": "collectd",
+            "state": "inactive",
+            "description": "Collectd config collector",
+            "details": "collectd is an open-source daemon that collects, processes, and stores system and application performance metrics. It supports a wide range of plugins for monitoring various system resources (CPU, memory, disk, network, etc.) and can forward the collected data to other monitoring tools or databases for analysis and visualization."
+        },
+        {
+            "no.": 40,
+            "name": "collectl",
+            "state": "inactive",
+            "description": "Collectl data",
+            "details": "collectl is a lightweight, high-performance system monitoring tool for Linux that collects a wide variety of system performance metrics, including CPU, memory, disk I/O, network activity, and more. It is capable of recording data for detailed analysis and can be used to troubleshoot and optimize system performance."
+        },
+        {
+            "no.": 41,
+            "name": "composer",
+            "state": "inactive",
+            "description": "OSBuild Composer",
+            "details": "OSBuild Composer is an open-source tool used to build custom, reproducible operating system images, primarily focused on building Linux distributions such as Fedora and RHEL. It allows users to define the desired OS image configuration using a set of components and metadata, enabling the creation of tailored, secure, and optimized images for deployment across various environments like cloud, containers, or bare metal."
+        },
+        {
+            "no.": 42,
+            "name": "conntrack",
+            "state": "inactive",
+            "description": "conntrack - netfilter connection tracking",
+            "details": "conntrack is a tool used for managing and inspecting the state of network connections in Linux systems. It is part of the Netfilter framework and allows users to track and manipulate the state of network connections, such as whether a connection is new, established, or related to another connection. This helps in managing firewall rules, load balancing, and performing network address translation (NAT)."
+        },
+        {
+            "no.": 43,
+            "name": "console",
+            "state": "enabled",
+            "description": "Console and keyboard information",
+            "details": ""
+        },
+        {
+            "no.": 44,
+            "name": "containerd",
+            "state": "enabled",
+            "description": "Containerd containers",
+            "details": "containerd is an industry-standard core container runtime used to manage the lifecycle of containers. It provides functionalities such as image transfer and storage, container execution, and container supervision. It is designed to be embedded into a larger system or used as a standalone daemon for managing containers. containerd is widely used as a fundamental component in container orchestration platforms like Kubernetes and Docker."
+        },
+        {
+            "no.": 45,
+            "name": "container_log",
+            "state": "inactive",
+            "description": "All logs under /var/log/containers",
+            "details": ""
+        },
+        {
+            "no.": 46,
+            "name": "containers_common",
+            "state": "inactive",
+            "description": "Common container configs under {/etc,/usr/share}/containers",
+            "details": ""
+        },
+        {
+            "no.": 47,
+            "name": "coredump",
+            "state": "inactive",
+            "description": "Retrieve coredump information",
+            "details": ""
+        },
+        {
+            "no.": 48,
+            "name": "corosync",
+            "state": "inactive",
+            "description": "Corosync cluster engine",
+            "details": "Corosync is an open-source cluster engine that provides high availability and communication services for distributed systems. It is commonly used in conjunction with other tools like Pacemaker to manage cluster resources, enabling fault-tolerant, scalable, and reliable environments. Corosync handles features such as membership management, message passing, and quorum-based decision-making, ensuring that nodes in a cluster can coordinate actions and maintain consistency even in the event of node failures."
+        },
+        {
+            "no.": 49,
+            "name": "crio",
+            "state": "inactive",
+            "description": "CRI-O containers",
+            "details": "CRI-O is an open-source container runtime designed for Kubernetes. It provides an implementation of the Kubernetes Container Runtime Interface (CRI) and is optimized for running containers in Kubernetes clusters. CRI-O is lightweight and focuses on simplicity, offering a minimal container runtime that is fully compatible with Kubernetes, allowing it to pull container images, create containers, and manage container lifecycle efficiently."
+        },
+        {
+            "no.": 50,
+            "name": "cron",
+            "state": "enabled",
+            "description": "Cron job scheduler",
+            "details": "cron is a Unix-based job scheduler that allows users to run scripts or commands at specified times and intervals. It is typically used for automating recurring tasks, such as backups, system maintenance, or monitoring tasks. The schedule is defined in a configuration file called crontab, where users specify the timing and the command to execute."
+        },
+        {
+            "no.": 51,
+            "name": "crypto",
+            "state": "enabled",
+            "description": "System crypto services information",
+            "details": "Crypto Policies framework in Linux, typically found in distributions like Fedora, RHEL, and CentOS. The Crypto Policies framework is a system-wide mechanism for configuring and enforcing cryptographic settings across various applications and services. This framework simplifies managing cryptographic settings for applications that rely on libraries like OpenSSL, GnuTLS, and NSS."
+        },
+        {
+            "no.": 52,
+            "name": "ctdb",
+            "state": "inactive",
+            "description": "Samba Clustered TDB",
+            "details": "CTDB (Clustered Trivial Database) is a high-availability, distributed database system used primarily with the Samba file server for managing shared resources across multiple nodes in a cluster. CTDB provides a consistent and fault-tolerant mechanism for managing network-attached storage (NAS) in clustered environments, enabling Samba to offer high availability and failover capabilities."
+        },
+        {
+            "no.": 53,
+            "name": "cups",
+            "state": "enabled",
+            "description": "CUPS IPP print service",
+            "details": "CUPS (Common UNIX Printing System) is a modular printing system for UNIX-like operating systems that allows a computer to act as a print server. It provides a standardized interface for printing, enabling the management of printers and print jobs, supporting various printer types, and providing tools for remote printing via the Internet Printing Protocol (IPP)."
+        },
+        {
+            "no.": 54,
+            "name": "curtin",
+            "state": "inactive",
+            "description": "Curt Installer",
+            "details": "curtin is an installation tool used by Ubuntu and its derivatives to perform the installation of the operating system. It is primarily used in cloud environments (such as OpenStack) to automate and configure the installation process, handling tasks like disk partitioning, file system creation, and setting up basic system configurations during the OS installation."
+        },
+        {
+            "no.": 55,
+            "name": "cxl",
+            "state": "inactive",
+            "description": "Compute Express Link (CXL)",
+            "details": "CXL (Compute Express Link) is an open industry-standard interconnect technology designed to provide high-speed communication between processors, memory, and other system components. It is optimized for high-bandwidth, low-latency data transfers, enabling better integration of memory and accelerators (such as GPUs, FPGAs) in modern data centers. CXL is designed to support memory pooling, memory coherence, and accelerators in a more efficient and scalable way compared to traditional interconnects."
+        },
+        {
+            "no.": 56,
+            "name": "date",
+            "state": "enabled",
+            "description": "Basic system time information",
+            "details": ""
+        },
+        {
+            "no.": 57,
+            "name": "dbus",
+            "state": "enabled",
+            "description": "D-Bus message bus",
+            "details": "DBus (Desktop Bus) is an inter-process communication (IPC) system that allows software applications to communicate with each other in a Linux or UNIX-like operating system. It provides a message bus system that enables different processes to send and receive messages, making it easier to coordinate tasks, share data, and trigger events between different components or applications. DBus is commonly used in desktop environments, system services, and other applications that need to exchange information in a decoupled and efficient manner."
+        },
+        {
+            "no.": 58,
+            "name": "dellrac",
+            "state": "inactive",
+            "description": "Dell Remote Access Controller Administration",
+            "details": "Dell RAC (Remote Access Controller) is a hardware management solution provided by Dell for remote monitoring, management, and troubleshooting of Dell servers. It allows administrators to access the server's hardware, including power management, firmware updates, system diagnostics, and console redirection, without needing to be physically present at the server. Dell RAC is commonly used for managing Dell PowerEdge servers and is integrated into the iDRAC (Integrated Dell Remote Access Controller) technology."
+        },
+        {
+            "no.": 59,
+            "name": "devicemapper",
+            "state": "enabled",
+            "description": "device-mapper framework",
+            "details": "DeviceMapper is a framework in the Linux kernel that provides a generic way to manage and manipulate block devices. It allows the creation of virtual block devices by mapping multiple physical devices to a single logical device. DeviceMapper is used by various systems like Logical Volume Manager (LVM) and Docker to manage storage, including creating volumes, snapshots, and other advanced storage configurations."
+        },
+        {
+            "no.": 60,
+            "name": "devices",
+            "state": "enabled",
+            "description": "devices specific commands",
+            "details": ""
+        },
+        {
+            "no.": 61,
+            "name": "dhcp",
+            "state": "inactive",
+            "description": "DHCP daemon",
+            "details": "DHCP (Dynamic Host Configuration Protocol) is a network protocol used to automatically assign IP addresses and other network configuration details (such as subnet mask, default gateway, and DNS servers) to devices on a TCP/IP network. This eliminates the need for manual configuration of network settings on individual devices, simplifying network management and ensuring efficient IP address allocation."
+        },
+        {
+            "no.": 62,
+            "name": "dlm",
+            "state": "inactive",
+            "description": "DLM (Distributed lock manager)",
+            "details": "DLM (Distributed Lock Manager) is a system used to manage and coordinate access to shared resources in a distributed computing environment. It ensures that only one process or node can access a resource at a time, preventing conflicts or data corruption in systems where multiple nodes need to access the same resource. DLM is commonly used in high-availability clusters to manage file systems, databases, and other shared resources. It helps maintain data consistency by handling locking mechanisms across the cluster."
+        },
+        {
+            "no.": 63,
+            "name": "dmraid",
+            "state": "inactive",
+            "description": "dmraid software RAID",
+            "details": "dmraid is a tool used to manage and configure RAID (Redundant Array of Independent Disks) devices in Linux systems. It is part of the Device Mapper framework and provides support for software RAID arrays, particularly those using metadata formats like Intel Matrix RAID and Promise FastTRAK. dmraid allows users to create, manage, and interact with RAID volumes by presenting them as regular block devices to the operating system."
+        },
+        {
+            "no.": 64,
+            "name": "docker",
+            "state": "enabled",
+            "description": "Docker containers",
+            "details": "Docker is an open-source platform used to automate the deployment, scaling, and management of applications within lightweight, portable containers. Containers are isolated environments that package an application and its dependencies, ensuring consistency across different computing environments. Docker provides tools for creating, deploying, and managing these containers, as well as for orchestrating containerized applications at scale."
+        },
+        {
+            "no.": 65,
+            "name": "dovecot",
+            "state": "inactive",
+            "description": "Dovecot IMAP and POP3",
+            "details": "Dovecot is an open-source IMAP and POP3 server for Unix-like operating systems, primarily used for handling email retrieval. It provides secure and efficient email storage and access, allowing users to access their email through the IMAP or POP3 protocols. Dovecot is known for its performance, security, and scalability, supporting modern features like SSL/TLS encryption, authentication mechanisms, and high-performance indexing for large mailboxes."
+        },
+        {
+            "no.": 66,
+            "name": "dpkg",
+            "state": "enabled",
+            "description": "Debian Package Management",
+            "details": "dpkg is a package management tool for Debian-based Linux distributions that handles the installation, removal, and querying of .deb software packages."
+        },
+        {
+            "no.": 67,
+            "name": "drbd",
+            "state": "inactive",
+            "description": "Distributed Replicated Block Device (DRBD)",
+            "details": "DRBD (Distributed Replicated Block Device) is a Linux-based software that mirrors data between two or more servers in real-time, providing high availability for storage. It works at the block device level, allowing one server to replicate its storage to another, ensuring data redundancy and fault tolerance. DRBD is commonly used in clustered systems to create a mirrored storage solution for critical applications."
+        },
+        {
+            "no.": 68,
+            "name": "ebpf",
+            "state": "inactive",
+            "description": "eBPF tool",
+            "details": "eBPF (extended Berkeley Packet Filter) is a technology in the Linux kernel that allows for the efficient execution of custom programs within the kernel. eBPF programs can run in response to specific events such as network packets, system calls, or tracepoints, and are used for tasks like performance monitoring, security enforcement, and networking."
+        },
+        {
+            "no.": 69,
+            "name": "elastic",
+            "state": "inactive",
+            "description": "ElasticSearch service",
+            "details": "Elasticsearch is an open-source, distributed search and analytics engine designed for handling large volumes of data in real-time. It is built on top of Apache Lucene and is commonly used for indexing and searching data, enabling fast, scalable searches and powerful data analysis capabilities."
+        },
+        {
+            "no.": 70,
+            "name": "filesys",
+            "state": "enabled",
+            "description": "Local file systems information",
+            "details": ""
+        },
+        {
+            "no.": 71,
+            "name": "firewall_tables",
+            "state": "enabled",
+            "description": "firewall tables",
+            "details": "firewall_tables is a user-space utility in Linux used for managing iptables or nftables rulesets. It is a part of the Netfilter framework, which provides packet filtering, network address translation (NAT), and other network traffic manipulation features."
+        },
+        {
+            "no.": 72,
+            "name": "flatpak",
+            "state": "enabled",
+            "description": "Flatpak",
+            "details": "Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux. It allows applications to be packaged with all their dependencies, ensuring they run consistently across different Linux distributions. Flatpak provides a secure and isolated environment for applications, reducing conflicts between software and improving compatibility across varying systems."
+        },
+        {
+            "no.": 73,
+            "name": "foreman",
+            "state": "inactive",
+            "description": "Foreman/Satellite systems management",
+            "details": "Foreman is an open-source lifecycle management tool for physical and virtual servers. It helps system administrators automate tasks related to server provisioning, configuration management, and monitoring, making it easier to manage infrastructure at scale."
+        },
+        {
+            "no.": 74,
+            "name": "foreman_installer",
+            "state": "inactive",
+            "description": "Foreman installer and maintainer",
+            "details": "Foreman is an open-source lifecycle management tool for physical and virtual servers. It helps system administrators automate tasks related to server provisioning, configuration management, and monitoring, making it easier to manage infrastructure at scale."
+        },
+        {
+            "no.": 75,
+            "name": "foreman_openscap",
+            "state": "inactive",
+            "description": "Foreman OpenSCAP client",
+            "details": "Foreman is an open-source lifecycle management tool for physical and virtual servers. It helps system administrators automate tasks related to server provisioning, configuration management, and monitoring, making it easier to manage infrastructure at scale."
+        },
+        {
+            "no.": 76,
+            "name": "foreman_proxy",
+            "state": "inactive",
+            "description": "Foreman Smart Proxy systems management",
+            "details": "Foreman is an open-source lifecycle management tool for physical and virtual servers. It helps system administrators automate tasks related to server provisioning, configuration management, and monitoring, making it easier to manage infrastructure at scale."
+        },
+        {
+            "no.": 77,
+            "name": "freeipmi",
+            "state": "inactive",
+            "description": "Freeipmi hardware information",
+            "details": "FreeIPMI is an open-source software suite used for managing and monitoring hardware devices through the Intelligent Platform Management Interface (IPMI) standard. It provides tools to interact with server management controllers (such as BMCs - Baseboard Management Controllers) for tasks like power management, sensor monitoring, and remote console access."
+        },
+        {
+            "no.": 78,
+            "name": "fwupd",
+            "state": "enabled",
+            "description": "fwupd information",
+            "details": "fwupd is an open-source tool for managing and installing firmware updates on Linux systems, ensuring hardware components are running the latest firmware for improved performance and security."
+        },
+        {
+            "no.": 79,
+            "name": "gcp",
+            "state": "inactive",
+            "description": "Google Cloud Platform",
+            "details": "GCP (Google Cloud Platform) is a suite of cloud computing services provided by Google, offering infrastructure, platform, and software services to support various applications and workloads. It includes services for computing, storage, machine learning, networking, and big data processing."
+        },
+        {
+            "no.": 80,
+            "name": "gdm",
+            "state": "enabled",
+            "description": "GNOME display manager",
+            "details": "GDM (GNOME Display Manager) is the default display manager for the GNOME desktop environment, responsible for managing user logins and graphical sessions in Linux-based systems. It handles the login screen, user authentication, and session management, allowing users to log in and access their desktop environment."
+        },
+        {
+            "no.": 81,
+            "name": "gfs2",
+            "state": "inactive",
+            "description": "GFS2 (Global Filesystem 2)",
+            "details": "GFS2 (Global File System 2) is a shared disk file system for Linux, designed for use in a cluster environment. It allows multiple nodes in a cluster to concurrently access and modify the same storage, ensuring data consistency and high availability. GFS2 is often used in environments where multiple servers need to share the same storage for applications like databases and web servers."
+        },
+        {
+            "no.": 82,
+            "name": "grafana",
+            "state": "inactive",
+            "description": "Fetch Grafana configuration, logs and CLI output",
+            "details": "Grafana is an open-source data visualization and monitoring tool that allows users to create interactive and customizable dashboards for visualizing time-series data. It supports various data sources, such as Prometheus, Elasticsearch, InfluxDB, and others, to display metrics, logs, and application performance data. Grafana is commonly used for monitoring infrastructure, applications, and business metrics."
+        },
+        {
+            "no.": 83,
+            "name": "grub2",
+            "state": "enabled",
+            "description": "GRUB2 bootloader",
+            "details": "GRUB2 (Grand Unified Bootloader 2) is the default bootloader for most Linux distributions. It is responsible for loading and managing the boot process of the operating system, allowing users to choose between multiple operating systems or kernel versions during startup. GRUB2 supports advanced features like network booting, password protection, and booting from a variety of file systems."
+        },
+        {
+            "no.": 84,
+            "name": "grub",
+            "state": "inactive",
+            "description": "GRUB bootloader",
+            "details": "GRUB (Grand Unified Bootloader) is a bootloader for Linux systems that allows the user to choose between multiple operating systems or kernel versions during startup. It loads the selected operating system into memory and passes control to it. GRUB supports various file systems, provides a command-line interface for troubleshooting, and offers features such as booting from network and external devices."
+        },
+        {
+            "no.": 85,
+            "name": "gssproxy",
+            "state": "inactive",
+            "description": "GSSAPI Proxy",
+            "details": "gssproxy is a service that provides a proxy for the Generic Security Services (GSS) API in Linux-based systems. It acts as an intermediary between applications and the underlying security mechanisms (such as Kerberos), allowing seamless authentication and credential management in a network environment. gssproxy is commonly used in environments where multiple services need to authenticate using different security protocols, helping to manage credentials and tokens securely."
+        },
+        {
+            "no.": 86,
+            "name": "haproxy",
+            "state": "inactive",
+            "description": "HAProxy load balancer",
+            "details": "HAProxy (High Availability Proxy) is an open-source software load balancer and proxy server for TCP and HTTP-based applications. It distributes incoming network traffic across multiple servers to ensure high availability, reliability, and scalability of applications. HAProxy is widely used in high-traffic websites and environments to improve performance, ensure fault tolerance, and handle server failures gracefully."
+        },
+        {
+            "no.": 87,
+            "name": "hardware",
+            "state": "enabled",
+            "description": "General hardware information",
+            "details": ""
+        },
+        {
+            "no.": 88,
+            "name": "host",
+            "state": "enabled",
+            "description": "Host information",
+            "details": ""
+        },
+        {
+            "no.": 89,
+            "name": "hpasm",
+            "state": "inactive",
+            "description": "HP Advanced Server Management",
+            "details": "HPASM (HP Array Storage Manager) is a management tool for HP (Hewlett-Packard) storage arrays, primarily used in HP ProLiant servers. It provides administrators with the ability to configure, monitor, and manage storage hardware, including RAID controllers and disk arrays. HPASM offers a command-line interface and is commonly used for tasks like array configuration, firmware updates, and health monitoring of HP storage devices."
+        },
+        {
+            "no.": 90,
+            "name": "hpssm",
+            "state": "inactive",
+            "description": "HP Smart Storage Management",
+            "details": "HPSSM (HP Smart Storage Manager) is a tool provided by Hewlett-Packard for managing and monitoring HP storage controllers and arrays. It provides a graphical interface to configure, monitor, and maintain RAID arrays, ensuring optimal storage performance and health. HPSSM allows administrators to manage physical disks, logical drives, and RAID controllers, and it supports tasks like firmware updates, disk status monitoring, and performance diagnostics for HP Smart Array controllers."
+        },
+        {
+            "no.": 91,
+            "name": "hyperv",
+            "state": "inactive",
+            "description": "Microsoft Hyper-V client information",
+            "details": "Hyper-V is a hypervisor-based virtualization technology developed by Microsoft for creating and managing virtual machines (VMs). It is available as a role in Windows Server and a standalone product called Microsoft Hyper-V Server. Hyper-V allows users to run multiple operating systems (OS) on a single physical machine by creating virtualized environments, improving resource utilization, and providing isolation for different workloads. It is commonly used for server consolidation, cloud environments, and testing scenarios."
+        },
+        {
+            "no.": 92,
+            "name": "i18n",
+            "state": "enabled",
+            "description": "Internationalization",
+            "details": ""
+        },
+        {
+            "no.": 93,
+            "name": "infiniband",
+            "state": "inactive",
+            "description": "Infiniband information",
+            "details": "InfiniBand is a high-performance, low-latency interconnect technology used for data transfer in high-performance computing (HPC), data centers, and storage systems. It provides fast, reliable communication between servers, storage devices, and network switches, supporting both high bandwidth and low latency for applications requiring intensive data throughput, such as scientific computing, big data analytics, and virtualization. InfiniBand is commonly used in environments that demand high-speed networking, such as supercomputers and large-scale enterprise infrastructures."
+        },
+        {
+            "no.": 94,
+            "name": "infinidat",
+            "state": "inactive",
+            "description": "Infinidat Storage plugin",
+            "details": "Infinidat is a data storage plugin that provides high-performance, scalable storage solutions, including enterprise-grade storage systems designed to handle large-scale data environments. InfiniDat's storage solutions are typically used in industries requiring large amounts of data storage, such as finance, healthcare, and telecommunications, and they are known for offering low-latency and cost-effective storage solutions."
+        },
+        {
+            "no.": 95,
+            "name": "ipmitool",
+            "state": "inactive",
+            "description": "IpmiTool hardware information",
+            "details": "ipmitool is a command-line utility for managing and configuring devices that support the Intelligent Platform Management Interface (IPMI) standard. It allows administrators to interact with the baseboard management controller (BMC) of servers to perform tasks such as power control, sensor monitoring, event log management, and hardware health monitoring. ipmitool is commonly used for remote management of servers, providing out-of-band management features, even when the operating system is not running."
+        },
+        {
+            "no.": 96,
+            "name": "iprconfig",
+            "state": "inactive",
+            "description": "IBM Power RAID storage adapter configuration information",
+            "details": "iprconfig is a command-line utility used to configure and manage IBM Power Systems and IBM System x servers with the IBM Power RAID storage adapter. It is primarily used to configure and manage the RAID controller, set up logical drives, and perform storage-related tasks. The tool allows administrators to configure network settings, manage firmware, and monitor the status of the RAID controller and attached storage devices."
+        },
+        {
+            "no.": 97,
+            "name": "ipvs",
+            "state": "inactive",
+            "description": "Linux IP virtual server",
+            "details": "IPVS (IP Virtual Server) is a load balancing solution for Linux that operates at the transport layer (Layer 4) of the OSI model. It is part of the Linux Virtual Server (LVS) project and provides a way to distribute incoming network traffic across multiple backend servers to ensure high availability, scalability, and fault tolerance of services. IPVS supports several load balancing algorithms, such as round-robin, least connections, and weighted distribution, and can be used in environments like web servers, email servers, and proxy servers."
+        },
+        {
+            "no.": 98,
+            "name": "iscsi",
+            "state": "inactive",
+            "description": "iSCSI initiator",
+            "details": "iSCSI (Internet Small Computer Systems Interface) is a protocol that allows the transport of SCSI commands over IP networks, enabling storage devices to be accessed remotely over a network. It allows servers (initiators) to access storage devices (targets) as if they were locally attached disks, making it a cost-effective alternative to traditional Fibre Channel-based storage area networks (SANs). iSCSI is commonly used in data centers and virtualized environments for providing block-level storage over long distances."
+        },
+        {
+            "no.": 99,
+            "name": "iscsitarget",
+            "state": "inactive",
+            "description": "iSCSI target",
+            "details": "iscsitarget is an open-source software package for implementing an iSCSI target on Linux systems. It allows a Linux server to act as a storage target, providing iSCSI storage to remote clients (initiators). The software enables the creation of iSCSI targets that can be accessed over a network, allowing other systems to connect to and use the server's storage as if it were a local disk. It's typically used in environments where centralized storage is required, such as in virtualization, cloud computing, and storage area networks (SANs)."
+        },
+        {
+            "no.": 100,
+            "name": "java",
+            "state": "enabled",
+            "description": "Java runtime",
+            "details": ""
+        },
+        {
+            "no.": 101,
+            "name": "juju",
+            "state": "inactive",
+            "description": "Juju orchestration tool",
+            "details": "Juju is an open-source application and service modeling tool developed by Canonical, the company behind Ubuntu. It is used for deploying, configuring, managing, and scaling applications in a cloud or on-premise environment. Juju simplifies the management of complex applications and services by using charms, which are reusable scripts that automate deployment and operational tasks for specific services. Juju supports various cloud platforms, including AWS, Google Cloud, Microsoft Azure, and OpenStack, as well as on-premise hardware. It is widely used in DevOps and cloud-native environments to streamline application lifecycle management."
+        },
+        {
+            "no.": 102,
+            "name": "kafka",
+            "state": "inactive",
+            "description": "Apache Kafka plugin",
+            "details": "Kafka (Apache Kafka) is an open-source distributed event streaming platform designed for building real-time data pipelines and streaming applications. It is capable of handling high throughput, fault tolerance, and scalability, making it suitable for processing large volumes of real-time data across multiple sources and destinations."
+        },
+        {
+            "no.": 103,
+            "name": "kata_containers",
+            "state": "inactive",
+            "description": "Kata Containers configuration",
+            "details": "Kata Containers is an open-source project that provides lightweight and secure virtualized containers. It combines the performance of containers with the security benefits of virtual machines (VMs). Kata Containers run each container in its own lightweight virtual machine, using technologies like KVM (Kernel-based Virtual Machine) or Firecracker to provide strong isolation while maintaining the fast startup times and efficiency typical of containers."
+        },
+        {
+            "no.": 104,
+            "name": "kdump",
+            "state": "inactive",
+            "description": "Kdump crash dumps",
+            "details": ""
+        },
+        {
+            "no.": 105,
+            "name": "keepalived",
+            "state": "inactive",
+            "description": "Keepalived routing server",
+            "details": "Keepalived is an open-source software that provides high availability and load balancing for Linux-based systems. It is commonly used to create fault-tolerant and redundant server setups, ensuring continuous availability of services by managing virtual IP addresses (VIPs) across multiple servers."
+        },
+        {
+            "no.": 106,
+            "name": "kernel",
+            "state": "enabled",
+            "description": "Linux kernel",
+            "details": ""
+        },
+        {
+            "no.": 107,
+            "name": "kimchi",
+            "state": "inactive",
+            "description": "kimchi-related information",
+            "details": "Kimchi is an open-source, web-based management interface for KVM (Kernel-based Virtual Machine) hypervisors. It provides an easy-to-use graphical interface for managing virtual machines (VMs), allowing users to create, configure, and manage KVM virtual machines on Linux-based systems."
+        },
+        {
+            "no.": 108,
+            "name": "krb5",
+            "state": "inactive",
+            "description": "Kerberos authentication",
+            "details": "krb5 (Kerberos Version 5) is a network authentication protocol designed to provide secure authentication over an insecure network. It uses symmetric-key cryptography to authenticate clients and servers in a network, ensuring that both parties can trust each other without transmitting passwords over the network."
+        },
+        {
+            "no.": 109,
+            "name": "kubernetes",
+            "state": "inactive",
+            "description": "Kubernetes container orchestration platform",
+            "details": "Kubernetes (often abbreviated as K8s) is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications. It provides a robust framework for managing containerized workloads and services, ensuring high availability, scalability, and resource efficiency."
+        },
+        {
+            "no.": 110,
+            "name": "kvm",
+            "state": "enabled",
+            "description": "Kernel virtual machine",
+            "details": "KVM (Kernel-based Virtual Machine) is a virtualization technology for Linux that allows the operating system to run multiple virtual machines (VMs) on a physical server. It uses the Linux kernel as a hypervisor to manage the execution of VMs, providing strong isolation, scalability, and high performance."
+        },
+        {
+            "no.": 111,
+            "name": "landscape",
+            "state": "inactive",
+            "description": "Ubuntu Landscape client",
+            "details": "Landscape is a systems management tool developed by Canonical, the company behind Ubuntu, designed to help manage and monitor Ubuntu systems at scale. It provides a centralized web interface for administrators to manage multiple Ubuntu machines, whether on-premises or in the cloud, offering a range of features for system deployment, monitoring, and maintenance."
+        },
+        {
+            "no.": 112,
+            "name": "ldap",
+            "state": "inactive",
+            "description": "LDAP configuration",
+            "details": "LDAP (Lightweight Directory Access Protocol) is a protocol used to access and manage directory services over a network. It is commonly used to store and retrieve information related to users, groups, devices, and other resources in a hierarchical directory structure."
+        },
+        {
+            "no.": 113,
+            "name": "libraries",
+            "state": "enabled",
+            "description": "Dynamic shared libraries",
+            "details": ""
+        },
+        {
+            "no.": 114,
+            "name": "libreswan",
+            "state": "inactive",
+            "description": "Libreswan IPsec",
+            "details": "Libreswan is an open-source implementation of the IPsec (Internet Protocol Security) and VPN (Virtual Private Network) protocols for Linux-based systems. It is designed to provide secure, encrypted communications over insecure networks, such as the internet, by using standard cryptographic algorithms and protocols like IKE (Internet Key Exchange)."
+        },
+        {
+            "no.": 115,
+            "name": "libvirt",
+            "state": "enabled",
+            "description": "libvirt virtualization API",
+            "details": "Libvirt is an open-source toolkit used for managing virtualized platforms, providing an API for interacting with different virtualization technologies. It supports various hypervisors, including KVM, Xen, VMware, and QEMU, and is widely used to manage virtual machines (VMs) and associated resources."
+        },
+        {
+            "no.": 116,
+            "name": "lightdm",
+            "state": "inactive",
+            "description": "Light Display Manager",
+            "details": "LightDM is a display manager for X servers, commonly used in Linux and Unix-like operating systems. It is responsible for managing user authentication and starting the graphical user session. LightDM provides a login screen where users can enter their credentials, select the desktop environment (DE), and launch the session."
+        },
+        {
+            "no.": 117,
+            "name": "lilo",
+            "state": "inactive",
+            "description": "Lilo bootloader",
+            "details": "LILO (LInux LOader) is a boot loader for Linux systems that is used to load the Linux kernel into memory and start the operating system. It was one of the earliest boot loaders for Linux and was widely used before the development of GRUB (Grand Unified Bootloader)."
+        },
+        {
+            "no.": 118,
+            "name": "login",
+            "state": "enabled",
+            "description": "login information",
+            "details": ""
+        },
+        {
+            "no.": 119,
+            "name": "logrotate",
+            "state": "enabled",
+            "description": "LogRotate service",
+            "details": "Logrotate is a system utility for managing log files on Unix-like operating systems, designed to automate the process of rotating, compressing, and removing log files. It helps ensure that log files do not consume excessive disk space and remain manageable over time."
+        },
+        {
+            "no.": 120,
+            "name": "logs",
+            "state": "enabled",
+            "description": "System logs",
+            "details": ""
+        },
+        {
+            "no.": 121,
+            "name": "lstopo",
+            "state": "inactive",
+            "description": "Machine topology information",
+            "details": "lstopo is a command-line tool that generates a graphical representation of the system's hardware topology. It displays information about the CPU, memory, NUMA nodes, caches, and other system resources, allowing users to visualize the layout and configuration of the hardware."
+        },
+        {
+            "no.": 122,
+            "name": "lvm2",
+            "state": "enabled",
+            "description": "Logical Volume Manager 2",
+            "details": "LVM2 (Logical Volume Manager 2) is a system for managing logical volumes, or filesystems, in Linux. It allows for flexible disk management by enabling dynamic resizing of disk partitions, spanning volumes across multiple physical disks, and managing storage in a more flexible and efficient way than traditional partitioning methods."
+        },
+        {
+            "no.": 123,
+            "name": "lxd",
+            "state": "inactive",
+            "description": "LXD container hypervisor",
+            "details": "LXD is a system container manager that provides a user-friendly experience for managing Linux containers. It offers an enhanced version of containers compared to traditional Docker, allowing full system containers with an easy interface to create, manage, and run containers."
+        },
+        {
+            "no.": 124,
+            "name": "maas",
+            "state": "inactive",
+            "description": "Ubuntu Metal-As-A-Service",
+            "details": "MAAS (Metal as a Service) is a tool for managing physical servers as if they were virtual machines. It enables the deployment, provisioning, and scaling of hardware in data centers, making it easier to manage large numbers of physical machines through a web interface, automating tasks such as operating system installation and configuration."
+        },
+        {
+            "no.": 125,
+            "name": "md",
+            "state": "enabled",
+            "description": "MD RAID subsystem",
+            "details": "MD (Multiple Devices) is a Linux-based software RAID (Redundant Array of Independent Disks) implementation that allows for the creation of RAID arrays using multiple physical disks. It provides redundancy and improved performance by combining multiple disks into a single logical device, offering fault tolerance and data protection in case of disk failure."
+        },
+        {
+            "no.": 126,
+            "name": "mellanox_firmware",
+            "state": "inactive",
+            "description": "Nvidia(Mellanox) firmware tools output",
+            "details": "Mellanox_firmware refers to the firmware provided by Mellanox Technologies for their network interface cards (NICs) and other hardware devices. It is used to update and manage the firmware of Mellanox hardware to ensure optimal performance, feature support, and security."
+        },
+        {
+            "no.": 127,
+            "name": "memcached",
+            "state": "inactive",
+            "description": "memcached distributed memory caching system",
+            "details": "Memcached is an open-source, high-performance, distributed memory caching system designed to speed up dynamic web applications by reducing database load. It stores data in memory (RAM) as key-value pairs and is commonly used to cache frequently accessed data, such as database query results, API calls, or session data, improving application performance and scalability."
+        },
+        {
+            "no.": 128,
+            "name": "memory",
+            "state": "enabled",
+            "description": "Memory configuration and use",
+            "details": ""
+        },
+        {
+            "no.": 129,
+            "name": "microk8s",
+            "state": "inactive",
+            "description": "The lightweight Kubernetes",
+            "details": "MicroK8s is a lightweight, single-package Kubernetes distribution designed for local development, testing, and small-scale production environments. It provides a minimal, low-overhead version of Kubernetes that can be easily installed and run on a laptop, IoT device, or edge device, with all essential features of Kubernetes, including clustering, scaling, and networking."
+        },
+        {
+            "no.": 130,
+            "name": "microovn",
+            "state": "inactive",
+            "description": "MicroOVN Snap",
+            "details": "MicroOVN is a lightweight, open-source implementation of Open Virtual Network (OVN), designed to provide virtual networking features for container-based environments. It is optimized for simplicity and performance, offering features like virtual network creation, isolation, and security for containerized applications, typically used in conjunction with Kubernetes and other container orchestration platforms."
+        },
+        {
+            "no.": 131,
+            "name": "mongodb",
+            "state": "inactive",
+            "description": "MongoDB document database",
+            "details": "MongoDB is an open-source, NoSQL database designed for high performance, scalability, and flexibility. It stores data in a JSON-like format called BSON (Binary JSON), allowing for a more dynamic and schema-less structure compared to traditional relational databases. MongoDB is commonly used for applications requiring large amounts of data, real-time analytics, and flexible querying."
+        },
+        {
+            "no.": 132,
+            "name": "mpt",
+            "state": "inactive",
+            "description": "LSI Message Passing Technology",
+            "details": "MPT (Message Passing Technology) is a communication protocol used in high-performance computing (HPC) systems, enabling efficient data exchange between processors. It is commonly associated with MPI (Message Passing Interface) in parallel computing, allowing processes to communicate across multiple nodes in a distributed system."
+        },
+        {
+            "no.": 133,
+            "name": "multipath",
+            "state": "enabled",
+            "description": "Device-mapper multipath tools",
+            "details": "Device-mapper multipath tools are utilities in Linux that manage multipath I/O for block devices, ensuring that multiple paths to storage devices are used for redundancy and performance optimization. These tools configure and manage DM-Multipath, a kernel-based module, to handle multiple physical paths between a server and storage, enabling automatic failover and load balancing in case of path failures or congestion."
+        },
+        {
+            "no.": 134,
+            "name": "mvcli",
+            "state": "inactive",
+            "description": "mvCLI Integrated RAID adapter information",
+            "details": "MVCLI (Multipath Virtualization Command Line Interface) is a command-line tool used to manage Emulex and QLogic Fibre Channel and iSCSI adapters, providing a way to configure and monitor multipath I/O (input/output) paths in storage systems. It allows users to manage device paths, troubleshoot connectivity issues, and configure settings for optimal performance and redundancy in enterprise storage environments."
+        },
+        {
+            "no.": 135,
+            "name": "mysql",
+            "state": "enabled",
+            "description": "MySQL and MariaDB RDBMS",
+            "details": "MySQL is an open-source relational database management system (RDBMS) that uses SQL (Structured Query Language) to manage and manipulate structured data. It is widely used in web applications, supporting high-performance, multi-user environments. MySQL is known for its speed, reliability, and ease of use, and it is commonly paired with technologies like PHP and Apache in the LAMP stack."
+        },
+        {
+            "no.": 136,
+            "name": "named",
+            "state": "inactive",
+            "description": "BIND named server",
+            "details": "named is the server process for BIND (Berkeley Internet Name Domain), which is one of the most widely used DNS (Domain Name System) server software. It translates domain names into IP addresses, enabling users to access websites and services using human-readable domain names instead of numerical IP addresses."
+        },
+        {
+            "no.": 137,
+            "name": "networking",
+            "state": "enabled",
+            "description": "Network and networking devices configuration",
+            "details": ""
+        },
+        {
+            "no.": 138,
+            "name": "networkmanager",
+            "state": "enabled",
+            "description": "NetworkManager service configuration",
+            "details": "NetworkManager is a system service that manages network connections in Linux-based operating systems. It simplifies the process of configuring and managing network interfaces, supporting various types of connections such as Ethernet, Wi-Fi, VPN, and mobile broadband. NetworkManager automatically handles network settings, ensuring seamless connectivity across different network environments."
+        },
+        {
+            "no.": 139,
+            "name": "nfsganesha",
+            "state": "inactive",
+            "description": "NFS-Ganesha file server information",
+            "details": "NFS-Ganesha is an open-source, user-space implementation of the NFS (Network File System) protocol. It provides a scalable, flexible NFS server that supports multiple backends, including traditional file systems, object stores, and distributed file systems. NFS-Ganesha is commonly used in cloud environments, offering advanced features like high availability, load balancing, and integration with various storage systems."
+        },
+        {
+            "no.": 140,
+            "name": "nfs",
+            "state": "inactive",
+            "description": "Network file system information",
+            "details": "NFS (Network File System) is a protocol used to share directories and files over a network, allowing users to access files on remote systems as if they were on their local machine. NFS is widely used in UNIX and Linux environments to enable file sharing and centralized storage, making it easier to manage data across multiple systems."
+        },
+        {
+            "no.": 141,
+            "name": "nginx",
+            "state": "inactive",
+            "description": "nginx http daemon",
+            "details": "Nginx is an open-source web server software that also functions as a reverse proxy, load balancer, and HTTP cache. It is known for its high performance, scalability, and low resource usage, making it popular for serving static content, handling high traffic, and supporting dynamic applications. Nginx is often used in combination with other technologies like PHP-FPM to serve dynamic websites."
+        },
+        {
+            "no.": 142,
+            "name": "nis",
+            "state": "inactive",
+            "description": "Network Information Service",
+            "details": "NIS (Network Information Service) is a client-server directory service protocol used to manage and distribute configuration data such as user credentials, hostnames, and other system information across a network of Unix and Linux machines. NIS allows centralized management of system settings, enabling consistent configuration across multiple systems in a network."
+        },
+        {
+            "no.": 143,
+            "name": "nodejs",
+            "state": "enabled",
+            "description": "NodeJS runtime version",
+            "details": "Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to run JavaScript code outside of a web browser. It is built on Chrome's V8 JavaScript engine and is designed for building scalable and high-performance applications, particularly for server-side development. Node.js is widely used for creating web servers, APIs, real-time applications, and microservices due to its non-blocking, event-driven architecture."
+        },
+        {
+            "no.": 144,
+            "name": "npm",
+            "state": "inactive",
+            "description": "Information from available npm modules",
+            "details": "npm (Node Package Manager) is the default package manager for Node.js. It is used to install, manage, and share JavaScript packages and libraries. npm allows developers to easily access and manage dependencies, ensuring that the correct versions of libraries and tools are used in their projects. It also provides a command-line interface for publishing and managing packages on the npm registry."
+        },
+        {
+            "no.": 145,
+            "name": "nscd",
+            "state": "inactive",
+            "description": "Name service caching daemon",
+            "details": "nscd (Name Service Caching Daemon) is a system service that provides caching for name service requests in Unix-like operating systems. It caches information such as user and group names, hostnames, and other system resources to speed up repeated queries, reducing the load on underlying databases (e.g., DNS, NIS, LDAP) and improving system performance."
+        },
+        {
+            "no.": 146,
+            "name": "nss",
+            "state": "inactive",
+            "description": "Network Security Services configuration",
+            "details": "NSS (Name Service Switch) is a framework in Unix-like operating systems that allows system services to query various name service databases (such as password, group, hosts, etc.) through a common interface. It defines how different services (e.g., login, hostname resolution) retrieve information from sources like local files, DNS, LDAP, NIS, or other directories."
+        },
+        {
+            "no.": 147,
+            "name": "ntp",
+            "state": "inactive",
+            "description": "Network Time Protocol",
+            "details": "NTP (Network Time Protocol) is a protocol used to synchronize the clocks of computers over a network to ensure accurate timekeeping. NTP allows devices to obtain time information from highly accurate time sources, such as atomic clocks or GPS satellites, and adjust their system clocks accordingly to maintain consistency across distributed systems."
+        },
+        {
+            "no.": 148,
+            "name": "numa",
+            "state": "inactive",
+            "description": "NUMA state and configuration",
+            "details": "NUMA (Non-Uniform Memory Access) is a computer memory architecture used in multiprocessor systems where each processor has its own local memory but can also access memory from other processors. However, accessing local memory is faster than accessing remote memory. NUMA improves performance by optimizing memory access patterns, especially in systems with multiple processors or cores."
+        },
+        {
+            "no.": 149,
+            "name": "nvidia",
+            "state": "inactive",
+            "description": "Nvidia GPU information",
+            "details": "NVIDIA GPU refers to the graphics processing units developed by NVIDIA, which are designed to accelerate graphics rendering, as well as parallel processing tasks. NVIDIA GPUs are used in gaming, professional graphics, scientific computations, AI, and machine learning applications."
+        },
+        {
+            "no.": 150,
+            "name": "nvme",
+            "state": "enabled",
+            "description": "NVMe device information",
+            "details": "NVMe (Non-Volatile Memory Express) is a high-speed storage protocol designed to take full advantage of the performance capabilities of modern solid-state drives (SSDs) that use NAND flash memory. NVMe is optimized for low-latency and high-throughput data access, providing faster read and write speeds compared to older storage protocols like SATA and SAS. It communicates directly with the CPU through the PCIe bus, enabling significantly higher data transfer rates and improved overall system performance, particularly for applications involving large data sets, such as gaming, video editing, and data analytics."
+        },
+        {
+            "no.": 151,
+            "name": "nvmetcli",
+            "state": "inactive",
+            "description": "Collect config and system information for nvmetcli",
+            "details": "nvmetcli is a command-line utility used to manage NVMe over Fabrics (NVMe-oF) devices in Linux. NVMe-oF allows NVMe devices to be accessed over network fabrics (such as Ethernet or InfiniBand), enabling high-performance, low-latency storage solutions. nvmetcli is used for configuring and managing NVMe targets, subsystems, namespaces, and other aspects of NVMe-oF, making it easier to manage remote NVMe storage devices in a networked environment."
+        },
+        {
+            "no.": 152,
+            "name": "omnipath_client",
+            "state": "inactive",
+            "description": "OmniPath Tools and Fast Fabric Client",
+            "details": "OmniPath is a high-performance interconnect technology developed by Intel, designed to provide fast, low-latency communication between servers in data centers, supercomputing clusters, and other high-performance computing (HPC) environments. OmniPath offers advanced features such as low-overhead communication, high bandwidth, and scalable topologies, making it suitable for applications that require rapid data transfer and efficient parallel processing, like scientific simulations, big data analytics, and AI workloads. It competes with other interconnect technologies like InfiniBand."
+        },
+        {
+            "no.": 153,
+            "name": "omnipath_manager",
+            "state": "inactive",
+            "description": "OmniPath Fabric Manager",
+            "details": "OmniPath is a high-performance interconnect technology developed by Intel, designed to provide fast, low-latency communication between servers in data centers, supercomputing clusters, and other high-performance computing (HPC) environments. OmniPath offers advanced features such as low-overhead communication, high bandwidth, and scalable topologies, making it suitable for applications that require rapid data transfer and efficient parallel processing, like scientific simulations, big data analytics, and AI workloads. It competes with other interconnect technologies like InfiniBand."
+        },
+        {
+            "no.": 154,
+            "name": "omsa",
+            "state": "inactive",
+            "description": "Dell OpenManage Server Administrator (OMSA)",
+            "details": "OMSA (OpenManage Server Administrator) is a systems management software suite from Dell that allows administrators to monitor, manage, and troubleshoot Dell PowerEdge servers. It provides an interface for configuring hardware settings, checking system health, viewing logs, managing storage, and performing firmware updates. OMSA can be accessed through a web-based GUI or the command-line interface, making it easier for IT teams to ensure the optimal performance and reliability of their Dell server infrastructure."
+        },
+        {
+            "no.": 155,
+            "name": "opencl",
+            "state": "inactive",
+            "description": "OpenCL",
+            "details": "OpenCL (Open Computing Language) is an open standard for parallel programming of heterogeneous systems, enabling developers to write programs that execute across different platforms, such as CPUs, GPUs, and other processors. OpenCL provides a unified framework for developing high-performance applications, particularly in fields like scientific computing, data analytics, and machine learning. It allows code to be executed on various hardware devices, leveraging their respective strengths for tasks like parallel processing and high-speed computation."
+        },
+        {
+            "no.": 156,
+            "name": "opencontrail",
+            "state": "inactive",
+            "description": "OpenContrail SDN",
+            "details": "OpenContrail is an open-source network virtualization and software-defined networking (SDN) platform developed by Juniper Networks. It provides a scalable and flexible solution for building and managing virtual networks in cloud environments, enabling network automation, segmentation, and security. OpenContrail supports advanced features like network virtualization, multi-cloud networking, and policy-driven automation, and it integrates with Kubernetes and OpenStack for managing network services in containerized and cloud-native environments."
+        },
+        {
+            "no.": 157,
+            "name": "opengl",
+            "state": "inactive",
+            "description": "OpenGL",
+            "details": "OpenGL (Open Graphics Library) is an open-source, cross-platform graphics rendering API used for developing 2D and 3D graphics applications. It provides a set of functions for drawing graphics, rendering images, and creating interactive visual applications, often used in video games, simulations, and computer-aided design (CAD) software. OpenGL abstracts the underlying hardware, allowing developers to write graphics code that works across various platforms without needing to deal with low-level hardware details."
+        },
+        {
+            "no.": 158,
+            "name": "openssl",
+            "state": "enabled",
+            "description": "OpenSSL configuration",
+            "details": "OpenSSL is an open-source toolkit that implements the Secure Sockets Layer (SSL) and Transport Layer Security (TLS) protocols, which are used for securing communications over computer networks. It provides cryptographic functions for data encryption, decryption, digital certificates, and hashing, among other operations. OpenSSL is widely used in web servers, email systems, and VPNs to ensure secure data transmission and to generate private/public key pairs and certificates for authentication."
+        },
+        {
+            "no.": 159,
+            "name": "openstack_ansible",
+            "state": "inactive",
+            "description": "OpenStack-Ansible",
+            "details": "OpenStack Ansible is a set of Ansible playbooks and roles that automate the deployment, configuration, and management of OpenStack cloud infrastructure. It provides an easy and flexible way to deploy OpenStack services across multiple nodes, handling the complexities of installation and configuration while ensuring consistency and scalability. OpenStack Ansible supports various OpenStack components, including compute (Nova), networking (Neutron), storage (Cinder), and more, allowing users to quickly set up and manage a fully functional OpenStack cloud environment."
+        },
+        {
+            "no.": 160,
+            "name": "openstack_aodh",
+            "state": "inactive",
+            "description": "OpenStack Alarm service",
+            "details": "Aodh is a project within OpenStack that provides a framework for alarm management. It is part of the OpenStack Telemetry project (previously known as Ceilometer). Aodh enables users to create, manage, and trigger alarms based on metrics collected by Ceilometer or other data sources."
+        },
+        {
+            "no.": 161,
+            "name": "openstack_barbican",
+            "state": "inactive",
+            "description": "OpenStack Barbican Secure storage service",
+            "details": "OpenStack Barbican"
+        },
+        {
+            "no.": 162,
+            "name": "openstack_ceilometer",
+            "state": "inactive",
+            "description": "Openstack Ceilometer",
+            "details": "OpenStack Ceilometer"
+        },
+        {
+            "no.": 163,
+            "name": "openstack_cinder",
+            "state": "inactive",
+            "description": "OpenStack cinder",
+            "details": "OpenStack Cinder"
+        },
+        {
+            "no.": 164,
+            "name": "openstack_designate",
+            "state": "inactive",
+            "description": "Openstack Designate",
+            "details": "OpenStack Designate"
+        },
+        {
+            "no.": 165,
+            "name": "openstack_glance",
+            "state": "inactive",
+            "description": "OpenStack Glance",
+            "details": "OpenStack Glance"
+        },
+        {
+            "no.": 166,
+            "name": "openstack_gnocchi",
+            "state": "inactive",
+            "description": "Gnocchi - Metric as a service",
+            "details": "OpenStack Gnocchi"
+        },
+        {
+            "no.": 167,
+            "name": "openstack_heat",
+            "state": "inactive",
+            "description": "OpenStack Heat",
+            "details": "OpenStack Heat"
+        },
+        {
+            "no.": 168,
+            "name": "openstack_horizon",
+            "state": "inactive",
+            "description": "OpenStack Horizon",
+            "details": "OpenStack Horizon"
+        },
+        {
+            "no.": 169,
+            "name": "openstack_ironic",
+            "state": "inactive",
+            "description": "OpenStack Ironic",
+            "details": "OpenStack Ironic"
+        },
+        {
+            "no.": 170,
+            "name": "openstack_keystone",
+            "state": "inactive",
+            "description": "OpenStack Keystone",
+            "details": "OpenStack Keystone"
+        },
+        {
+            "no.": 171,
+            "name": "openstack_manila",
+            "state": "inactive",
+            "description": "OpenStack Manila information for Debian based distributions",
+            "details": "OpenStack Manila"
+        },
+        {
+            "no.": 172,
+            "name": "openstack_masakari",
+            "state": "inactive",
+            "description": "OpenStack Masakari",
+            "details": "OpenStack Masakari"
+        },
+        {
+            "no.": 173,
+            "name": "openstack_masakarimonitors inactive",
+            "state": "OpenStack Masakari Monitors",
+            "description": "OpenStack Masakari",
+            "details": "A high availability (HA) service in OpenStack that provides automated instance recovery in case of failure, ensuring the continuity of critical workloads by detecting and recovering from failures in the compute infrastructure."
+        },
+        {
+            "no.": 174,
+            "name": "openstack_neutron",
+            "state": "inactive",
+            "description": "OpenStack Networking",
+            "details": "OpenStack Neutron"
+        },
+        {
+            "no.": 175,
+            "name": "openstack_nova",
+            "state": "inactive",
+            "description": "OpenStack Nova",
+            "details": "OpenStack Nova"
+        },
+        {
+            "no.": 176,
+            "name": "openstack_octavia",
+            "state": "inactive",
+            "description": "Openstack Octavia",
+            "details": "OpenStack Octavia is a project within the OpenStack cloud computing platform that provides a load balancing service. It is designed to distribute incoming network traffic across multiple backend servers to improve the performance, reliability, and availability of applications. Octavia offers features such as high availability, automated scaling, and SSL termination, and supports both Layer 4 (TCP) and Layer 7 (HTTP/HTTPS) load balancing. It is highly integrated with other OpenStack services, such as Neutron for networking and Keystone for authentication."
+        },
+        {
+            "no.": 177,
+            "name": "openstack_placement",
+            "state": "inactive",
+            "description": "OpenStack Placement",
+            "details": "OpenStack Placement"
+        },
+        {
+            "no.": 178,
+            "name": "openstack_sahara",
+            "state": "inactive",
+            "description": "OpenStack Sahara information for Debian based distributions",
+            "details": "OpenStack Sahara"
+        },
+        {
+            "no.": 179,
+            "name": "openstack_swift",
+            "state": "inactive",
+            "description": "OpenStack Swift",
+            "details": "OpenStack Swift"
+        },
+        {
+            "no.": 180,
+            "name": "openstack_tripleo",
+            "state": "inactive",
+            "description": "Installation information from OpenStack Installer",
+            "details": "OpenStack TripleO"
+        },
+        {
+            "no.": 181,
+            "name": "openstack_trove",
+            "state": "inactive",
+            "description": "OpenStack Trove",
+            "details": "OpenStack Trove"
+        },
+        {
+            "no.": 182,
+            "name": "opensvc",
+            "state": "inactive",
+            "description": "OpenSVC cluster and services (config and state collection)",
+            "details": "OpenSVC"
+        },
+        {
+            "no.": 183,
+            "name": "openvswitch",
+            "state": "inactive",
+            "description": "OpenVSwitch networking",
+            "details": "Open vSwitch (OVS)"
+        },
+        {
+            "no.": 184,
+            "name": "os_net_config",
+            "state": "inactive",
+            "description": "OpenStack Net Config",
+            "details": "OpenStack Network Config"
+        },
+        {
+            "no.": 185,
+            "name": "oratab",
+            "state": "enabled",
+            "description": "Oratab discovery for Oracle instances on Linux",
+            "details": "Oratab discovery for Oracle instances on Linux"
+        },
+        {
+            "no.": 186,
+            "name": "ostree",
+            "state": "inactive",
+            "description": "OSTree",
+            "details": "OSTree"
+        },
+        {
+            "no.": 187,
+            "name": "ovn_central",
+            "state": "inactive",
+            "description": "OVN Northd",
+            "details": "OVN Central"
+        },
+        {
+            "no.": 188,
+            "name": "ovn_host",
+            "state": "inactive",
+            "description": "OVN Controller",
+            "details": "OVN Host"
+        },
+        {
+            "no.": 189,
+            "name": "pacemaker",
+            "state": "inactive",
+            "description": "Pacemaker high-availability cluster resource manager",
+            "details": "Pacemaker"
+        },
+        {
+            "no.": 190,
+            "name": "pam",
+            "state": "enabled",
+            "description": "Pluggable Authentication Modules",
+            "details": "PAM (Pluggable Authentication Modules)"
+        },
+        {
+            "no.": 191,
+            "name": "pci",
+            "state": "enabled",
+            "description": "PCI devices",
+            "details": "PCI (Peripheral Component Interconnect)"
+        },
+        {
+            "no.": 192,
+            "name": "pcp",
+            "state": "inactive",
+            "description": "Performance Co-Pilot data",
+            "details": "PCP (Performance Co-Pilot)"
+        },
+        {
+            "no.": 193,
+            "name": "perccli",
+            "state": "inactive",
+            "description": "PowerEdge RAID Controller management",
+            "details": "PercCLI"
+        },
+        {
+            "no.": 194,
+            "name": "perl",
+            "state": "enabled",
+            "description": "Perl runtime",
+            "details": ""
+        },
+        {
+            "no.": 195,
+            "name": "pmem",
+            "state": "inactive",
+            "description": "Persistent Memory Devices",
+            "details": "PMEM (Persistent Memory)"
+        },
+        {
+            "no.": 196,
+            "name": "podman",
+            "state": "inactive",
+            "description": "Podman containers",
+            "details": "Podman"
+        },
+        {
+            "no.": 197,
+            "name": "postfix",
+            "state": "inactive",
+            "description": "Postfix smtp server",
+            "details": "Postfix"
+        },
+        {
+            "no.": 198,
+            "name": "postgresql",
+            "state": "inactive",
+            "description": "PostgreSQL RDBMS",
+            "details": "PostgreSQL"
+        },
+        {
+            "no.": 199,
+            "name": "powerpc",
+            "state": "inactive",
+            "description": "IBM Power systems",
+            "details": "PowerPC (Performance Optimization With Enhanced RISC – Performance Computing)"
+        },
+        {
+            "no.": 200,
+            "name": "ppp",
+            "state": "enabled",
+            "description": "Point-to-point protocol",
+            "details": "PPP (Point-to-Point Protocol)"
+        },
+        {
+            "no.": 201,
+            "name": "procenv",
+            "state": "enabled",
+            "description": "Process environment",
+            "details": ""
+        },
+        {
+            "no.": 202,
+            "name": "process",
+            "state": "enabled",
+            "description": "process information",
+            "details": ""
+        },
+        {
+            "no.": 203,
+            "name": "processor",
+            "state": "enabled",
+            "description": "CPU information",
+            "details": ""
+        },
+        {
+            "no.": 204,
+            "name": "proxmox",
+            "state": "inactive",
+            "description": "Proxmox cluster information",
+            "details": "Proxmox"
+        },
+        {
+            "no.": 205,
+            "name": "psacct",
+            "state": "inactive",
+            "description": "Process accounting information",
+            "details": "psacct"
+        },
+        {
+            "no.": 206,
+            "name": "ptp",
+            "state": "inactive",
+            "description": "Precision time protocol",
+            "details": "PTP (Precision Time Protocol)"
+        },
+        {
+            "no.": 207,
+            "name": "pulpcore",
+            "state": "inactive",
+            "description": "Pulp-3 aka pulpcore",
+            "details": "Pulpcore"
+        },
+        {
+            "no.": 208,
+            "name": "puppet",
+            "state": "inactive",
+            "description": "Puppet service",
+            "details": "Puppet"
+        },
+        {
+            "no.": 209,
+            "name": "pxe",
+            "state": "inactive",
+            "description": "PXE service",
+            "details": "PXE (Preboot Execution Environment)"
+        },
+        {
+            "no.": 210,
+            "name": "python",
+            "state": "enabled",
+            "description": "Python runtime",
+            "details": ""
+        },
+        {
+            "no.": 211,
+            "name": "qaucli",
+            "state": "inactive",
+            "description": "QLogic information",
+            "details": "qaucli"
+        },
+        {
+            "no.": 212,
+            "name": "rabbitmq",
+            "state": "inactive",
+            "description": "RabbitMQ messaging service",
+            "details": "RabbitMQ"
+        },
+        {
+            "no.": 213,
+            "name": "radius",
+            "state": "inactive",
+            "description": "RADIUS service information",
+            "details": "RADIUS (Remote Authentication Dial-In User Service)"
+        },
+        {
+            "no.": 214,
+            "name": "redis",
+            "state": "inactive",
+            "description": "Redis, in-memory data structure store",
+            "details": "Redis"
+        },
+        {
+            "no.": 215,
+            "name": "release",
+            "state": "enabled",
+            "description": "Linux release information",
+            "details": ""
+        },
+        {
+            "no.": 216,
+            "name": "ruby",
+            "state": "inactive",
+            "description": "Ruby runtime",
+            "details": "Ruby"
+        },
+        {
+            "no.": 217,
+            "name": "s390",
+            "state": "inactive",
+            "description": "IBM S/390",
+            "details": "s390"
+        },
+        {
+            "no.": 218,
+            "name": "salt",
+            "state": "inactive",
+            "description": "Salt",
+            "details": "Salt"
+        },
+        {
+            "no.": 219,
+            "name": "saltmaster",
+            "state": "inactive",
+            "description": "Salt Master",
+            "details": "SaltMaster"
+        },
+        {
+            "no.": 220,
+            "name": "samba",
+            "state": "enabled",
+            "description": "Samba Windows interoperability",
+            "details": "Samba"
+        },
+        {
+            "no.": 221,
+            "name": "sar",
+            "state": "enabled",
+            "description": "System Activity Reporter",
+            "details": "SAR (System Activity Report)"
+        },
+        {
+            "no.": 222,
+            "name": "sas3ircu",
+            "state": "inactive",
+            "description": "SAS-3 Integrated RAID adapter information",
+            "details": "sas3ircu"
+        },
+        {
+            "no.": 223,
+            "name": "scsi",
+            "state": "enabled",
+            "description": "SCSI devices",
+            "details": "SCSI (Small Computer System Interface)"
+        },
+        {
+            "no.": 224,
+            "name": "seagate_ses",
+            "state": "inactive",
+            "description": "Seagate SES status",
+            "details": "Seagate SES (Seagate Enclosure Services)"
+        },
+        {
+            "no.": 225,
+            "name": "sedutil",
+            "state": "inactive",
+            "description": "Self Encrypting Drives",
+            "details": "sedutil"
+        },
+        {
+            "no.": 226,
+            "name": "selinux",
+            "state": "inactive",
+            "description": "SELinux access control",
+            "details": "SELinux (Security-Enhanced Linux)"
+        },
+        {
+            "no.": 227,
+            "name": "sendmail",
+            "state": "inactive",
+            "description": "sendmail service",
+            "details": "Sendmail"
+        },
+        {
+            "no.": 228,
+            "name": "services",
+            "state": "enabled",
+            "description": "System services",
+            "details": ""
+        },
+        {
+            "no.": 229,
+            "name": "shmcli",
+            "state": "inactive",
+            "description": "Dell Server Hardware Manager",
+            "details": "shmcli"
+        },
+        {
+            "no.": 230,
+            "name": "slurm",
+            "state": "inactive",
+            "description": "Slurm Workload Manager",
+            "details": "Slurm (Simple Linux Utility for Resource Management)"
+        },
+        {
+            "no.": 231,
+            "name": "smclient",
+            "state": "inactive",
+            "description": "SANtricity storage device",
+            "details": "A command-line tool used to interact with and manage EMC (now part of Dell Technologies) SANtricity storage systems. SANtricity is a storage management software suite used for configuring, monitoring, and managing Dell EMC's storage arrays, particularly for midrange and enterprise storage systems. The smclient tool provides administrators with the ability to perform tasks such as retrieving system information, checking the health of disks and storage pools, configuring volume groups, and monitoring performance metrics. It is used to automate and streamline storage management tasks in environments that use SANtricity-managed storage solutions."
+        },
+        {
+            "no.": 232,
+            "name": "snap",
+            "state": "enabled",
+            "description": "Snap packages",
+            "details": "snap"
+        },
+        {
+            "no.": 233,
+            "name": "snapper",
+            "state": "inactive",
+            "description": "System snapper",
+            "details": "Snapper"
+        },
+        {
+            "no.": 234,
+            "name": "snmp",
+            "state": "inactive",
+            "description": "Simple network management protocol",
+            "details": "SNMP (Simple Network Management Protocol)"
+        },
+        {
+            "no.": 235,
+            "name": "sos_extras",
+            "state": "enabled",
+            "description": "Collect extra data defined in /etc/sos/extras.d",
+            "details": "Extra files and command outputs allow users to collect more specific or detailed data from specialized systems or applications, making it easier for administrators and support teams to troubleshoot complex issues. The use of sos_extras depends on the environment and the specific needs of the system being diagnosed."
+        },
+        {
+            "no.": 236,
+            "name": "soundcard",
+            "state": "enabled",
+            "description": "Sound devices",
+            "details": ""
+        },
+        {
+            "no.": 237,
+            "name": "squid",
+            "state": "inactive",
+            "description": "Squid caching proxy",
+            "details": "Squid"
+        },
+        {
+            "no.": 238,
+            "name": "ssh",
+            "state": "enabled",
+            "description": "Secure shell service",
+            "details": ""
+        },
+        {
+            "no.": 239,
+            "name": "sssd",
+            "state": "inactive",
+            "description": "System security service daemon",
+            "details": "SSSD (System Security Services Daemon)"
+        },
+        {
+            "no.": 240,
+            "name": "storageconsole",
+            "state": "inactive",
+            "description": "Red Hat Storage Console",
+            "details": "StorageConsole"
+        },
+        {
+            "no.": 241,
+            "name": "storcli",
+            "state": "inactive",
+            "description": "LSI MegaRAID devices",
+            "details": "storcli"
+        },
+        {
+            "no.": 242,
+            "name": "sudo",
+            "state": "enabled",
+            "description": "Sudo command execution",
+            "details": ""
+        },
+        {
+            "no.": 243,
+            "name": "sunbeam_hypervisor",
+            "state": "inactive",
+            "description": "Sunbeam Hypervisor",
+            "details": "The Sunbeam project is a modern, lightweight deployment and management tool for OpenStack, designed to simplify the process of deploying OpenStack services using containers. The OpenStack Controller in a Sunbeam deployment typically acts as the central control node, managing core OpenStack services like Identity (Keystone), Image (Glance), and Compute API endpoints. It coordinates resources across the OpenStack environment and handles API requests from users and developers."
+        },
+        {
+            "no.": 244,
+            "name": "sunbeam",
+            "state": "inactive",
+            "description": "Sunbeam Openstack Controller",
+            "details": "The Sunbeam project is a modern, lightweight deployment and management tool for OpenStack, designed to simplify the process of deploying OpenStack services using containers. The OpenStack Controller in a Sunbeam deployment typically acts as the central control node, managing core OpenStack services like Identity (Keystone), Image (Glance), and Compute API endpoints. It coordinates resources across the OpenStack environment and handles API requests from users and developers."
+        },
+        {
+            "no.": 245,
+            "name": "sunrpc",
+            "state": "enabled",
+            "description": "Sun RPC service",
+            "details": "SUNRPC (Sun Remote Procedure Call)"
+        },
+        {
+            "no.": 246,
+            "name": "systemd",
+            "state": "enabled",
+            "description": "System management daemon",
+            "details": "A modern system and service manager for Linux operating systems, designed to initialize the system and manage system processes after the kernel is booted. It replaces traditional init systems like SysVinit and Upstart, offering improved parallelization, performance, and ease of management."
+        },
+        {
+            "no.": 247,
+            "name": "system",
+            "state": "enabled",
+            "description": "core system information",
+            "details": ""
+        },
+        {
+            "no.": 248,
+            "name": "systemtap",
+            "state": "inactive",
+            "description": "SystemTap dynamic instrumentation",
+            "details": "A powerful tracing and performance analysis tool for Linux systems, designed to provide insight into the operation of the kernel and user-space applications. It enables administrators and developers to collect detailed information about system behavior, diagnose performance bottlenecks, and debug issues in real time without needing to modify source code or reboot the system."
+        },
+        {
+            "no.": 249,
+            "name": "sysvipc",
+            "state": "enabled",
+            "description": "SysV IPC",
+            "details": "SysV IPC (System V Inter-Process Communication)"
+        },
+        {
+            "no.": 250,
+            "name": "targetcli",
+            "state": "inactive",
+            "description": "TargetCLI TCM/LIO configuration",
+            "details": "targetcli"
+        },
+        {
+            "no.": 251,
+            "name": "teamd",
+            "state": "inactive",
+            "description": "Network Interface Teaming",
+            "details": "A userspace daemon used for managing libteam, a Linux kernel-based network teaming driver that provides network link aggregation and load balancing. It allows multiple network interfaces to work together as a single virtual interface, improving redundancy, fault tolerance, and bandwidth."
+        },
+        {
+            "no.": 252,
+            "name": "telegraf",
+            "state": "inactive",
+            "description": "Telegraf, the metric collecting tool, plugin",
+            "details": "Telegraf"
+        },
+        {
+            "no.": 253,
+            "name": "tftpserver",
+            "state": "inactive",
+            "description": "TFTP Server information",
+            "details": "A server that implements the Trivial File Transfer Protocol (TFTP), a simple protocol used for transferring files over a network, typically in environments where minimal configuration or overhead is required. Unlike FTP or HTTP, TFTP is lightweight and does not provide authentication, encryption, or advanced features, making it suitable for tasks like booting devices or transferring configuration files."
+        },
+        {
+            "no.": 254,
+            "name": "tpm2",
+            "state": "inactive",
+            "description": "Trusted Platform Module 2.0",
+            "details": "TPM 2.0 (Trusted Platform Module 2.0)"
+        },
+        {
+            "no.": 255,
+            "name": "ubuntu",
+            "state": "enabled",
+            "description": "Ubuntu specific information",
+            "details": ""
+        },
+        {
+            "no.": 256,
+            "name": "udev",
+            "state": "enabled",
+            "description": "udev dynamic device management",
+            "details": "The device manager for Linux systems, responsible for managing device nodes in the /dev directory and handling the dynamic creation and removal of devices. udev ensures that device files are created, removed, and modified as devices are added or removed from the system. It is a key component for managing hardware and enabling plug-and-play functionality on Linux."
+        },
+        {
+            "no.": 257,
+            "name": "udisks",
+            "state": "enabled",
+            "description": "udisks disk manager",
+            "details": "A service and framework for managing disk drives and storage devices in Linux-based systems. It provides a D-Bus API to allow applications to interact with storage devices in a standardized way, enabling tasks like mounting, unmounting, and partitioning without requiring direct interaction with the system's underlying tools."
+        },
+        {
+            "no.": 258,
+            "name": "ufw",
+            "state": "enabled",
+            "description": "Uncomplicated FireWall",
+            "details": "UFW (Uncomplicated Firewall)"
+        },
+        {
+            "no.": 259,
+            "name": "unbound",
+            "state": "inactive",
+            "description": "Unbound DNS resolver",
+            "details": "A high-performance, recursive, and caching DNS (Domain Name System) resolver designed for security, privacy, and efficiency. It is open-source and typically used by individuals, organizations, or ISPs to resolve domain names and cache DNS queries, reducing lookup times and improving network performance."
+        },
+        {
+            "no.": 260,
+            "name": "unity",
+            "state": "inactive",
+            "description": "Unity",
+            "details": "A graphical user interface (GUI) developed by Canonical for the Ubuntu operating system. Unity was designed to provide a more streamlined, modern, and efficient user experience, particularly for users with smaller screens and netbooks. It was the default desktop environment for Ubuntu from version 11.04 to 17.04."
+        },
+        {
+            "no.": 261,
+            "name": "usb",
+            "state": "enabled",
+            "description": "USB devices",
+            "details": ""
+        },
+        {
+            "no.": 262,
+            "name": "usbguard",
+            "state": "inactive",
+            "description": "USB device usage policy",
+            "details": "A security framework for Linux that provides protection against unauthorized USB devices. It allows administrators to control and monitor which USB devices can be connected to a system by creating a set of rules that define allowed or blocked devices based on attributes such as device IDs, vendor IDs, and device types."
+        },
+        {
+            "no.": 263,
+            "name": "vault",
+            "state": "inactive",
+            "description": "Manage access to secrets and protect sensitive data",
+            "details": "A tool for securely storing and managing sensitive information such as passwords, API keys, certificates, and encryption keys. Vault is developed by HashiCorp and provides robust features for managing secrets and protecting sensitive data in a highly secure and auditable manner."
+        },
+        {
+            "no.": 264,
+            "name": "vectordev",
+            "state": "inactive",
+            "description": "A tool for building observability pipelines",
+            "details": "A set of development tools or services typically associated with Vector — a high-performance, low-latency observability platform designed for collecting, processing, and shipping logs, metrics, and other observability data. The name VectorDev is not a widely recognized standalone product but could refer to the developer-oriented aspects of the Vector platform, such as tools and integrations that support its development, customization, and deployment."
+        },
+        {
+            "no.": 265,
+            "name": "virsh",
+            "state": "inactive",
+            "description": "client for libvirt virtualization API",
+            "details": "A command-line interface (CLI) tool for managing virtual machines (VMs) and other aspects of virtualization on Linux-based systems using libvirt. It provides a simple and consistent interface for managing virtual environments, whether running on KVM, QEMU, Xen, or other supported hypervisors."
+        },
+        {
+            "no.": 266,
+            "name": "vulkan",
+            "state": "inactive",
+            "description": "Vulkan",
+            "details": "Vulkan"
+        },
+        {
+            "no.": 267,
+            "name": "wireless",
+            "state": "enabled",
+            "description": "Wireless Device Information",
+            "details": ""
+        },
+        {
+            "no.": 268,
+            "name": "x11",
+            "state": "enabled",
+            "description": "X windowing system",
+            "details": "A graphical windowing system that provides the basic framework for managing windows, input devices, and displaying graphical content on UNIX-like operating systems, including Linux and macOS. X11 allows multiple applications to run in separate windows on the same screen and provides the foundation for building graphical user interfaces (GUIs) in a networked environment."
+        },
+        {
+            "no.": 269,
+            "name": "xdp",
+            "state": "inactive",
+            "description": "XDP program information",
+            "details": "XDP (eXpress Data Path)"
+        },
+        {
+            "no.": 270,
+            "name": "xfs",
+            "state": "inactive",
+            "description": "XFS filesystem",
+            "details": "A high-performance, journaling file system designed for scalability and reliability, commonly used on Linux-based systems. It was originally developed by Silicon Graphics (SGI) for their IRIX operating system and later ported to Linux. XFS is known for its excellent handling of large files and large file systems, making it ideal for environments with high-performance computing and heavy I/O workloads."
+        },
+        {
+            "no.": 271,
+            "name": "xinetd",
+            "state": "inactive",
+            "description": "xinetd information",
+            "details": "xinetd (Extended Internet Service Daemon)"
+        },
+        {
+            "no.": 272,
+            "name": "zfs",
+            "state": "inactive",
+            "description": "ZFS filesystem",
+            "details": "ZFS (Zettabyte File System)"
+        },
+        {
+            "no.": 273,
+            "name": "zvm",
+            "state": "inactive",
+            "description": "IBM z/VM information",
+            "details": "A hypervisor developed by IBM for virtualizing workloads on IBM Z and LinuxONE systems. zVM allows multiple virtual machines (VMs) to run on a single physical IBM Z or LinuxONE server, providing an efficient platform for server consolidation, workload isolation, and resource management."
+        }
+    ]
+}

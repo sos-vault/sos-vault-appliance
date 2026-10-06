@@ -1,0 +1,44 @@
+#!/bin/bash
+# postinst — runs after the deb's payload is unpacked under /opt/sos-vault.
+#
+# dpkg postinst scripts cannot prompt interactively (no controlling tty
+# in the apt/dpkg flow). We make every helper executable and print the
+# next step; the operator launches /opt/sos-vault/sysadmin/installer.sh
+# manually to complete setup (vault directory, admin credentials, etc.).
+
+set -e
+
+INSTALL_ROOT='/opt/sos-vault'
+
+# Make sure helpers and the installer are executable. The deb tarball
+# preserves modes, but rsync flows can lose +x — belt + suspenders.
+for f in installer.sh cert-helper init.sh; do
+    if [[ -f "${INSTALL_ROOT}/sysadmin/${f}" ]]; then
+        chmod 0755 "${INSTALL_ROOT}/sysadmin/${f}" || true
+    fi
+done
+
+cat <<EOF
+
+================================================================
+  sos-vault has been installed under ${INSTALL_ROOT}.
+
+  NEXT: run the interactive installer to finish setup:
+      sudo ${INSTALL_ROOT}/sysadmin/installer.sh
+
+  The installer will:
+    - verify hardware + install Docker
+    - prompt for admin credentials and the GPG passphrase
+    - provision the vault directory (default /vault)
+    - pull the docker images from ghcr.io and bring up the stack
+    - install the systemd unit and sudoers fragments
+    - capture an initial sosreport for support
+
+  NOTE: install needs outbound HTTPS to ghcr.io / docker.io to pull the
+  container images. The optional AI assistant model (~1.1 GB) is NOT
+  downloaded here — fetch it later from the admin "Software Updates" page.
+================================================================
+
+EOF
+
+exit 0

@@ -1,0 +1,84 @@
+{
+  "series": [],
+  "chart": {
+      "type": "bar",
+      "height": 120,
+      "width": "100%",
+      "stacked": true,
+      "parentHeightOffset": 0,
+      "sparkline": {
+        "enabled": true
+      },
+      "toolbar": {
+        "show": false
+      }
+    },
+    "plotOptions": {
+      "bar": {
+        "horizontal": true,
+        "dataLabels": {
+          "total": {
+            "enabled": true,
+            "formatter": "",
+            "offsetX": -100,
+            "offsetY": 5,
+            "style": {
+              "fontSize": "12px",
+              "color": "#ffffff",
+              "fontWeight": 900
+            }
+          }
+        }
+      }
+    },
+    "grid": {
+      "padding": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 50
+      }
+    },
+    "stroke": {
+      "width": 1,
+      "colors": ["#ebebeb"]
+    },
+    "title": {
+      "text": "",
+      "style": {
+        "color": "#9e9e9e"
+      }
+    },
+    "xaxis": {
+      "show": false,
+      "min": 0,
+      "max": 100,
+      "categories": [],
+      "labels": {
+        "show": false,
+        "formatter": ""
+      }
+    },
+    "yaxis": {
+      "show": false,
+      "title": {
+        "text": ""
+      }
+    },
+    "tooltip": {
+      "enabled": true,
+      "fillSeriesColor": true,
+      "theme": "dark",
+      "y": {
+        "formatter": ""
+      }
+    },
+    "fill": {
+      "opacity": 1
+    },
+    "legend": {
+      "show": true,
+      "position": "bottom"
+    }
+}
+

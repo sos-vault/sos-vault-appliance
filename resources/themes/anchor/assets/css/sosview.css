@@ -1,0 +1,11 @@
+.tree {
+    summary::-webkit-details-marker {
+        /* WebKit-based browsers like Safari. */
+        display:none;
+    }
+}
+
+.current-highlight {
+    background: #fdba74 !important;
+    outline: 1px solid #c2410c;
+}

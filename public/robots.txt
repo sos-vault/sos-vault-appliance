@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /checkout
+Disallow: /addTokens
+Disallow: /cancel
+Disallow: /cancelDisk
+Disallow: /sosSelect
+Disallow: /addSeats
+Disallow: /dashboard
+Disallow: /settings
+Disallow: /admin
+Disallow: /auth
+
+Sitemap: https://sos-vault.com/sitemap.xml

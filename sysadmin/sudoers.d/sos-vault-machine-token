@@ -1,0 +1,16 @@
+# sos-vault-machine-token — sudoers fragment for sysadmin/machine-token-helper.
+#
+# License hardening sprint. The installer drops this file into
+# /etc/sudoers.d/sos-vault-machine-token with mode 0440 owned root:root.
+# Validate parse-ability with `visudo -cf <path>` before installing.
+#
+# Grants www-data permission to invoke dmidecode -s with ONLY the two keys
+# the helper needs: baseboard-serial-number (preferred) and
+# system-serial-number (fallback). dmidecode is a read-only command but it
+# requires root to access /dev/mem on most distros, hence the sudo gate.
+
+Cmnd_Alias SOSV_MACHINE_TOKEN = \
+    /usr/sbin/dmidecode -s baseboard-serial-number, \
+    /usr/sbin/dmidecode -s system-serial-number
+
+www-data ALL=(root) NOPASSWD: SOSV_MACHINE_TOKEN

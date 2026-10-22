@@ -1,0 +1,1 @@
+<div wire:ignore id="breadcrumbs" class="h-10 flex flex-row flex-nowrap justify-start items-center px-2 text-base text-primary-800 dark:text-primary-600 border-0 border-gray-200 dark:border-zinc-600 rounded-lg bg-transparent truncate"></div>

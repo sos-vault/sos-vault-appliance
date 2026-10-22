@@ -1,0 +1,51 @@
+# Public mirror .gitignore — replaces the private monorepo's gitignore at
+# publish time (this file rsyncs to the mirror root via the publish-opencore
+# workflow, overlaying the monorepo version).
+#
+# Keep this list minimal: the mirror's `git add -A` should track everything
+# the publish workflow staged. The rsync step already excludes secrets and
+# build artefacts, so this file only handles things contributors will
+# create locally.
+
+# Composer / npm
+/vendor
+/node_modules
+package-lock.json.bak
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+.env.backup
+
+# Laravel runtime
+/storage/*.key
+/storage/app/livewire-tmp
+/storage/app/private/
+/storage/logs
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+
+# Build output
+/public/hot
+/public/storage
+/public/build/assets/
+
+# IDE / OS
+/.idea
+/.vscode
+.DS_Store
+*.swp
+
+# PHP test caches
+/.phpunit.result.cache
+/.phpunit.cache
+
+# Local SQLite
+database/database.sqlite*
+
+# Logs
+npm-debug.log
+yarn-error.log
+*.log

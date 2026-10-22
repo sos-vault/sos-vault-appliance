@@ -1,0 +1,23 @@
+* text=auto
+
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
+/.github export-ignore
+CHANGELOG.md export-ignore
+
+# ---------------------------------------------------------------------------
+# Linguist overrides — keep the public open-core mirror's GitHub language
+# stats accurate. public/ is the web docroot (compiled Vite output + published
+# third-party package assets) and resources/themes/*/assets/ are bundled theme
+# assets — none of it is hand-authored project source. Without these the
+# mirror's language bar reads as a JavaScript/CSS project instead of the PHP
+# application it actually is. See github.com/github-linguist/linguist.
+# ---------------------------------------------------------------------------
+public/** linguist-vendored
+public/build/** linguist-generated
+resources/themes/*/assets/** linguist-vendored
+*.md linguist-documentation

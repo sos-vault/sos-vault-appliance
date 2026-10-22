@@ -1,0 +1,70 @@
+sos-vault
+Copyright (c) 2020-2026 sos-vault contributors
+
+This product is licensed under the GNU Affero General Public License v3.0
+or later (AGPL-3.0-or-later). See the LICENSE file for the full text.
+
+---
+
+TRADEMARKS
+
+"sos-vault", the sos-vault wordmark, and the sos-vault logo (the green
+safe-door icon) are trademarks of the sos-vault project owner. Permission
+to use, distribute, and modify the source code under AGPL-3.0-or-later
+does NOT grant any license to use these trademarks beyond fair use to
+refer to the project itself.
+
+If you fork or redistribute a modified version, please rename it so that
+users are not confused about its origin.
+
+See TRADEMARKS.md (in the public open-core repository) for the full
+trademark usage policy.
+
+---
+
+LICENSE-ENFORCEMENT MECHANISM
+
+The license-enforcement code in this repository — including but not
+limited to:
+
+  - app/Services/LocalLicenseService.php
+  - app/Services/MachineTokenService.php
+  - app/Services/LicenseRequestService.php
+  - app/Models/LocalLicense.php
+  - sysadmin/machine-token-helper
+
+is itself distributed under AGPL-3.0-or-later. The "open-core" boundary
+between this open-source product and the optional Pro features is enforced
+by cryptographic signature verification (GPG clearsign over a payload
+bound to host-derived machine tokens), NOT by closed-source binaries.
+
+You are free to read, audit, fork, and modify every line of code. The
+license-issuer GPG private key, which signs valid Pro-tier .lic files,
+remains private to the SaaS minting service (see sos-vault.com) and is
+the basis on which paying customers fund continued open-source
+development.
+
+---
+
+THIRD-PARTY COMPONENTS
+
+This product bundles or depends on numerous third-party open-source
+components. See composer.lock and package-lock.json for the authoritative
+dependency list, and the respective package directories for individual
+license terms.
+
+Notable upstream components that ship with their own licenses:
+
+  - Laravel Framework — MIT
+  - Filament — MIT
+  - Livewire — MIT
+  - Volt — MIT
+  - Folio — MIT
+  - Pest (testing) — MIT
+  - Alpine.js — MIT
+  - Tailwind CSS — MIT
+  - Phosphor Icons — MIT
+
+The bundling of these components does not affect their respective
+licenses; the AGPL-3.0-or-later applies to sos-vault's own source code
+and to the combined work as distributed.

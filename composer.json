@@ -46,7 +46,7 @@
         "stripe/stripe-php": ">=16.6",
         "torann/geoip": "^3.0",
         "tymon/jwt-auth": "@dev",
-        "ublabs/blade-simple-icons": "^0.171.0"
+        "ublabs/blade-simple-icons": "^0.215.0"
     },
     "require-dev": {
         "alebatistella/duskapiconf": ">=1.2.5",

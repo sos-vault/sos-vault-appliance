@@ -1,0 +1,33 @@
+# sos-vault-svaultkey — sudoers fragment for sysadmin/execStart.sh.
+#
+# The boot service svaultKey.service runs as UID 1000 and must open the LUKS
+# svault key device to load svault0..3 into the kernel keyring. cryptsetup and
+# mount require root, so UID 1000 is granted ONLY the exact commands
+# execStart.sh invokes — nothing else. The installer (installer.sh step 11)
+# drops this into /etc/sudoers.d/sos-vault-svaultkey with mode 0440 root:root.
+# Validate parse-ability with `visudo -cf <path>` before installing.
+#
+# Principal is a numeric UID so the fragment is username-agnostic. The shipped
+# default is #1000; the installer rewrites it to the provisioned sosvault uid
+# (install_one_sudoers seds "^#1000 " to the real app uid).
+#
+# Paths are FULLY LITERAL — no wildcards. sudo-rs (Ubuntu 26.04's default sudo)
+# rejects wildcards in command arguments outright, so every argument must be
+# concrete. The shipped default key dir is /var/lib/sos-vault/svaultkey; the
+# installer rewrites it to the provisioned SVAULT_KEYDIR (install_one_sudoers
+# seds the default path to the real one). execStart.sh pins the key-file to a
+# FIXED $KEYDIR/.keyfile path (not a random mktemp) so this matches exactly.
+#
+# Verbs match sysadmin/execStart.sh exactly:
+#   - luksOpen <device> svault   (read-only, key-file = $KEYDIR/.keyfile)
+#   - mount -o ro /dev/mapper/svault $KEYDIR/m
+#   - umount /dev/mapper/svault
+#   - luksClose svault
+
+Cmnd_Alias SOSV_KEYRING_OPS = \
+    /sbin/cryptsetup -r --key-file=/var/lib/sos-vault/svaultkey/.keyfile luksOpen /var/lib/sos-vault/svaultkey/svault.key svault, \
+    /bin/mount -o ro /dev/mapper/svault /var/lib/sos-vault/svaultkey/m, \
+    /bin/umount /dev/mapper/svault, \
+    /sbin/cryptsetup luksClose svault
+
+#1000 ALL=(root) NOPASSWD: SOSV_KEYRING_OPS

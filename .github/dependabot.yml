@@ -1,0 +1,23 @@
+version: 2
+# This file only takes effect on the public open-core mirror
+# (sos-vault/sos-vault-appliance): Dependabot reads its config from a repo's
+# default branch, and the private repo's default branch is master, not
+# appliance. The mirror is force-pushed from appliance on every v* tag
+# (.github/workflows/publish-opencore.yml), so a PR merged there would be
+# overwritten at the next release and never reach the private source.
+#
+# So: no version-update PRs on the mirror (open-pull-requests-limit: 0).
+# Dependabot security ALERTS are independent of this file and still fire;
+# fix them on the private appliance branch and ship them with the next tag.
+updates:
+  - package-ecosystem: composer
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0

@@ -1,0 +1,25 @@
+#!/bin/bash
+# prerm — runs before the deb's payload is removed.
+#
+# Stop and disable sos-vault.service so the docker stack is brought
+# down cleanly before files disappear. Tolerant of missing units —
+# `|| true` so a partial install can still be uninstalled.
+
+set -e
+
+case "$1" in
+    remove|purge|upgrade|deconfigure)
+        if command -v systemctl >/dev/null 2>&1; then
+            systemctl stop sos-vault.service 2>/dev/null || true
+            systemctl disable sos-vault.service 2>/dev/null || true
+        fi
+        ;;
+    failed-upgrade)
+        ;;
+    *)
+        echo "prerm called with unknown argument: $1" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

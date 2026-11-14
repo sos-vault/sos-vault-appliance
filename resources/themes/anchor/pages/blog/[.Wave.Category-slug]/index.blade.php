@@ -1,0 +1,32 @@
+<?php
+    use function Laravel\Folio\{name};
+    name('blog.category');
+?>
+
+<x-layouts.marketing>
+
+    @php
+        $posts = $category->posts()->orderBy('created_at', 'ASC')->paginate(15);
+    @endphp
+
+    <x-container>
+        <div class="relative pt-6">
+            <x-marketing.elements.heading
+                :title="__('blog.category_articles', ['category' => $category->name])"
+                :description="__('blog.category_description', ['category' => $category->name])"
+                align="left"
+            />
+            
+            @include('theme::partials.blog.categories')
+
+            <div class="grid gap-5 mx-auto mt-7 sm:grid-cols-2 lg:grid-cols-3">
+                @include('theme::partials.blog.posts-loop', ['posts' => $posts])
+            </div>
+        </div>
+
+        <div class="flex justify-center my-10">
+            {{ $posts->links('theme::partials.pagination') }}
+        </div>
+
+    </x-container>
+</x-layouts.marketing>

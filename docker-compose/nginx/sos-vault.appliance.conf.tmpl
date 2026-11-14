@@ -1,0 +1,86 @@
+# sos-vault APPLIANCE nginx config.
+#
+# build.sh stages this file AS docker-compose/nginx/sos-vault.com.conf in the
+# deb payload, REPLACING the SaaS site config (sos-vault.com.conf in the repo,
+# which 301-redirects every host to https://sos-vault.com — correct for the
+# hosted site, fatal for a self-hosted box reached by IP / custom hostname).
+#
+# The `.tmpl` suffix keeps the dev nginx — which auto-includes only *.conf —
+# from loading this alongside the SaaS config and tripping a duplicate
+# default_server / server_name clash.
+#
+# Both blocks are the default_server for their port and accept ANY Host
+# (server_name _), serving the Laravel app directly with NO host redirect. The
+# self-signed cert from installer.sh step 9 lives at /etc/nginx/ssl/sos-vault.com/.
+
+server {
+    listen 80 default_server;
+    server_name _;
+    index index.php index.html;
+    error_log  /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+    root /var/www/site/public;
+    client_max_body_size 512m;
+    proxy_request_buffering off;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass app:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_read_timeout 300;
+    }
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+        gzip_static on;
+    }
+}
+
+server {
+    listen 443 ssl default_server;
+    server_name _;
+    index index.php index.html;
+    error_log  /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+    root /var/www/site/public;
+    client_max_body_size 512m;
+    proxy_request_buffering off;
+
+    ssl_certificate     /etc/nginx/ssl/sos-vault.com/fullchain.pem;
+    ssl_certificate_key /etc/nginx/ssl/sos-vault.com/privkey.pem;
+
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    # Deliberately SHORT max-age (5 min) and no includeSubDomains/preload: the
+    # appliance ships a self-signed cert reached by IP / custom hostname, so a
+    # long HSTS pin would lock an admin out if the cert or hostname later
+    # changes. This still defeats trivial same-session downgrade attempts.
+    add_header Strict-Transport-Security "max-age=300" always;
+    # Report-Only first (see SaaS conf). Filament/Livewire/Alpine need
+    # 'unsafe-inline' + 'unsafe-eval'.
+    add_header Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'" always;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass app:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_param HTTPS on;
+        fastcgi_read_timeout 300;
+    }
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+        gzip_static on;
+    }
+}

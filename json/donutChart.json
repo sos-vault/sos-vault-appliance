@@ -1,0 +1,77 @@
+{
+    "series": null,
+    "colors": null,
+    "labels": null,
+    "chart": {
+      "height": 120,
+      "width": "100%",
+      "sparkline": {
+        "enabled": true
+      },
+      "type": "donut"
+    },
+    "stroke": {
+      "colors": ["transparent"],
+      "lineCap": ""
+    },
+    "plotOptions": {
+      "pie": {
+        "customScale": 1.0,
+        "donut": {
+          "labels": {
+            "show": true,
+            "name": {
+              "show": true,
+              "fontFamily": "Inter, sans-serif",
+              "offsetY": 0
+            },
+            "total": {
+              "showAlways": true,
+              "show": true,
+              "label": "Load Average",
+              "fontFamily": "Inter, sans-serif",
+              "fontSize": "16px",
+              "formatter": null
+            },
+            "value": {
+              "show": false,
+              "fontFamily": "Inter, sans-serif",
+              "offsetY": -20,
+              "formatter": null
+            }
+          },
+          "size": "85%"
+        }
+      }
+    },
+    "grid": {
+      "padding": {
+        "top": 0
+      }
+    },
+    "dataLabels": {
+      "enabled": false
+    },
+    "legend": {
+      "show": false,
+      "position": "top",
+      "fontFamily": "Inter, sans-serif"
+    },
+    "yaxis": {
+      "labels": {
+        "formatter": null
+      }
+    },
+    "xaxis": {
+      "labels": {
+        "formatter": null
+      },
+      "axisTicks": {
+        "show": false
+      },
+      "axisBorder": {
+        "show": false
+      }
+    }
+}
+

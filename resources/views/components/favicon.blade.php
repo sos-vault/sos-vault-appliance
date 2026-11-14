@@ -1,0 +1,2 @@
+<link rel="icon" href="{{ versionedPublicAsset(setting('site.favicon', '/wave/favicon.png')) }}" type="image/x-icon">
+<link rel="icon" href="{{ versionedPublicAsset(setting('site.favicon_dark', '/wave/favicon-dark.png')) }}" type="image/png" media="(prefers-color-scheme: dark)">
